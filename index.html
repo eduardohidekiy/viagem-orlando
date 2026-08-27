@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orlando · 10 a 24 nov 2026</title>
+  <style>
+    :root { --text:#1a1a1a; --muted:#5c5c5c; --line:#e2e2e2; --bg:#fafafa; --card:#fff; --accent:#1f4e79; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:"Segoe UI",system-ui,sans-serif; color:var(--text); background:var(--bg); line-height:1.5; }
+    .wrap { max-width:920px; margin:0 auto; padding:28px 20px 64px; }
+    h1 { font-size:1.6rem; margin:0 0 8px; }
+    h2 { font-size:1.15rem; margin:32px 0 10px; color:var(--accent); }
+    h3 { font-size:1.02rem; margin:20px 0 8px; }
+    p { margin:0 0 12px; }
+    ul, ol { margin:0 0 12px; padding-left:18px; }
+    .muted { color:var(--muted); }
+    .small { font-size:.85rem; color:var(--muted); }
+    .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:14px 0 20px; }
+    button { border:1px solid var(--line); background:var(--card); padding:6px 12px; border-radius:999px; cursor:pointer; font:inherit; }
+    button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
+    .stat { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+    .stat b { display:block; font-size:1.15rem; }
+    .stat span { font-size:.8rem; color:var(--muted); }
+    .note { border:1px solid var(--line); border-left:4px solid var(--accent); background:var(--card); padding:12px 14px; border-radius:8px; margin:14px 0; }
+    .prep { border:1px solid #c9a227; border-left:4px solid #c9a227; background:#fffdf5; padding:12px 14px; border-radius:8px; margin:8px 0 14px; }
+    .prep b { color:#7a5b00; }
+    .prep ul { margin:6px 0 0; }
+    .scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    table { width:100%; border-collapse:collapse; background:var(--card); font-size:.92rem; }
+    th, td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+    th { font-size:.75rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+    td.num, th.num { text-align:right; white-space:nowrap; }
+    tr.total td { font-weight:700; border-top:2px solid var(--text); }
+    tr.opt td { color:var(--muted); }
+    table.money,
+    table.schedule { border-radius:10px; overflow:hidden; border:1px solid var(--line); }
+    table.money th, table.money td,
+    table.schedule th, table.schedule td { padding:10px 12px; }
+    @media (max-width: 640px) {
+      .wrap { padding:18px 14px 48px; }
+      .stats { grid-template-columns:1fr; }
+      .money-wrap,
+      .schedule-wrap { overflow:visible; }
+      table.money,
+      table.schedule { border:none; background:transparent; overflow:visible; font-size:.9rem; }
+      table.money thead,
+      table.schedule thead { display:none; }
+      table.money tbody,
+      table.schedule tbody { display:flex; flex-direction:column; gap:10px; }
+      table.money tr,
+      table.schedule tr {
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:6px 10px;
+        background:var(--card);
+        border:1px solid var(--line);
+        border-radius:12px;
+        padding:12px 14px;
+      }
+      table.money td,
+      table.schedule td {
+        border:none;
+        padding:0;
+        min-width:0;
+      }
+      table.money td:first-child {
+        grid-column:1 / -1;
+        font-weight:600;
+        padding-bottom:8px;
+        margin-bottom:2px;
+        border-bottom:1px solid var(--line);
+        white-space:normal;
+        line-height:1.35;
+      }
+      table.money td.num {
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:2px;
+        text-align:left;
+        white-space:nowrap;
+        font-variant-numeric:tabular-nums;
+      }
+      table.money td.num::before {
+        content:attr(data-l);
+        font-size:.68rem;
+        font-weight:600;
+        text-transform:uppercase;
+        letter-spacing:.03em;
+        color:var(--muted);
+      }
+      table.money td.em {
+        background:#f3f7fb;
+        border-radius:8px;
+        padding:8px 10px;
+      }
+      table.money td.em::before { color:var(--accent); }
+      table.money tr.total {
+        border:2px solid var(--text);
+        background:#f7f7f7;
+      }
+      table.money tr.total td { border-top:none; }
+      table.money tr.opt { opacity:.85; }
+      table.schedule td.day {
+        grid-column:1 / -1;
+        font-weight:700;
+        color:var(--accent);
+        font-size:.8rem;
+        text-transform:uppercase;
+        letter-spacing:.04em;
+      }
+      table.schedule td.plan {
+        grid-column:1 / -1;
+        font-weight:600;
+        font-size:1.02rem;
+        line-height:1.35;
+        padding-bottom:8px;
+        margin-bottom:2px;
+        border-bottom:1px solid var(--line);
+      }
+      table.schedule td.meta {
+        display:flex;
+        flex-direction:column;
+        gap:2px;
+        background:#f3f7fb;
+        border-radius:8px;
+        padding:8px 10px;
+        white-space:normal;
+      }
+      table.schedule td.meta::before,
+      table.schedule td.why::before {
+        content:attr(data-l);
+        font-size:.68rem;
+        font-weight:600;
+        text-transform:uppercase;
+        letter-spacing:.03em;
+        color:var(--muted);
+      }
+      table.schedule td.meta::before { color:var(--accent); }
+      table.schedule td.why {
+        grid-column:1 / -1;
+        display:flex;
+        flex-direction:column;
+        gap:2px;
+        color:var(--muted);
+        font-size:.88rem;
+        line-height:1.4;
+        white-space:normal;
+      }
+    }
+    @media print {
+      .toolbar, .noprint { display:none !important; }
+      body { background:#fff; }
+      .wrap { padding:0; }
+      h2, h3 { page-break-after:avoid; }
+      table.money,
+      table.schedule {
+        display:table !important;
+        width:100% !important;
+        border:1px solid var(--line) !important;
+        border-radius:0;
+        background:var(--card);
+        overflow:hidden;
+      }
+      table.money thead,
+      table.schedule thead { display:table-header-group !important; }
+      table.money tbody,
+      table.schedule tbody { display:table-row-group !important; gap:0; }
+      table.money tr,
+      table.schedule tr {
+        display:table-row !important;
+        grid-template-columns:none;
+        border:none !important;
+        border-radius:0;
+        padding:0 !important;
+        background:transparent !important;
+        margin:0;
+      }
+      table.money td,
+      table.schedule td {
+        display:table-cell !important;
+        padding:9px 10px !important;
+        border-bottom:1px solid var(--line) !important;
+        margin:0;
+        color:inherit;
+        font-size:inherit;
+        font-weight:inherit;
+        background:transparent !important;
+      }
+      table.money td:first-child,
+      table.schedule td.day,
+      table.schedule td.plan,
+      table.schedule td.why {
+        grid-column:auto;
+        border-bottom:1px solid var(--line) !important;
+        padding-bottom:9px !important;
+        margin-bottom:0;
+      }
+      table.money td.num,
+      table.schedule td.meta,
+      table.schedule td.why {
+        display:table-cell !important;
+        flex-direction:unset;
+        align-items:unset;
+      }
+      table.money td.num { text-align:right; white-space:nowrap; }
+      table.money td.num::before,
+      table.schedule td.meta::before,
+      table.schedule td.why::before { content:none !important; }
+      table.money td.em,
+      table.schedule td.meta { background:transparent !important; padding:9px 10px !important; border-radius:0; }
+      table.money tr.total td { font-weight:700; border-top:2px solid var(--text); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Orlando · 10 a 24 nov 2026</h1>
+    <p class="muted">Família (2 adultos + criança de 6 anos) e casal (2 adultos). Sem passagens. Itens comuns (casa, carro, seguro do carro, estacionamento, gasolina, mercado): divididos em <b>4 partes iguais — uma por adulto</b>. A criança não paga parte desses itens. Ingressos, comida de parque, internet no celular (chip virtual) e seguro de viagem: cada um paga pelas próprias pessoas.</p>
+
+    <div class="toolbar noprint">
+      <button id="btnUsd" class="active" type="button" onclick="setCur('USD')">Dólar</button>
+      <button id="btnBrl" type="button" onclick="setCur('BRL')">Real</button>
+      <button type="button" onclick="window.print()">Salvar PDF</button>
+    </div>
+
+    <h2>Orçamento</h2>
+    <div class="stats">
+      <div class="stat"><b id="sFam">—</b><span>Família = 2 partes adultas + criança</span></div>
+      <div class="stat"><b id="sCasal">—</b><span>Casal = 2 partes adultas</span></div>
+    </div>
+    <div class="money-wrap">
+      <table class="money">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="num">1 adulto</th>
+            <th class="num">1 criança</th>
+            <th class="num">Família</th>
+            <th class="num">Casal</th>
+          </tr>
+        </thead>
+        <tbody id="budgetBody"></tbody>
+      </table>
+    </div>
+    <p class="small">Câmbio R$ 5,15. Ingressos Disney / Universal / SeaWorld+Busch: cotação <b>Latam Travel</b> para família (2 adultos + 1 criança) = R$ 21.609,45 no total dos três. Como a cotação não separa adulto e criança, o valor é <b>dividido igualmente por pessoa</b> (total dividido por 3). Casal = 2 vezes essa parte. Itens comuns: divididos por 4 adultos. <b>Disney:</b> 4 dias, começando em 13/11. <b>Universal:</b> ingresso de 3 parques por 14 dias, começando em 12/11. <b>SeaWorld + Busch:</b> 2 parques + refeições o dia todo (dias 11 e 22/11). O câmbio da Latam na hora do pagamento pode mudar o total em reais.</p>
+    <div class="note">Uma família reserva a casa e o carro no cartão; a outra transfere as 2 partes dos adultos (Pix ou Zelle). Ingressos, chip de internet e seguro de viagem: cada um compra só das próprias pessoas. Seguro do carro vai junto com a minivan (dividido por 4 adultos).</div>
+    <p class="small"><b>Internet no celular:</b> chip virtual Nomad ou Airalo nos EUA, cerca de 20 GB por 30 dias (cerca de US$ 34) — mapa, aplicativo dos parques, WhatsApp. A criança usa a internet do celular do adulto. <b>Seguro de viagem:</b> cobertura médica nos EUA por cerca de 15 dias (faixa típica Allianz/Porto). <b>Seguro do carro:</b> proteção contra danos no balcão da locadora ou em empresa à parte (cerca de US$ 25 por dia × 14 dias); cartão brasileiro muitas vezes <i>não</i> cobre aluguel nos EUA — confirmar antes de abrir mão.</p>
+
+    <h2>Cronograma conjunto</h2>
+    <p class="muted">Disney: 4 dias entre <b>13 e 19/11</b> (começando no dia 13). Universal: ingresso que permite trocar de parque, válido por <b>14 dias</b> a partir de <b>12/11</b>. Magic Kingdom no dia <b>18</b> (sem festa de Natal → dá para ver os fogos do parque). Folga no dia 17 depois do Epic. Lotações baseadas em sites de previsão (projeções de 2026 — mudam perto da viagem).</p>
+    <div class="schedule-wrap">
+      <table class="schedule">
+        <thead><tr><th>Data</th><th>Plano</th><th>Lotação</th><th>Energia</th><th>Por quê</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day">10 ter</td>
+            <td class="plan">Chegada no aeroporto de Sanford às 11h · carro · casa · mercado · Disney Springs</td>
+            <td class="meta" data-l="Lotação">—</td>
+            <td class="meta" data-l="Energia">Baixa</td>
+            <td class="why" data-l="Por quê">Cansaço da viagem. Disney Springs não precisa de ingresso.</td>
+          </tr>
+          <tr>
+            <td class="day">11 qua</td>
+            <td class="plan">SeaWorld</td>
+            <td class="meta" data-l="Lotação">3–4/10</td>
+            <td class="meta" data-l="Energia">Média</td>
+            <td class="why" data-l="Por quê">Em novembro o SeaWorld costuma ficar na metade da lotação; quarta é o dia mais leve da semana. Não espere um dia quase vazio.</td>
+          </tr>
+          <tr>
+            <td class="day">12 qui</td>
+            <td class="plan">Universal Studios Florida</td>
+            <td class="meta" data-l="Lotação">5/10</td>
+            <td class="meta" data-l="Energia">Média</td>
+            <td class="why" data-l="Por quê">Lotação média. Primeiro dia do ingresso Universal (começa no dia 12).</td>
+          </tr>
+          <tr>
+            <td class="day">13 sex</td>
+            <td class="plan">Hollywood Studios</td>
+            <td class="meta" data-l="Lotação">7/10</td>
+            <td class="meta" data-l="Energia">Alta</td>
+            <td class="why" data-l="Por quê">Dia bem cheio. É o dia Disney mais pesado do plano — vale comprar a fila rápida paga (Lightning Lane).</td>
+          </tr>
+          <tr>
+            <td class="day">14 sáb</td>
+            <td class="plan">Livre — hotel Art of Animation (área dos Carros) + shopping de desconto Vineland</td>
+            <td class="meta" data-l="Lotação">7–8/10 nos parques</td>
+            <td class="meta" data-l="Energia">Baixa</td>
+            <td class="why" data-l="Por quê">Sábado ruim para parque (certo em ficar fora).</td>
+          </tr>
+          <tr>
+            <td class="day">15 dom</td>
+            <td class="plan">Animal Kingdom</td>
+            <td class="meta" data-l="Lotação">6/10</td>
+            <td class="meta" data-l="Energia">Média</td>
+            <td class="why" data-l="Por quê">Lotação média-alta. Parque fecha por volta das 18h.</td>
+          </tr>
+          <tr>
+            <td class="day">16 seg</td>
+            <td class="plan">Epic Universe</td>
+            <td class="meta" data-l="Lotação">6/10</td>
+            <td class="meta" data-l="Energia">Máxima</td>
+            <td class="why" data-l="Por quê">Lotação média-alta. Ir à área Nintendo na abertura do parque. Folga no dia seguinte.</td>
+          </tr>
+          <tr>
+            <td class="day">17 ter</td>
+            <td class="plan">Livre — piscina / Celebration</td>
+            <td class="meta" data-l="Lotação">—</td>
+            <td class="meta" data-l="Energia">Baixa</td>
+            <td class="why" data-l="Por quê">Obrigatório depois do Epic.</td>
+          </tr>
+          <tr>
+            <td class="day">18 qua</td>
+            <td class="plan">Magic Kingdom (dia cheio + fogos)</td>
+            <td class="meta" data-l="Lotação">6–7/10</td>
+            <td class="meta" data-l="Energia">Alta</td>
+            <td class="why" data-l="Por quê">Sem festa de Natal → dá para ver os fogos. Dias sem festa costumam encher mais (estimativa 6–7 de 10).</td>
+          </tr>
+          <tr>
+            <td class="day">19 qui</td>
+            <td class="plan">EPCOT (festival de comida e vinho no fim do dia)</td>
+            <td class="meta" data-l="Lotação">4–5/10</td>
+            <td class="meta" data-l="Energia">Média</td>
+            <td class="why" data-l="Por quê">Quinta de semana boa para as atrações; à noite as barracas de comida enchem um pouco.</td>
+          </tr>
+          <tr>
+            <td class="day">20 sex</td>
+            <td class="plan">Islands of Adventure</td>
+            <td class="meta" data-l="Lotação">6/10</td>
+            <td class="meta" data-l="Energia">Alta</td>
+            <td class="why" data-l="Por quê">Lotação média-alta. Trem do Harry Potter entre parques se ainda tiverem energia.</td>
+          </tr>
+          <tr>
+            <td class="day">21 sáb</td>
+            <td class="plan">Livre — shopping de desconto da International Drive + lojas de liquidação ao lado + piscina</td>
+            <td class="meta" data-l="Lotação">8–9/10 nos parques</td>
+            <td class="meta" data-l="Energia">Baixa</td>
+            <td class="why" data-l="Por quê">Sábado antes do Dia de Ação de Graças — pior ainda para parque.</td>
+          </tr>
+          <tr>
+            <td class="day">22 dom</td>
+            <td class="plan">Busch Gardens Tampa (cerca de 1h15 de carro)</td>
+            <td class="meta" data-l="Lotação">5–6/10</td>
+            <td class="meta" data-l="Energia">Alta + estrada</td>
+            <td class="why" data-l="Por quê">Em novembro Tampa costuma ficar mais leve; no dia 22 já chega gente do feriado — não fica no nível mais alto. Sair por volta das 7h30.</td>
+          </tr>
+          <tr>
+            <td class="day">23 seg</td>
+            <td class="plan">Folga / malas / último mercado</td>
+            <td class="meta" data-l="Lotação">—</td>
+            <td class="meta" data-l="Energia">Baixa</td>
+            <td class="why" data-l="Por quê">O feriado de Ação de Graças já começa a encher Orlando.</td>
+          </tr>
+          <tr>
+            <td class="day">24 ter</td>
+            <td class="plan">Saída da casa e voo de volta</td>
+            <td class="meta" data-l="Lotação">—</td>
+            <td class="meta" data-l="Energia">Baixa</td>
+            <td class="why" data-l="Por quê">O aeroporto de Sanford fica a 50–70 min de Kissimmee. Chegar 3 horas antes no voo internacional.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Roteiro dentro de cada parque</h2>
+    <p class="muted">Ordem, almoço e dicas dos “Roteiros Perfeitos” do <a href="https://orlandodiferente.com.br/">Orlando Diferente</a> (Fê Batista). Seguir nessa sequência. Caixas amarelas = o que fazer <b>antes</b> (aplicativo, fila virtual, fila rápida paga e reservas).</p>
+    <p class="small">Criança com cerca de 110–122 cm: onde a altura impedir, um adulto fica com ela e o resto segue até a próxima atração sem limite (ou o almoço). Estacionamento do parque: cerca de US$ 30.</p>
+
+    <div class="prep">
+      <b>Antes da viagem — preparar tudo</b>
+      <ul>
+        <li>Baixar e entrar nas contas: <b>My Disney Experience</b>, <b>Universal Orlando</b>, <b>SeaWorld</b> (e Busch, se for o mesmo aplicativo).</li>
+        <li>Vincular ingressos Disney e Universal nas contas; foto de cada pessoa no perfil Disney.</li>
+        <li>Cartão dos EUA (por exemplo Nomad) na conta Disney — necessário para <b>pedir comida pelo celular</b> e para a fila rápida paga.</li>
+        <li>Reservas de mesa Disney: abrem cerca de 60 dias antes no aplicativo (Hollywood &amp; Vine, Via Napoli; Thunder Falls é da Universal).</li>
+        <li>Fila rápida Disney (várias atrações ou uma atração só), para quem não fica em hotel Disney: compra a partir de <b>3 dias antes</b>, às <b>7h no horário de Orlando</b>.</li>
+        <li>Medir a criança em casa e guardar foto da fita métrica.</li>
+      </ul>
+    </div>
+
+    <h3>11/11 · SeaWorld</h3>
+    <div class="prep">
+      <b>Antes / no dia</b>
+      <ul>
+        <li>App SeaWorld instalado (horários de show + filas).</li>
+        <li>Refeições o dia todo <b>já inclusas</b> na cotação Latam (SeaWorld + Busch).</li>
+        <li>Opcional: fila rápida do SeaWorld se o dia estiver cheio (no aplicativo ou no parque).</li>
+        <li>Só cartão — parque não aceita dinheiro. Levar roupa extra (Sesame / Infinity Falls molham).</li>
+      </ul>
+    </div>
+    <ol>
+      <li>Pipeline (138 cm — adultos)</li>
+      <li>Ice Breaker (121 cm — medir)</li>
+      <li>Wild Arctic (belugas)</li>
+      <li>Orca Encounter (por volta do meio-dia; conferir no aplicativo)</li>
+      <li>Sesame Street Land (bloco da criança; algumas molham)</li>
+      <li><b>Almoço: Waterway Grill</b> (ou Altitude Burger). Com o pacote de refeições: prato + bebida + sobremesa a cada 90 min</li>
+      <li>Infinity Falls (107 cm; molha)</li>
+      <li>Mako (138 cm — adultos)</li>
+      <li>Shark Encounter (túnel)</li>
+      <li>Penguin Trek + Antarctica Penguin Encounter (saem um no outro)</li>
+      <li>Dolphin Adventures (último show costuma ser fim de tarde — ver aplicativo)</li>
+      <li>Manta (138 cm — adultos). Lanche: Panini Shore Café</li>
+    </ol>
+
+    <h3>12/11 · Universal Studios Florida</h3>
+    <div class="prep">
+      <b>Antes / no dia</b>
+      <ul>
+        <li>Ingresso Universal com <b>início 12/11</b> já vinculado no aplicativo Universal Orlando.</li>
+        <li>Opcional: passe de fila rápida Universal (se comprarem) — ativar no aplicativo.</li>
+        <li>No aplicativo: marcar horários do <b>Bourne Stuntacular</b> e shows infantis.</li>
+        <li>Armário pago em Gringotts e Mummy — ter cartão pronto. Fila individual: só adulto sem criança.</li>
+      </ul>
+    </div>
+    <p class="small">Garagem do lado Jurassic. Começar no Beco Diagonal.</p>
+    <ol>
+      <li>Harry Potter and the Escape from Gringotts (107 cm; armário; fila individual só para adulto)</li>
+      <li>Men in Black Alien Attack (se der tempo)</li>
+      <li>The Simpsons Ride (102 cm)</li>
+      <li><b>Almoço: Louie’s Italian</b> (spaghetti cerca de US$ 11,99) ou Moe’s Tavern</li>
+      <li>The Bourne Stuntacular (teatro — horário no aplicativo)</li>
+      <li>Fast &amp; Furious Supercharged</li>
+      <li>Transformers 3D (fila individual só para adulto)</li>
+      <li>Race Through New York Starring Jimmy Fallon</li>
+      <li>Revenge of the Mummy (102 cm; armário; no escuro)</li>
+      <li>Hollywood Rip Ride Rockit — só se ainda existir (130 cm)</li>
+      <li>Despicable Me Minion Mayhem (102 cm acompanhada)</li>
+    </ol>
+    <p class="small">Se sobrar tempo: Animal Actors, Fievel’s Playland, Woody Woodpecker (92 cm). CityWalk grátis depois das 18h.</p>
+
+    <h3>13/11 · Hollywood Studios</h3>
+    <div class="prep">
+      <b>Antes / no dia (Disney — 1º dia da janela 13–19)</b>
+      <ul>
+        <li><b>3 dias antes, 7h Orlando:</b> comprar a fila rápida de várias atrações do Hollywood Studios e, se quiserem, <b>a fila rápida só da Rise of the Resistance</b>.</li>
+        <li>Na fila rápida de várias atrações: escolher 3 (por exemplo Slinky Dog, Toy Story Mania, Runaway Railway).</li>
+        <li>Reserva de mesa (60 dias antes): Hollywood &amp; Vine ou 50’s Prime Time — se for almoçar sentado.</li>
+        <li><b>Na entrada, imediatamente:</b> inscrever a criança no <b>Jedi Training</b> (Indiana Jones Adventure Outpost) — 4 a 12 anos; esgota cedo.</li>
+        <li>Pedir comida pelo aplicativo para Woody’s Lunch Box se for almoço rápido.</li>
+      </ul>
+    </div>
+    <ol>
+      <li>Jedi Training (já inscritos) — anotar o horário do show</li>
+      <li>Slinky Dog Dash (97 cm)</li>
+      <li>Toy Story Mania</li>
+      <li>Alien Swirling Saucers</li>
+      <li>Star Wars: Rise of the Resistance (101 cm)</li>
+      <li>Millennium Falcon: Smugglers Run</li>
+      <li><b>Almoço: Woody’s Lunch Box</b> ou Docking Bay 7</li>
+      <li>Mickey &amp; Minnie’s Runaway Railway</li>
+      <li>Tower of Terror / Rock ‘n’ Roller Coaster (102 / 122 cm — adultos)</li>
+      <li>Beauty and the Beast Live on Stage (horário no aplicativo)</li>
+      <li>Fantasmic no fim do dia (anfiteatro abre 90 min antes; duas primeiras filas molham)</li>
+    </ol>
+    <p class="small">Ronto Roasters e leite azul (Milk Stand) em Batuu.</p>
+
+    <h3>15/11 · Animal Kingdom</h3>
+    <div class="prep">
+      <b>Antes / no dia</b>
+      <ul>
+        <li><b>3 dias antes, 7h Orlando:</b> fila rápida de várias atrações do Animal Kingdom, se forem comprar — Flight of Passage e Everest às vezes ficam na fila rápida de uma atração ou na de várias; conferir no aplicativo.</li>
+        <li>No aplicativo: horário do <b>Festival of the Lion King</b> (teatro — reservar tempo).</li>
+        <li>Pedir comida pelo aplicativo para Satu’li Canteen perto do almoço.</li>
+        <li>Roupa extra (Kali molha). Chegar cedo — parque fecha por volta das 18h.</li>
+      </ul>
+    </div>
+    <ol>
+      <li>Kilimanjaro Safaris (manhã: animais mais ativos)</li>
+      <li>Festival of the Lion King (cerca de 25 min, em inglês)</li>
+      <li>Kali River Rapids (97 cm; molha)</li>
+      <li>Expedition Everest (112 cm)</li>
+      <li>Dinosaur (102 cm; escuro e intenso)</li>
+      <li><b>Almoço: Satu’li Canteen</b> (Pandora — bowls)</li>
+      <li>Na’vi River Journey (barco, sem altura)</li>
+      <li>Avatar Flight of Passage (112 cm)</li>
+      <li>It’s Tough to Be a Bug! (3D com sustos)</li>
+      <li>Se ainda estiver aberto: bioluminescência de Pandora e Árvore da Vida</li>
+    </ol>
+    <p class="small">Jantar: Rainforest Café (entrada) ou Pizzafari (mais rápido).</p>
+
+    <h3>16/11 · Epic Universe</h3>
+    <div class="prep">
+      <b>Antes / no dia</b>
+      <ul>
+        <li>Aplicativo Universal: ingresso + eventual fila rápida do Epic (se comprarem).</li>
+        <li>Chegar <b>45–60 min antes da abertura</b> — estar na área Super Nintendo World na abertura é o mais importante do dia.</li>
+        <li>Foto no portão do Nintendo; pulseira interativa opcional (compra no parque ou no aplicativo).</li>
+        <li>Reserva de mesa no aplicativo se quiserem Toadstool Cafe ou Café L’air De La Sirène (lotam).</li>
+      </ul>
+    </div>
+    <ol>
+      <li>Super Nintendo World — Mario Kart: Bowser’s Challenge</li>
+      <li>Donkey Kong Country — Mine-Cart Madness (medir)</li>
+      <li>Isle of Berk — atrações de dragão</li>
+      <li><b>Almoço: Toadstool Cafe</b> ou Café L’air De La Sirène</li>
+      <li>Harry Potter and the Battle at the Ministry (122 cm típico)</li>
+      <li>Dark Universe — Monsters Unchained (assustador para 6 anos)</li>
+      <li>Celestial Park — lojas e show da praça</li>
+    </ol>
+    <p class="small">Cada mundo é um portal — não misturar. Folga no dia 17.</p>
+
+    <h3>18/11 · Magic Kingdom</h3>
+    <div class="prep">
+      <b>Antes / no dia — procedimentos críticos</b>
+      <ul>
+        <li><b>3 dias antes, 7h Orlando:</b> fila rápida de várias atrações do Magic Kingdom. Grupo 1: Pirates, Big Thunder, Tiana ou Space Mountain (1 do grupo 1 + 2 do grupo 2).</li>
+        <li><b>No dia, às 7h Orlando (ainda na casa):</b> abrir o aplicativo → <b>fila virtual grátis da Tiana’s Bayou</b>. Se esgotar às 7h, tentar de novo às <b>13h</b> ou comprar a fila rápida só dessa atração.</li>
+        <li><b>TRON:</b> mesma lógica — fila virtual grátis (deixar para o fim do dia) ou fila rápida só dessa atração; 122 cm (criança provavelmente de fora).</li>
+        <li>Pedir comida pelo aplicativo no Columbia Harbour House cerca de 1h antes do almoço.</li>
+        <li>Foto da plaquinha da vaga (heróis/vilões). Ir de monorail, voltar de ferry.</li>
+      </ul>
+    </div>
+    <p class="small">Sem festa de Natal — parque aberto à noite para fogos. Dia sem festa costuma encher mais.</p>
+    <ol>
+      <li>Pirates of the Caribbean</li>
+      <li>Big Thunder Mountain (102 cm)</li>
+      <li>Tiana’s Bayou Adventure (já com fila virtual ou fila rápida)</li>
+      <li><b>Almoço: Columbia Harbour House</b> (pedido pelo celular)</li>
+      <li>Haunted Mansion</li>
+      <li>Festival of Fantasy Parade (por volta das 15h na Liberty Square)</li>
+      <li>Seven Dwarfs Mine Train (97 cm; fila rápida só dessa atração se a fila estiver grande)</li>
+      <li>Space Mountain (113 cm — medir)</li>
+      <li>TRON Lightcycle Run (adultos — fila virtual no fim do dia)</li>
+      <li>Meet Mickey no Town Square Theater + pipoca</li>
+      <li>Show de fogos no castelo (horário no aplicativo)</li>
+    </ol>
+    <p class="small">Lanche: Casey’s Corner ou Main Street Bakery.</p>
+
+    <h3>19/11 · EPCOT</h3>
+    <div class="prep">
+      <b>Antes / no dia</b>
+      <ul>
+        <li><b>3 dias antes, 7h Orlando:</b> fila rápida de várias atrações do EPCOT e/ou <b>fila rápida só do Guardians Cosmic Rewind</b> (neste parque, a de uma atração costuma valer mais).</li>
+        <li>Mesa (60 dias antes): Via Napoli se for jantar sentado.</li>
+        <li>Pedir comida pelo aplicativo no Sunshine Seasons perto do almoço.</li>
+        <li>No aplicativo: horário do <b>Luminous</b> (fogos).</li>
+      </ul>
+    </div>
+    <ol>
+      <li>Test Track (102 cm; fila individual — só adulto)</li>
+      <li>Mission: SPACE (verde 102 cm / laranja 112 cm)</li>
+      <li>Soarin’ (102 cm)</li>
+      <li>Living with the Land (se der tempo)</li>
+      <li>Guardians of the Galaxy: Cosmic Rewind (107 cm)</li>
+      <li><b>Almoço: Sunshine Seasons</b></li>
+      <li>Spaceship Earth</li>
+      <li>World Showcase pela direita (Canadá → França)</li>
+      <li>Remy’s Ratatouille Adventure (França)</li>
+      <li>Beauty and the Beast Sing-Along (se der tempo)</li>
+      <li>Frozen Ever After (Noruega)</li>
+      <li>Gran Fiesta Tour (México; se der tempo)</li>
+      <li>Luminous — fogos no lago</li>
+    </ol>
+    <p class="small">Festival de comida e vinho: barracas à noite; almoço fica no Sunshine Seasons.</p>
+
+    <h3>20/11 · Islands of Adventure</h3>
+    <div class="prep">
+      <b>Antes / no dia</b>
+      <ul>
+        <li>Aplicativo Universal: ingresso que permite trocar de parque ativo (o trem do Harry Potter precisa desse ingresso).</li>
+        <li><b>Thunder Falls Terrace:</b> reserva no aplicativo Universal (Orlando Diferente recomenda — esgota).</li>
+        <li>Opcional: passe de fila rápida Universal. Hagrid’s <b>não</b> entra nesse passe — usar fila individual (só adulto) ou chegar cedo.</li>
+        <li>Roupa extra / secadora US$ 7 (River Adventure, Popeye, Dudley molham).</li>
+      </ul>
+    </div>
+    <p class="small">Garagem do lado Jurassic Park. Chegar cedo.</p>
+    <ol>
+      <li>VelociCoaster (130 cm — adultos; fila individual)</li>
+      <li>Hagrid’s Magical Creatures Motorbike Adventure (122 cm; fila individual)</li>
+      <li>Harry Potter and the Forbidden Journey (122 cm)</li>
+      <li>Jurassic Park River Adventure (107 cm; molha)</li>
+      <li><b>Almoço: Thunder Falls Terrace</b> (já reservado)</li>
+      <li>Skull Island: Reign of Kong (91 cm)</li>
+      <li>Popeye &amp; Bluto’s Bilge-Rat Barges (107 cm; molha muito)</li>
+      <li>Dudley Do-Right’s Ripsaw Falls (112 cm; não ir no 1º carrinho)</li>
+      <li>The Amazing Adventures of Spider-Man (102 cm)</li>
+      <li>Doctor Doom’s Fear Fall (se der tempo)</li>
+      <li>Incredible Hulk (137 cm — adultos; armário na frente)</li>
+    </ol>
+    <p class="small">Se a energia acabar: Cat in the Hat, Caro-Seuss-el, Camp Jurassic, Pteranodon Flyers (92–143 cm).</p>
+
+    <h3>22/11 · Busch Gardens Tampa</h3>
+    <div class="prep">
+      <b>Antes / no dia</b>
+      <ul>
+        <li>Sair da casa por volta das <b>7h30</b> (cerca de 1h15–1h30 de estrada + estacionamento).</li>
+        <li>App / ingresso do combo SeaWorld+Busch já baixados; All-Day Dining vale aqui se tiverem comprado.</li>
+        <li>Opcional: Serengeti Safari Tour (cerca de US$ 39,99) — reservar no site ou aplicativo (criança de 6 entra; menor de 5 não).</li>
+        <li>Fila rápida do parque se o domingo antes do Dia de Ação de Graças estiver cheio.</li>
+      </ul>
+    </div>
+    <ol>
+      <li>Cheetah Hunt (perto do Skyride)</li>
+      <li>Cobra’s Curse</li>
+      <li>Serengeti Plain / trenzinho</li>
+      <li>Sesame Street Safari of Fun (bloco da criança)</li>
+      <li><b>Almoço: Zambia Smokehouse</b> ou Crown Colony</li>
+      <li>Congo River Rapids (molha)</li>
+      <li>Iron Gwazi / SheiKra / Kumba / Montu / Tigris (122–137 cm — adultos)</li>
+      <li>Falcon’s Fury</li>
+      <li>Phoenix Rising (se estiver operando)</li>
+      <li>Stanley Falls Flume</li>
+    </ol>
+    <p class="small">Lory Landing cerca de US$ 5. Se o grupo não curtir montanha-russa: zoológico + Sesame.</p>
+
+    <h2>Hospedagem com cozinha</h2>
+    <p>Faixa de Airbnb/Vrbo em Kissimmee cerca de R$ 8–12 mil pelas 14 noites (10 a 24/11), 3 quartos, cozinha, para 5 pessoas. Totais abaixo em dólar (câmbio R$ 5,15). Dividido em 4 partes adultas. No orçamento está a opção do meio (cerca de R$ 10 mil).</p>
+    <p class="small">
+      Buscar (datas 10–24/11, 3+ quartos, 5 hóspedes):
+      <a href="https://www.airbnb.com/s/Kissimmee--FL--United-States/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=3" target="_blank" rel="noopener">Airbnb Kissimmee</a>
+      ·
+      <a href="https://www.vrbo.com/search?destination=Kissimmee%2C%20Florida%2C%20United%20States%20of%20America&amp;startDate=2026-11-10&amp;endDate=2026-11-24&amp;adults=4&amp;children=1&amp;minBedrooms=3" target="_blank" rel="noopener">Vrbo Kissimmee</a>
+      ·
+      <a href="https://www.google.com/travel/hotels/Kissimmee?q=Kissimmee%20vacation%20rental%203%20bedroom&amp;dates=2026-11-10_2026-11-24" target="_blank" rel="noopener">Google Hotels</a>
+    </p>
+    <div class="money-wrap">
+      <table class="money">
+        <thead>
+          <tr>
+            <th>Casa (faixa)</th>
+            <th class="num">1 adulto</th>
+            <th class="num">1 criança</th>
+            <th class="num">Família</th>
+            <th class="num">Casal</th>
+          </tr>
+        </thead>
+        <tbody id="housesBody"></tbody>
+      </table>
+    </div>
+    <p class="small">Conferir no anúncio o que entra (limpeza, imposto, taxa). Check-in costuma ser 16h; o voo chega 11h — pedir early check-in. Se achar a casa certa, manda o link que eu encaixo o valor exato no orçamento.</p>
+    <p>No sábado 14: dirigir até o hotel Art of Animation, pedir acesso ao saguão e caminhar o pátio dos Carros (Radiator Springs). Almoço no Landscape of Flavors se quiserem; depois cerca de 10 min até o <b>shopping de desconto Vineland</b> (marcas de luxo — ver seção de compras). Alternativa: ônibus gratuito do Disney Springs + teleférico Skyliner até o Art of Animation.</p>
+
+    <h2>Compras — shoppings de desconto, liquidação e Walmart</h2>
+    <p class="muted">Resumo do <a href="https://orlandodiferente.com.br/" target="_blank" rel="noopener">Orlando Diferente</a> (Fê Batista) nos dias livres: <b>14/11 Vineland</b>, <b>21/11 shopping da International Drive + lojas de liquidação ao lado</b>. Reserve meio dia para cada lugar; pegue cupons no aplicativo Simon+ ou no clube de descontos do shopping; de manhã em dia de semana costuma ser melhor.</p>
+
+    <h3>Qual shopping de desconto ir (e o que achar em cada um)</h3>
+    <div class="note">
+      <b>Regra prática:</b> Vineland = marcas caras e mais calmo · shopping Premium da International Drive = mais variedade · lojas de liquidação ao lado = preços mais baixos · Lake Buena Vista = pequeno e vazio (opcional, perto da Disney).
+    </div>
+    <ul>
+      <li><b>Vineland Premium Outlets</b> (8200 Vineland Ave) — cerca de 160 lojas, mais tranquilo. Melhor para <b>luxo com desconto</b>: Gucci, Prada, Burberry, Versace, Bottega, Carolina Herrera, Coach, Tory Burch, Ferragamo e outras. Também Nike, Adidas, Polo, Calvin Klein, Gap, North Face. Encaixa no <b>14/11</b> depois do Art of Animation.</li>
+      <li><b>International Premium Outlets</b> (4951 International Dr) — o maior (cerca de 180 lojas ou mais). Melhor para <b>variedade do dia a dia</b>: Nike, Adidas, Tommy Hilfiger, Calvin Klein, Gap, Victoria’s Secret, Bath &amp; Body Works, Le Creuset (panelas), Saks com desconto, loja de liquidação Disney. Encaixa no <b>21/11</b>.</li>
+      <li><b>Outlet Marketplace</b> (5269 International Dr; no navegador use 5295 International Dr) — bem menor, a <b>2 quarteirões</b> do shopping Premium da International Drive. Foco em <b>liquidação de estoque antigo</b> (preços mais baixos que o shopping Premium). Lojas típicas: Nike, Adidas, Puma, New Balance, Under Armour, Levi’s, Carter’s, American Eagle, Guess, Skechers. <b>Começar o dia 21 aqui</b>, depois ir ao shopping Premium.</li>
+      <li><b>Lake Buena Vista Factory Stores</b> (15657 S Apopka Vineland Rd) — cerca de 50 lojas, pouco movimento, perto da Disney e de um Walmart. Nike, Tommy Hilfiger, Gap, Calvin Klein, Carter’s, Under Armour. Só se sobrar tempo; cupons na recepção do shopping.</li>
+      <li><b>The Loop</b> (Kissimmee, Osceola Parkway / John Young) — não é o shopping Premium, mas tem a <b>maior loja Nike de liquidação</b> da região + Tommy Hilfiger de liquidação, Converse e Hurley. Vale se quiserem um 3º dia de compra ou combinar com o Walmart Osceola.</li>
+    </ul>
+
+    <div class="prep">
+      <b>Liquidação — o que é e onde ir</b>
+      <ul>
+        <li><b>Liquidação</b> = roupas e tênis de coleções antigas: produto original, preço bem menor, menos tamanhos e modelos. O Orlando Diferente recomenda <i>não pular</i> essas lojas.</li>
+        <li><b>Outlet Marketplace (International Drive):</b> Nike, Adidas, Puma, New Balance, Under Armour, Levi’s, Carter’s (ótimo para criança), American Eagle — todas em versão liquidação.</li>
+        <li><b>The Loop:</b> Nike de liquidação (maior estoque), Tommy Hilfiger de liquidação (a do Marketplace costuma ser só outlet normal, não liquidação de verdade), Converse, Hurley.</li>
+        <li>Ordem no 21/11: lojas de liquidação → shopping Premium da International Drive (o que faltou / marcas que só tem lá) → casa / piscina.</li>
+        <li>Aplicativo <b>Simon+</b> nos dois shoppings Premium + mapa e cupons no atendimento ao cliente. Conferir a lista de lojas no site — muda com o tempo.</li>
+      </ul>
+    </div>
+
+    <h3>Walmart — melhores lojas e o que comprar</h3>
+    <p>Top 5 do Orlando Diferente (para lembrancinhas e estoque completo). Horário típico até por volta das 23h; confirmar no aplicativo. Em Kissimmee o imposto é um pouco maior (cerca de 7,5%) que em Orlando (cerca de 6,5%).</p>
+    <ol>
+      <li><b>1º — Walmart grande da Turkey Lake</b> (8990 Turkey Lake Rd) — o “campeão”: enorme, seção forte de lembrancinhas Disney. Bom para mercado + lembrancinhas no mesmo lugar (região da International Drive / perto dos resorts).</li>
+      <li><b>2º — John Young</b> (8101 S John Young Pkwy) — cerca de 10 min da International Drive; variedade enorme de pelúcias Mickey e Minnie (inclusive de época).</li>
+      <li><b>3º — Kirkman</b> (2500 S Kirkman Rd) — perto da Universal; lembrancinhas bem completas; útil depois de um dia Universal.</li>
+      <li><b>4º — Orange Blossom</b> (5734 S Orange Blossom Trail) — mais frequentado por moradores, costuma estar mais vazio e calmo.</li>
+      <li><b>5º — Osceola</b> (1471 / 1417 E Osceola Pkwy, Kissimmee) — enorme; combinar com <b>The Loop</b> (Nike e Tommy de liquidação) no mesmo deslocamento.</li>
+    </ol>
+    <p class="small">Dia 10 (chegada): priorizar o Walmart grande <b>mais perto da casa</b> em Kissimmee para mercado. Se quiserem a melhor seção Disney, deixar Turkey Lake ou John Young para um dia livre ou fim de tarde.</p>
+
+    <div class="prep">
+      <b>O que vale a pena no Walmart</b> (lista Orlando Diferente)
+      <ul>
+        <li><b>Mercado / lanches de parque:</b> salgadinhos, barrinhas, frutas, sucos, congelados, café da manhã da casa. Destaque: M&amp;M’s de brownie (pacote de cerca de 1 kg por cerca de US$ 10).</li>
+        <li><b>Lembrancinhas Disney:</b> camisetas, pelúcias, chaveiros, orelhinhas — bem mais barato que no parque (às vezes pelúcia por cerca de US$ 5).</li>
+        <li><b>Vitaminas / farmácia:</b> vitaminas D e C, complexo B, colágeno, melatonina, probióticos; Band-Aid (inclusive em spray); creme Bengay para dor muscular depois do parque.</li>
+        <li><b>Cosméticos:</b> Neutrogena, L’Oréal, Maybelline, Revlon, hidratantes Eucerin (a partir de cerca de US$ 6), protetor térmico de cabelo L’Oréal Sleek It (menos de US$ 8); batom MAC às vezes em promoção.</li>
+        <li><b>Limpeza / casa:</b> amaciante Downy em bolinhas (muito mais barato que no Brasil), spray que desamassa roupa, utensílios pequenos.</li>
+        <li><b>Criança:</b> brinquedos (Hot Wheels, Play-Doh, Lego), material escolar barato, roupinhas Carter’s e bodies de bebê (roupa de uma peça); carrinho de guarda-chuva se precisarem nos parques.</li>
+        <li><b>Eletrônicos:</b> fones, tablets — comparar preço; preferir <b>celular liberado para qualquer operadora</b> (muitos do Walmart vêm bloqueados e não funcionam no Brasil).</li>
+        <li><b>Roupa básica:</b> blusas por cerca de US$ 5, meias, pijama — marca e tênis deixem para as lojas de liquidação e shoppings de desconto.</li>
+        <li>Olhar a área de <b>liquidação</b> da própria loja (nem sempre vale, mas 2 minutos resolvem).</li>
+      </ul>
+    </div>
+    <p class="small">Fontes do Orlando Diferente:
+      <a href="https://orlandodiferente.com.br/outlets-e-shoppings-em-orlando/" target="_blank" rel="noopener">Outlets e shoppings</a> ·
+      <a href="https://orlandodiferente.com.br/12-erros-que-voce-nao-pode-cometer-nas-compras-em-orlando/" target="_blank" rel="noopener">Liquidação / erros de compra</a> ·
+      <a href="https://orlandodiferente.com.br/lake-buena-vista-factory-stores/" target="_blank" rel="noopener">Lake Buena Vista</a> ·
+      <a href="https://orlandodiferente.com.br/qual-o-melhor-walmart-de-orlando/" target="_blank" rel="noopener">Melhores Walmart</a> ·
+      <a href="https://orlandodiferente.com.br/o-que-comprar-no-walmart/" target="_blank" rel="noopener">O que comprar no Walmart</a>.
+    </p>
+
+    <h2>Carro — 5 pessoas + 4 malas de 24 kg + de mão</h2>
+    <p>Retirada e devolução no aeroporto de Sanford, 14 dias. Totais já com taxas de aeroporto da Flórida, sem o seguro extra da locadora. Dividido em 4 partes adultas. No orçamento está a minivan. SUV compacto (RAV4, CR-V, Tucson) não cabe.</p>
+    <p class="small">
+      Comparar / reservar:
+      <a href="https://www.kayak.com/cars/SFB-a1200/2026-11-10/SFB-a1200/2026-11-24?sort=rank_a" target="_blank" rel="noopener">Kayak Sanford</a>
+      ·
+      <a href="https://www.alamo.com/en/book/reservation.html?location=SFBT71" target="_blank" rel="noopener">Alamo Sanford</a>
+      ·
+      <a href="https://www.enterprise.com/en/reserve.html" target="_blank" rel="noopener">Enterprise</a>
+      ·
+      <a href="https://www.nationalcar.com/" target="_blank" rel="noopener">National</a>
+      ·
+      <a href="https://turo.com/us/en/car-rental/united-states/sfb?endDate=11%2F24%2F2026&amp;endTime=10%3A00&amp;startDate=11%2F10%2F2026&amp;startTime=12%3A00" target="_blank" rel="noopener">Turo Sanford</a>
+    </p>
+    <div class="money-wrap">
+      <table class="money">
+        <thead>
+          <tr>
+            <th>Veículo</th>
+            <th class="num">1 adulto</th>
+            <th class="num">1 criança</th>
+            <th class="num">Família</th>
+            <th class="num">Casal</th>
+          </tr>
+        </thead>
+        <tbody id="carsBody"></tbody>
+      </table>
+    </div>
+    <div class="prep">
+      <b>Dá para pegar sem falar com atendente?</b>
+      <ul>
+        <li><b>Turo (melhor opção sem balcão):</b> no aplicativo, o carro fica no estacionamento por hora do aeroporto de Sanford e destrava pelo celular. Muitos anúncios são 100% sem falar com ninguém. Conferir no anúncio se é “sem contato” e se é minivan ou SUV de 7 lugares com espaço para 4 malas de 24 kg. Seguro: preferir a proteção do Turo, não só a do cartão brasileiro.</li>
+        <li><b>Alamo “pular o balcão”:</b> fazer o check-in online pelo menos 24 horas antes + cartão de crédito no nome de quem dirige → vai direto ao carro. Na saída do pátio ainda mostram CNH e cartão para o agente do portão (não é conversa de balcão, mas ainda tem uma pessoa).</li>
+        <li><b>National Emerald Club:</b> cadastro grátis → pegar o carro na fileira. No aeroporto de Sanford às vezes pedem confirmação rápida no balcão na primeira vez. Minivan específica pode exigir reserva especial, não só carro médio da fileira.</li>
+        <li>Enterprise / Hertz clássicos: quase sempre passam pelo balcão no aeroporto de Sanford.</li>
+      </ul>
+    </div>
+    <p class="small">Reservar a <b>categoria</b> (minivan / SUV 7 lugares / SUV grande), não o modelo exato. CNH brasileira vale; cartão de crédito internacional no nome de quem dirige. Seguro contra danos do carro: se for Alamo/Enterprise, incluir no orçamento (cerca de US$ 25 por dia) ou confirmar cobertura do cartão — a maioria dos cartões brasileiros <i>não</i> cobre aluguel nos EUA.</p>
+
+    <h2>O que reservar, nesta ordem</h2>
+    <ol>
+      <li>Casa 3 quartos em Kissimmee (Airbnb/Vrbo cerca de R$ 10 mil).</li>
+      <li>Minivan no aeroporto de Sanford + seguro do carro travados.</li>
+      <li>Seguro de viagem (5 pessoas, datas 10–24/11).</li>
+      <li>Chip virtual de internet nos 4 celulares dos adultos (ativar no aeroporto).</li>
+      <li>Disney 4 dias (Latam), <b>início 13/11</b> — janela até 19/11.</li>
+      <li>Universal Tres Park Adventure 14 dias (Latam), <b>início 12/11</b>.</li>
+      <li>SeaWorld + Busch + refeições o dia todo (Latam) — uso 11 e 22/11.</li>
+      <li>Fila rápida Disney só de Hollywood Studios, Magic Kingdom e Epic, mais perto da viagem.</li>
+    </ol>
+    <p class="small">Fontes: Disney Tourist Blog (nov/2026), TouringPlans / Undercover Tourist, Universal Orlando 2026, SeaWorld/Busch Gardens, Orlando Diferente (compras e Walmart), Kayak Sanford. Plano atualizado 27/08/2026.</p>
+  </div>
+  <script>
+    const FX = 5.15;
+    // Cotação Latam Travel — totais família (2 ad + 1 criança) em R$
+    const Q = {
+      disneyFam: 11575.09,
+      uniFam: 7721.84,
+      swFam: 2312.52
+    };
+    // Cotação não separou adulto/criança → cota igual por pessoa
+    const disneyPp = Q.disneyFam / 3 / FX;
+    const uniPp = Q.uniFam / 3 / FX;
+    const swPp = Q.swFam / 3 / FX;
+    // Casa no orçamento: ~R$ 10.000 ÷ 5,15
+    const HOUSE_USD = Math.round(10000 / FX);
+    const CAR_INS = 350; // LDW/CDW ~US$ 25/dia × 14
+    const A = {
+      disney: disneyPp,
+      uni: uniPp,
+      sw: swPp,
+      food: 320, // Disney+Universal (~7 dias); SW/Busch já têm All Day Dine na cotação
+      house: HOUSE_USD / 4,
+      car: 1550 / 4,
+      carIns: CAR_INS / 4,
+      parking: 290 / 4,
+      gas: 220 / 4,
+      groceries: 1200 / 4,
+      esim: 34,
+      travelIns: 80,
+      ll: 100
+    };
+    const C = {
+      disney: disneyPp,
+      uni: uniPp,
+      sw: swPp,
+      food: 320,
+      house: 0,
+      car: 0,
+      carIns: 0,
+      parking: 0,
+      gas: 0,
+      groceries: 0,
+      esim: 0,
+      travelIns: 65,
+      ll: 100
+    };
+    const HOUSES = [
+      ["1. Airbnb/Vrbo básico — casa ou apartamento 3 quartos (cerca de R$ 8 mil)", Math.round(8000 / FX)],
+      ["2. Airbnb/Vrbo médio — 3 quartos + boa piscina do condomínio (cerca de R$ 10 mil — no orçamento)", HOUSE_USD],
+      ["3. Airbnb/Vrbo mais completo — 3 quartos + rio da piscina ou piscina privativa (cerca de R$ 12 mil)", Math.round(12000 / FX)]
+    ];
+    const CARS = [
+      ["1. Kia Telluride / Hyundai Palisade / Chevy Traverse (SUV 7 lugares, 3ª fileira dobrada)", 1350],
+      ["2. Chrysler Pacifica / Honda Odyssey / Toyota Sienna (minivan — no orçamento)", 1550],
+      ["3. Chevrolet Tahoe / Ford Expedition (SUV grande, sobra espaço)", 1950]
+    ];
+    let cur = "USD";
+
+    function fmt(n) {
+      if (n === 0) return "—";
+      return cur === "BRL"
+        ? "R$ " + Math.round(n * FX).toLocaleString("pt-BR")
+        : "US$ " + Math.round(n).toLocaleString("pt-BR");
+    }
+    function fam(a, c) { return 2 * a + c; }
+    function cas(a) { return 2 * a; }
+    function row(label, a, c, extraClass) {
+      return "<tr class='" + (extraClass || "") + "'>" +
+        "<td>" + label + "</td>" +
+        "<td class='num' data-l='1 adulto'>" + fmt(a) + "</td>" +
+        "<td class='num' data-l='1 criança'>" + fmt(c) + "</td>" +
+        "<td class='num em' data-l='Família'>" + fmt(fam(a, c)) + "</td>" +
+        "<td class='num em' data-l='Casal'>" + fmt(cas(a)) + "</td>" +
+        "</tr>";
+    }
+    function shareRow(label, total) {
+      var perAdult = total / 4;
+      return "<tr>" +
+        "<td>" + label + "</td>" +
+        "<td class='num' data-l='1 adulto'>" + fmt(perAdult) + "</td>" +
+        "<td class='num' data-l='1 criança'>—</td>" +
+        "<td class='num em' data-l='Família'>" + fmt(2 * perAdult) + "</td>" +
+        "<td class='num em' data-l='Casal'>" + fmt(2 * perAdult) + "</td>" +
+        "</tr>";
+    }
+
+    function render() {
+      document.getElementById("btnUsd").classList.toggle("active", cur === "USD");
+      document.getElementById("btnBrl").classList.toggle("active", cur === "BRL");
+
+      const totA = A.disney + A.uni + A.sw + A.food + A.house + A.car + A.carIns + A.parking + A.gas + A.groceries + A.esim + A.travelIns;
+      const totC = C.disney + C.uni + C.sw + C.food + C.esim + C.travelIns;
+      document.getElementById("sFam").textContent = fmt(fam(totA, totC));
+      document.getElementById("sCasal").textContent = fmt(cas(totA));
+
+      document.getElementById("budgetBody").innerHTML =
+        row("Disney 4 dias (Latam · começa 13/11)", A.disney, C.disney) +
+        row("Universal 3 parques / 14 dias (Latam · começa 12/11)", A.uni, C.uni) +
+        row("SeaWorld + Busch + refeições o dia todo (Latam)", A.sw, C.sw) +
+        row("Comida nos parques Disney e Universal (cerca de 7 dias)", A.food, C.food) +
+        row("Casa 14 noites (dividido por 4 adultos)", A.house, C.house) +
+        row("Minivan 14 dias no aeroporto de Sanford (dividido por 4 adultos)", A.car, C.car) +
+        row("Seguro do carro contra danos (dividido por 4 adultos)", A.carIns, C.carIns) +
+        row("Estacionamento dos parques (dividido por 4 adultos)", A.parking, C.parking) +
+        row("Gasolina + pedágio (dividido por 4 adultos)", A.gas, C.gas) +
+        row("Supermercado da casa (dividido por 4 adultos)", A.groceries, C.groceries) +
+        row("Internet no celular cerca de 20 GB (Nomad/Airalo)", A.esim, C.esim) +
+        row("Seguro de viagem (cerca de 15 dias)", A.travelIns, C.travelIns) +
+        row("Total", totA, totC, "total") +
+        row("Fila rápida Hollywood Studios + Magic Kingdom + Epic (opcional)", A.ll, C.ll, "opt");
+
+      document.getElementById("housesBody").innerHTML = HOUSES.map(function (h) { return shareRow(h[0], h[1]); }).join("");
+      document.getElementById("carsBody").innerHTML = CARS.map(function (h) { return shareRow(h[0], h[1]); }).join("");
+    }
+    function setCur(v) { cur = v; render(); }
+    render();
+  </script>
+</body>
+</html>
