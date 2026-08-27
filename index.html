@@ -17,8 +17,10 @@
     .muted { color:var(--muted); }
     .small { font-size:.85rem; color:var(--muted); }
     .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:14px 0 20px; }
-    button { border:1px solid var(--line); background:var(--card); padding:6px 12px; border-radius:999px; cursor:pointer; font:inherit; }
+    button, a.btn { border:1px solid var(--line); background:var(--card); padding:6px 12px; border-radius:999px; cursor:pointer; font:inherit; color:inherit; text-decoration:none; display:inline-block; }
     button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+    a.btn.accent { background:var(--accent); color:#fff; border-color:var(--accent); }
+    a.btn.disabled { opacity:.45; pointer-events:none; }
     .stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
     .stat { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
     .stat b { display:block; font-size:1.15rem; }
@@ -223,6 +225,7 @@
     <div class="toolbar noprint">
       <button id="btnUsd" class="active" type="button" onclick="setCur('USD')">Dólar</button>
       <button id="btnBrl" type="button" onclick="setCur('BRL')">Real</button>
+      <a id="btnPlanilha" class="btn accent disabled" href="#" target="_blank" rel="noopener">Gastos da viagem</a>
       <button type="button" onclick="window.print()">Salvar PDF</button>
     </div>
 
@@ -247,6 +250,15 @@
     </div>
     <p class="small">Câmbio R$ 5,15. Ingressos Disney / Universal / SeaWorld+Busch: cotação <b>Latam Travel</b> para família (2 adultos + 1 criança) = R$ 21.609,45 no total dos três. Como a cotação não separa adulto e criança, o valor é <b>dividido igualmente por pessoa</b> (total dividido por 3). Casal = 2 vezes essa parte. Itens comuns: divididos por 4 adultos. <b>Disney:</b> 4 dias, começando em 13/11. <b>Universal:</b> ingresso de 3 parques por 14 dias, começando em 12/11. <b>SeaWorld + Busch:</b> 2 parques + refeições o dia todo (dias 11 e 22/11). O câmbio da Latam na hora do pagamento pode mudar o total em reais.</p>
     <div class="note">Uma família reserva a casa e o carro no cartão; a outra transfere as 2 partes dos adultos (Pix ou Zelle). Ingressos, chip de internet e seguro de viagem: cada um compra só das próprias pessoas. Seguro do carro vai junto com a minivan (dividido por 4 adultos).</div>
+    <div class="prep noprint">
+      <b>Gastos (compartilhados + pessoais)</b>
+      <ul>
+        <li>Membros: <b>Eduardo</b>, <b>Karina</b>, <b>Bruno</b>, <b>Gabriele</b>.</li>
+        <li>Lance <b>tudo</b> na planilha: o que é do grupo (Tipo = Compartilhado) e o que é só seu (Tipo = Pessoal).</li>
+        <li>O <b>Resumo</b> mostra o saldo entre vocês e o <b>custo da viagem</b> de cada um (parte comum + pessoais).</li>
+        <li>Arquivo: <code>gastos-compartilhados.xlsx</code> — subir no Google Drive e colar o link em <code>PLANILHA_GASTOS</code> (ou me enviar).</li>
+      </ul>
+    </div>
     <p class="small"><b>Internet no celular:</b> chip virtual Nomad ou Airalo nos EUA, cerca de 20 GB por 30 dias (cerca de US$ 34) — mapa, aplicativo dos parques, WhatsApp. A criança usa a internet do celular do adulto. <b>Seguro de viagem:</b> cobertura médica nos EUA por cerca de 15 dias (faixa típica Allianz/Porto). <b>Seguro do carro:</b> proteção contra danos no balcão da locadora ou em empresa à parte (cerca de US$ 25 por dia × 14 dias); cartão brasileiro muitas vezes <i>não</i> cobre aluguel nos EUA — confirmar antes de abrir mão.</p>
 
     <h2>Cronograma conjunto</h2>
@@ -745,6 +757,28 @@
     <p class="small">Fontes: Disney Tourist Blog (nov/2026), TouringPlans / Undercover Tourist, Universal Orlando 2026, SeaWorld/Busch Gardens, Orlando Diferente (compras e Walmart), Kayak Sanford. Plano atualizado 27/08/2026.</p>
   </div>
   <script>
+    // Cole aqui o link da Google Planilha (Compartilhar → Copiar link), ex:
+    // const PLANILHA_GASTOS = "https://docs.google.com/spreadsheets/d/XXXX/edit?usp=sharing";
+    const PLANILHA_GASTOS = "";
+
+    (function initPlanilhaLink() {
+      var a = document.getElementById("btnPlanilha");
+      if (!a) return;
+      if (PLANILHA_GASTOS && PLANILHA_GASTOS.indexOf("http") === 0) {
+        a.href = PLANILHA_GASTOS;
+        a.classList.remove("disabled");
+        a.title = "Abrir planilha de gastos";
+      } else {
+        a.removeAttribute("href");
+        a.classList.add("disabled");
+        a.title = "Configure PLANILHA_GASTOS no index.html com o link do Google Sheets";
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          alert("Ainda falta o link da planilha.\n\n1) Envie gastos-compartilhados.xlsx ao Google Drive\n2) Abra com Planilhas Google e compartilhe\n3) Cole o link em PLANILHA_GASTOS no index.html (ou me envie o link)");
+        });
+      }
+    })();
+
     const FX = 5.15;
     // Cotação Latam Travel — totais família (2 ad + 1 criança) em R$
     const Q = {
