@@ -258,6 +258,7 @@
       <button type="button" data-tab="hospedagem">Hospedagem</button>
       <button type="button" data-tab="compras">Compras</button>
       <button type="button" data-tab="carro">Carro</button>
+      <button type="button" data-tab="voos">Voos volta</button>
       <button type="button" data-tab="reservas">Reservas</button>
     </nav>
 
@@ -811,6 +812,40 @@
     <p class="small">Reservar a <b>categoria</b> (minivan / SUV 7 lugares / SUV grande), não o modelo exato. CNH brasileira vale; cartão de crédito internacional no nome de quem dirige. Seguro contra danos do carro: Florida Rental Car e MOVE já incluem na reserva; se for Alamo/Enterprise, incluir no orçamento (cerca de US$ 25 por dia) ou confirmar cobertura do cartão — a maioria dos cartões brasileiros <i>não</i> cobre aluguel nos EUA.</p>
     </section>
 
+    <section class="tab-panel" id="tab-voos">
+    <h2>Passagens de volta · 24/11/2026 → Guarulhos (GRU)</h2>
+    <p class="muted">One-way para São Paulo. Origens: <b>MCO</b> (Orlando Intl — devolução do carro), <b>SFB</b> (Sanford) ou <b>TPA</b> (Tampa, ~1h15 de Kissimmee). Filtro Kayak: <b>máx. 1 parada</b> + <b>bagagem despachada</b>. Criança de 6 anos paga tarifa infantil na maioria das companhias.</p>
+    <p class="small">
+      Buscar ao vivo:
+      <a href="https://www.kayak.com/flights/MCO-GRU/2026-11-24?fs=stops=1;bag=1&amp;sort=price_a" target="_blank" rel="noopener">Kayak MCO→GRU</a>
+      ·
+      <a href="https://www.kayak.com/flights/SFB-GRU/2026-11-24?fs=stops=1;bag=1&amp;sort=price_a" target="_blank" rel="noopener">Kayak SFB→GRU</a>
+      ·
+      <a href="https://www.kayak.com/flights/TPA-GRU/2026-11-24?fs=stops=1;bag=1&amp;sort=price_a" target="_blank" rel="noopener">Kayak TPA→GRU</a>
+      ·
+      <a href="https://www.google.com/travel/flights?q=flights%20from%20MCO%20to%20GRU%20on%202026-11-24%20one%20way" target="_blank" rel="noopener">Google Flights MCO</a>
+    </p>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Origem</th>
+            <th>Companhia</th>
+            <th>Partida → Chegada</th>
+            <th>Duração</th>
+            <th>Parada</th>
+            <th>Tarifa</th>
+            <th class="num">Preço</th>
+          </tr>
+        </thead>
+        <tbody id="flightsBody"></tbody>
+      </table>
+    </div>
+    <p class="small">Cotação Kayak em 28/08/2026 (ter 24/11/2026). Preços por adulto, one-way, com filtro de bagagem despachada — <b>confirmar na reserva</b> (tarifas Light/Basic Economy podem mudar). SFB tem poucas opções com esse filtro; a mais barata é Arajet via Punta Cana. Para MCO, há dezenas de opções; a tabela mostra as 8 mais baratas encontradas. Chegada em GRU costuma ser no dia seguinte (+1). Horários no fuso local.</p>
+    <div class="note"><b>Logística 24/11:</b> o plano é devolver o carro no <b>MCO</b> por volta das 10h — priorize voos que saem do MCO depois do check-in do carro (ou reserve tempo de sobra). SFB exige voltar a Sanford (~1h de Kissimmee). TPA exige ir a Tampa (~1h15).</div>
+    </section>
+
     <section class="tab-panel" id="tab-reservas">
     <h2>O que reservar, nesta ordem</h2>
     <ol>
@@ -823,7 +858,7 @@
       <li>SeaWorld + Busch + refeições o dia todo (Latam) — uso 11 e 22/11.</li>
       <li>Fila rápida Disney só de Hollywood Studios, Magic Kingdom e Epic, mais perto da viagem.</li>
     </ol>
-    <p class="small">Fontes: Disney Tourist Blog (nov/2026), TouringPlans / Undercover Tourist, Universal Orlando 2026, SeaWorld/Busch Gardens, Orlando Diferente (compras e Walmart), Kayak / locadoras SFB→MCO. Plano atualizado 28/08/2026.</p>
+    <p class="small">Fontes: Disney Tourist Blog (nov/2026), TouringPlans / Undercover Tourist, Universal Orlando 2026, SeaWorld/Busch Gardens, Orlando Diferente (compras e Walmart), Kayak / locadoras SFB→MCO, Kayak voos MCO/SFB/TPA→GRU 24/11. Plano atualizado 28/08/2026.</p>
     </section>
   </div>
   <script>
@@ -833,7 +868,7 @@
     (function initTabs() {
       var nav = document.getElementById("mainNav");
       if (!nav) return;
-      var tabs = ["orcamento", "cronograma", "roteiros", "hospedagem", "compras", "carro", "reservas"];
+      var tabs = ["orcamento", "cronograma", "roteiros", "hospedagem", "compras", "carro", "voos", "reservas"];
       function showTab(id, updateHash) {
         if (tabs.indexOf(id) < 0) id = "orcamento";
         tabs.forEach(function (t) {
@@ -928,6 +963,17 @@
       ["1. Kia Telluride / Hyundai Palisade / Chevy Traverse (SUV 7 lugares, 3ª fileira dobrada — SFB↔SFB)", 1350],
       ["2. Chrysler Pacifica / Honda Odyssey / Toyota Sienna (minivan one-way SFB→MCO — no orçamento)", 1650],
       ["3. Chevrolet Tahoe / Ford Expedition (SUV grande, sobra espaço — SFB↔SFB)", 1950]
+    ];
+  // Kayak 24/11/2026, fs=stops=1;bag=1, sort=price_a — 28/08/2026
+    const FLIGHTS = [
+      { origin: "SFB", airline: "Arajet", dep: "12:55", arr: "02:50 (+1)", dur: "11h55", stop: "PUJ (Punta Cana)", fare: "Economy", bag: "1 despachada", usd: 214 },
+      { origin: "MCO", airline: "Avianca", dep: "22:10", arr: "16:15 (+1)", dur: "16h05", stop: "BOG (Bogotá)", fare: "Light", bag: "1 despachada", usd: 274 },
+      { origin: "MCO", airline: "GOL", dep: "21:10", arr: "13:30 (+1)", dur: "14h20", stop: "BSB (Brasília)", fare: "Basic", bag: "1 despachada", usd: 277 },
+      { origin: "MCO", airline: "Avianca", dep: "16:00", arr: "06:05 (+1)", dur: "12h05", stop: "BOG (Bogotá)", fare: "Light", bag: "1 despachada", usd: 311 },
+      { origin: "MCO", airline: "GOL", dep: "16:00", arr: "06:05 (+1)", dur: "12h05", stop: "BOG (Bogotá)", fare: "Basic", bag: "1 despachada", usd: 312 },
+      { origin: "MCO", airline: "Copa Airlines", dep: "14:25", arr: "03:55 (+1)", dur: "11h30", stop: "PTY (Panamá)", fare: "Economy Basic", bag: "1 despachada", usd: 314 },
+      { origin: "MCO", airline: "Copa Airlines", dep: "10:53", arr: "00:10 (+1)", dur: "11h17", stop: "PTY (Panamá)", fare: "Economy Basic", bag: "1 despachada", usd: 344 },
+      { origin: "MCO", airline: "GOL", dep: "12:01", arr: "06:20 (+1)", dur: "16h19", stop: "MIA (Miami)", fare: "Basic", bag: "1 despachada", usd: 357 }
     ];
     const RENTERS = [
       {
@@ -1090,6 +1136,21 @@
 
       document.getElementById("housesBody").innerHTML = HOUSES.map(function (h) { return shareRow(h[0], h[1]); }).join("");
       document.getElementById("carsBody").innerHTML = CARS.map(function (h) { return shareRow(h[0], h[1]); }).join("");
+      var flightsEl = document.getElementById("flightsBody");
+      if (flightsEl) {
+        flightsEl.innerHTML = FLIGHTS.map(function (f, i) {
+          return "<tr>" +
+            "<td>" + (i + 1) + "</td>" +
+            "<td><b>" + f.origin + "</b></td>" +
+            "<td>" + f.airline + "</td>" +
+            "<td>" + f.dep + " → " + f.arr + "</td>" +
+            "<td>" + f.dur + "</td>" +
+            "<td>" + f.stop + "</td>" +
+            "<td>" + f.fare + " <span class=\"muted\">(" + f.bag + ")</span></td>" +
+            "<td class=\"num\">" + fmt(f.usd) + "</td>" +
+            "</tr>";
+        }).join("");
+      }
       var rentersEl = document.getElementById("rentersBody");
       if (rentersEl) {
         rentersEl.innerHTML = RENTERS.map(function (r) {
