@@ -49,6 +49,18 @@
     td.num, th.num { text-align:right; white-space:nowrap; }
     tr.total td { font-weight:700; border-top:2px solid var(--text); }
     tr.opt td { color:var(--muted); }
+    .day-log {
+      border:1px solid var(--line); background:#f3f7fb;
+      padding:12px 14px; border-radius:8px; margin:0 0 14px; font-size:.9rem;
+    }
+    .day-log b { color:var(--accent); }
+    .day-log .warn { color:#7a5b00; font-weight:600; }
+    .day-log table { width:100%; font-size:.85rem; margin:8px 0; background:transparent; border:none; }
+    .day-log td { border:none; padding:3px 8px 3px 0; vertical-align:top; }
+    .day-log td:first-child { white-space:nowrap; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums; min-width:52px; }
+    ol.timed { padding-left:0; list-style:none; }
+    ol.timed > li { padding-left:0; margin-bottom:6px; }
+    .time { display:inline-block; min-width:52px; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums; }
     table.money,
     table.schedule { border-radius:10px; overflow:hidden; border:1px solid var(--line); }
     table.money th, table.money td,
@@ -297,7 +309,7 @@
 
     <section class="tab-panel" id="tab-cronograma">
     <h2>Cronograma conjunto</h2>
-    <p class="muted">Disney: 4 dias entre <b>13 e 19/11</b> (começando no dia 13). Universal: ingresso que permite trocar de parque, válido por <b>14 dias</b> a partir de <b>12/11</b>. Magic Kingdom no dia <b>18</b> (sem festa de Natal → dá para ver os fogos do parque). Folga no dia 17 depois do Epic. Lotações baseadas em sites de previsão (projeções de 2026 — mudam perto da viagem).</p>
+    <p class="muted">Disney: 4 dias entre <b>13 e 19/11</b>. Magic Kingdom no <b>18</b> (sem festa de Natal → fogos regulares; festa Very Merry é 17/11). Universal válido 14 dias desde <b>12/11</b>. Festas Disney nov/2026: Very Merry (MK) e Jollywood (Studios) em noites selecionadas — nossos dias de parque evitam fechamento às 18h, exceto conferir app. Horários detalhados na aba <b>Roteiros</b>.</p>
     <div class="schedule-wrap">
       <table class="schedule">
         <thead><tr><th>Data</th><th>Plano</th><th>Lotação</th><th>Energia</th><th>Por quê</th></tr></thead>
@@ -414,13 +426,22 @@
 
     <section class="tab-panel" id="tab-roteiros">
     <h2>Roteiro dentro de cada parque</h2>
-    <p class="muted">Ordem, almoço e dicas dos “Roteiros Perfeitos” do <a href="https://orlandodiferente.com.br/">Orlando Diferente</a> (Fê Batista). Seguir nessa sequência. Caixas amarelas = o que fazer <b>antes</b> (aplicativo, fila virtual, fila rápida paga e reservas).</p>
+    <p class="muted">Ordem, almoço e dicas dos “Roteiros Perfeitos” do <a href="https://orlandodiferente.com.br/">Orlando Diferente</a> (Fê Batista). Horários de parque e shows são <b>projeções para nov/2026</b> (TouringPlans, AllEars, calendários oficiais) — Disney/Universal/SeaWorld publicam o definitivo ~60 dias antes e no app no dia. Caixas azuis = logística do dia; amarelas = preparar antes.</p>
     <p class="small">Criança com cerca de 110–122 cm: onde a altura impedir, um adulto fica com ela e o resto segue até a próxima atração sem limite (ou o almoço). Estacionamento do parque: cerca de US$ 30.</p>
+
+    <div class="note">
+      <b>Alertas importantes (manutenção nov/2026)</b>
+      <ul>
+        <li><b>SeaWorld 11/11:</b> Infinity Falls fechada · Journey to Atlantis fechada — roteiro ajustado.</li>
+        <li><b>Animal Kingdom 15/11:</b> DINOSAUR e DinoLand fechados (obras Tropical Americas).</li>
+        <li><b>Magic Kingdom:</b> Carousel of Progress fechada · Railroad só shuttle.</li>
+        <li><b>Festas Disney:</b> Very Merry (MK) e Jollywood (Studios) em noites select — vocês não têm ingresso de festa; MK dia 18/11 está livre da Very Merry.</li>
+      </ul>
+    </div>
 
     <div class="prep">
       <b>Antes da viagem — preparar tudo</b>
       <ul>
-        <li>Baixar e entrar nas contas: <b>My Disney Experience</b>, <b>Universal Orlando</b>, <b>SeaWorld</b> (e Busch, se for o mesmo aplicativo).</li>
         <li>Vincular ingressos Disney e Universal nas contas; foto de cada pessoa no perfil Disney.</li>
         <li>Cartão dos EUA (por exemplo Nomad) na conta Disney — necessário para <b>pedir comida pelo celular</b> e para a fila rápida paga.</li>
         <li>Reservas de mesa Disney: abrem cerca de 60 dias antes no aplicativo (Hollywood &amp; Vine, Via Napoli; Thunder Falls é da Universal).</li>
@@ -430,6 +451,23 @@
     </div>
 
     <h3>11/11 · SeaWorld</h3>
+    <div class="day-log">
+      <p><b>Parque (qua 11/11):</b> abertura estimada <b>9h00</b> · fechamento <b>20h00–21h00</b> (Christmas Celebration já ativa desde 6/11 — noites mais longas). Confirmar em <a href="https://seaworld.com/orlando/park-info/theme-park-hours/" target="_blank" rel="noopener">seaworld.com</a> ou app SeaWorld.</p>
+      <p><b>Chegar:</b> sair Kissimmee ~<b>8h00</b> · estacionamento + portões ~<b>8h45</b>.</p>
+      <p class="warn">⚠ Manutenção programada (SeaWorld 2026): <b>Infinity Falls</b> fechada 2/11–6/12 · <b>Journey to Atlantis</b> fechada 8/9–31/12. Ajustar roteiro abaixo.</p>
+      <p class="small"><b>Shows (horários só no app no dia):</b> Orca Encounter costuma ser ~12h00 e ~15h30; Dolphin Adventures no fim da tarde. Conferir ao entrar — encaixar filas nos intervalos entre shows.</p>
+      <table>
+        <tr><td>8h45</td><td>Entrada · abrir app · anotar horários reais de Orca e Dolphin</td></tr>
+        <tr><td>9h15</td><td>Pipeline / Ice Breaker (adultos)</td></tr>
+        <tr><td>10h00</td><td>Wild Arctic · Sesame Street Land (criança)</td></tr>
+        <tr><td>~12h00</td><td><b>Orca Encounter</b> (ajustar ao horário do app)</td></tr>
+        <tr><td>12h30</td><td><b>Almoço:</b> Waterway Grill ou Altitude Burger (All-Day Dining)</td></tr>
+        <tr><td>14h00</td><td>Antarctica · Penguin Trek · Mako (adultos)</td></tr>
+        <tr><td>16h00</td><td>Shark Encounter · filas restantes</td></tr>
+        <tr><td>~17h30</td><td><b>Dolphin Adventures</b> (último show — ver app)</td></tr>
+        <tr><td>18h30</td><td>Manta (adultos) · luzes de Natal se ficarem</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia</b>
       <ul>
@@ -439,22 +477,35 @@
         <li>Só cartão — parque não aceita dinheiro. Levar roupa extra (Sesame / Infinity Falls molham).</li>
       </ul>
     </div>
-    <ol>
-      <li>Pipeline (138 cm — adultos)</li>
-      <li>Ice Breaker (121 cm — medir)</li>
-      <li>Wild Arctic (belugas)</li>
-      <li>Orca Encounter (por volta do meio-dia; conferir no aplicativo)</li>
-      <li>Sesame Street Land (bloco da criança; algumas molham)</li>
-      <li><b>Almoço: Waterway Grill</b> (ou Altitude Burger). Com o pacote de refeições: prato + bebida + sobremesa a cada 90 min</li>
-      <li>Infinity Falls (107 cm; molha)</li>
-      <li>Mako (138 cm — adultos)</li>
-      <li>Shark Encounter (túnel)</li>
-      <li>Penguin Trek + Antarctica Penguin Encounter (saem um no outro)</li>
-      <li>Dolphin Adventures (último show costuma ser fim de tarde — ver aplicativo)</li>
-      <li>Manta (138 cm — adultos). Lanche: Panini Shore Café</li>
+    <ol class="timed">
+      <li><span class="time">9h15</span> Pipeline (138 cm — adultos)</li>
+      <li><span class="time">9h45</span> Ice Breaker (121 cm — medir)</li>
+      <li><span class="time">10h15</span> Wild Arctic (belugas)</li>
+      <li><span class="time">~12h00</span> Orca Encounter — horário no app</li>
+      <li><span class="time">10h30</span> Sesame Street Land (bloco da criança; algumas molham)</li>
+      <li><span class="time">12h30</span> <b>Almoço: Waterway Grill</b> (ou Altitude Burger). All-Day Dining: prato + bebida + sobremesa a cada 90 min</li>
+      <li><span class="time">—</span> <s>Infinity Falls</s> <b>fechada</b> nov/2026 — substituir por Antarctica / Penguin Trek</li>
+      <li><span class="time">14h30</span> Mako (138 cm — adultos)</li>
+      <li><span class="time">15h15</span> Shark Encounter (túnel)</li>
+      <li><span class="time">15h45</span> Penguin Trek + Antarctica Penguin Encounter</li>
+      <li><span class="time">~17h30</span> Dolphin Adventures — horário no app</li>
+      <li><span class="time">18h30</span> Manta (138 cm — adultos). Lanche: Panini Shore Café</li>
     </ol>
 
     <h3>12/11 · Universal Studios Florida</h3>
+    <div class="day-log">
+      <p><b>Parque (qui 12/11):</b> estimativa <b>9h00–19h00</b> (AllEars nov/2026). Sem Jollywood nesta noite (próximo: 14/11 no Studios).</p>
+      <p><b>Chegar:</b> sair ~<b>7h45</b> · garagem Jurassic ~<b>8h30</b> · portões ~<b>8h45</b> (Early Park Admission 8h00 se o ingresso incluir).</p>
+      <p class="small"><b>Shows:</b> Bourne Stuntacular ~11h00, depois de hora em hora até ~16h30 — escolher sessão ~13h30 no app. CityWalk grátis após 18h.</p>
+      <table>
+        <tr><td>8h45</td><td>Entrada pelo Beco Diagonal · Gringotts 1º</td></tr>
+        <tr><td>10h30</td><td>Simpsons · MIB se der</td></tr>
+        <tr><td>12h00</td><td><b>Almoço:</b> Louie’s ou Moe’s</td></tr>
+        <tr><td>13h30</td><td><b>Bourne Stuntacular</b> (horário no app)</td></tr>
+        <tr><td>15h00</td><td>Fast &amp; Furious · Transformers · Fallon</td></tr>
+        <tr><td>17h00</td><td>Mummy · Minions · Rockit se operar</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia</b>
       <ul>
@@ -465,22 +516,38 @@
       </ul>
     </div>
     <p class="small">Garagem do lado Jurassic. Começar no Beco Diagonal.</p>
-    <ol>
-      <li>Harry Potter and the Escape from Gringotts (107 cm; armário; fila individual só para adulto)</li>
-      <li>Men in Black Alien Attack (se der tempo)</li>
-      <li>The Simpsons Ride (102 cm)</li>
-      <li><b>Almoço: Louie’s Italian</b> (spaghetti cerca de US$ 11,99) ou Moe’s Tavern</li>
-      <li>The Bourne Stuntacular (teatro — horário no aplicativo)</li>
-      <li>Fast &amp; Furious Supercharged</li>
-      <li>Transformers 3D (fila individual só para adulto)</li>
-      <li>Race Through New York Starring Jimmy Fallon</li>
-      <li>Revenge of the Mummy (102 cm; armário; no escuro)</li>
-      <li>Hollywood Rip Ride Rockit — só se ainda existir (130 cm)</li>
-      <li>Despicable Me Minion Mayhem (102 cm acompanhada)</li>
+    <ol class="timed">
+      <li><span class="time">9h00</span> Harry Potter and the Escape from Gringotts (107 cm; armário; fila individual só adulto)</li>
+      <li><span class="time">9h45</span> Men in Black Alien Attack (se der tempo)</li>
+      <li><span class="time">10h15</span> The Simpsons Ride (102 cm)</li>
+      <li><span class="time">12h00</span> <b>Almoço: Louie’s Italian</b> (spaghetti ~US$ 11,99) ou Moe’s Tavern</li>
+      <li><span class="time">13h30</span> The Bourne Stuntacular (teatro — horário no app)</li>
+      <li><span class="time">14h30</span> Fast &amp; Furious Supercharged</li>
+      <li><span class="time">15h00</span> Transformers 3D (fila individual só adulto)</li>
+      <li><span class="time">15h30</span> Race Through New York Starring Jimmy Fallon</li>
+      <li><span class="time">16h15</span> Revenge of the Mummy (102 cm; armário; no escuro)</li>
+      <li><span class="time">17h00</span> Hollywood Rip Ride Rockit — confirmar se opera (130 cm)</li>
+      <li><span class="time">17h30</span> Despicable Me Minion Mayhem (102 cm acompanhada)</li>
     </ol>
     <p class="small">Se sobrar tempo: Animal Actors, Fievel’s Playland, Woody Woodpecker (92 cm). CityWalk grátis depois das 18h.</p>
 
     <h3>13/11 · Hollywood Studios</h3>
+    <div class="day-log">
+      <p><b>Parque (sex 13/11):</b> estimativa <b>9h00–21h00</b> (dia cheio; sem Jollywood — festa é 14/11). Extended/Early Entry possível para hóspedes Disney.</p>
+      <p><b>Chegar:</b> sair ~<b>7h45</b> · portões ~<b>8h30</b> · <b>1ª ação:</b> inscrição Jedi Training no Indiana Jones Outpost.</p>
+      <p class="small"><b>Shows típicos (confirmar app):</b> Beauty and the Beast ~11h00 / ~13h00 / ~15h00 · <b>Fantasmic!</b> ~20h30–21h00 em nov (sol se põe mais cedo após 1/11) · anfiteatro abre 90 min antes.</p>
+      <table>
+        <tr><td>8h30</td><td>Entrada · inscrição Jedi Training · Slinky Dog</td></tr>
+        <tr><td>9h30</td><td>Toy Story Mania · Alien Saucers · Rise</td></tr>
+        <tr><td>11h30</td><td>Smugglers Run · Runaway Railway</td></tr>
+        <tr><td>12h30</td><td><b>Almoço:</b> Woody’s ou Docking Bay 7</td></tr>
+        <tr><td>~13h00</td><td>Jedi Training (horário da inscrição)</td></tr>
+        <tr><td>14h30</td><td>Tower / Rock ‘n’ Roller (adultos)</td></tr>
+        <tr><td>15h00</td><td>Beauty and the Beast (sessão no app)</td></tr>
+        <tr><td>19h00</td><td>Filas finais · Ronto Roasters</td></tr>
+        <tr><td>~20h30</td><td><b>Fantasmic!</b> (chegar ~19h00 para lugar seco)</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia (Disney — 1º dia da janela 13–19)</b>
       <ul>
@@ -491,22 +558,37 @@
         <li>Pedir comida pelo aplicativo para Woody’s Lunch Box se for almoço rápido.</li>
       </ul>
     </div>
-    <ol>
-      <li>Jedi Training (já inscritos) — anotar o horário do show</li>
-      <li>Slinky Dog Dash (97 cm)</li>
-      <li>Toy Story Mania</li>
-      <li>Alien Swirling Saucers</li>
-      <li>Star Wars: Rise of the Resistance (101 cm)</li>
-      <li>Millennium Falcon: Smugglers Run</li>
-      <li><b>Almoço: Woody’s Lunch Box</b> ou Docking Bay 7</li>
-      <li>Mickey &amp; Minnie’s Runaway Railway</li>
-      <li>Tower of Terror / Rock ‘n’ Roller Coaster (102 / 122 cm — adultos)</li>
-      <li>Beauty and the Beast Live on Stage (horário no aplicativo)</li>
-      <li>Fantasmic no fim do dia (anfiteatro abre 90 min antes; duas primeiras filas molham)</li>
+    <ol class="timed">
+      <li><span class="time">8h30</span> Jedi Training (inscritos na entrada) — anotar horário do show</li>
+      <li><span class="time">8h45</span> Slinky Dog Dash (97 cm)</li>
+      <li><span class="time">9h15</span> Toy Story Mania</li>
+      <li><span class="time">9h45</span> Alien Swirling Saucers</li>
+      <li><span class="time">10h15</span> Star Wars: Rise of the Resistance (101 cm)</li>
+      <li><span class="time">11h00</span> Millennium Falcon: Smugglers Run</li>
+      <li><span class="time">12h30</span> <b>Almoço: Woody’s Lunch Box</b> ou Docking Bay 7</li>
+      <li><span class="time">13h30</span> Mickey &amp; Minnie’s Runaway Railway</li>
+      <li><span class="time">14h30</span> Tower of Terror / Rock ‘n’ Roller Coaster (102 / 122 cm — adultos)</li>
+      <li><span class="time">15h00</span> Beauty and the Beast Live on Stage (horário no app)</li>
+      <li><span class="time">~20h30</span> Fantasmic! (anfiteatro ~19h00; filas da frente molham)</li>
     </ol>
     <p class="small">Ronto Roasters e leite azul (Milk Stand) em Batuu.</p>
 
     <h3>15/11 · Animal Kingdom</h3>
+    <div class="day-log">
+      <p><b>Parque (dom 15/11):</b> estimativa <b>9h00–19h00</b> (TouringPlans). Domingo = lotação média-alta.</p>
+      <p><b>Chegar:</b> sair ~<b>7h45</b> · portões ~<b>8h30</b> · Safari logo na abertura.</p>
+      <p class="warn">⚠ DinoLand fechada (obras Tropical Americas). <b>DINOSAUR extinta</b> desde 2/2/2026 · Restaurantosaurus fechado. Roteiro ajustado.</p>
+      <p class="small"><b>Shows típicos:</b> Festival of the Lion King ~10h00 / ~11h30 / ~13h00 / ~14h30 · Tree of Life Awakenings à noite se o parque fechar tarde.</p>
+      <table>
+        <tr><td>8h30</td><td>Kilimanjaro Safaris (animais mais ativos)</td></tr>
+        <tr><td>10h00</td><td>Festival of the Lion King</td></tr>
+        <tr><td>11h00</td><td>Kali · Everest (112 cm)</td></tr>
+        <tr><td>12h30</td><td><b>Almoço:</b> Satu’li Canteen (Pandora)</td></tr>
+        <tr><td>13h30</td><td>Na’vi River Journey · Flight of Passage</td></tr>
+        <tr><td>16h00</td><td>It’s Tough to Be a Bug · trilhas (Gorilla Falls, Maharajah)</td></tr>
+        <tr><td>18h00</td><td>Pandora bioluminescente · saída</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia</b>
       <ul>
@@ -516,21 +598,35 @@
         <li>Roupa extra (Kali molha). Chegar cedo — parque fecha por volta das 18h.</li>
       </ul>
     </div>
-    <ol>
-      <li>Kilimanjaro Safaris (manhã: animais mais ativos)</li>
-      <li>Festival of the Lion King (cerca de 25 min, em inglês)</li>
-      <li>Kali River Rapids (97 cm; molha)</li>
-      <li>Expedition Everest (112 cm)</li>
-      <li>Dinosaur (102 cm; escuro e intenso)</li>
-      <li><b>Almoço: Satu’li Canteen</b> (Pandora — bowls)</li>
-      <li>Na’vi River Journey (barco, sem altura)</li>
-      <li>Avatar Flight of Passage (112 cm)</li>
-      <li>It’s Tough to Be a Bug! (3D com sustos)</li>
-      <li>Se ainda estiver aberto: bioluminescência de Pandora e Árvore da Vida</li>
+    <ol class="timed">
+      <li><span class="time">8h30</span> Kilimanjaro Safaris (manhã: animais mais ativos)</li>
+      <li><span class="time">10h00</span> Festival of the Lion King (~25 min; horário no app)</li>
+      <li><span class="time">11h00</span> Kali River Rapids (97 cm; molha)</li>
+      <li><span class="time">11h45</span> Expedition Everest (112 cm)</li>
+      <li><span class="time">—</span> <s>Dinosaur</s> <b>fechada permanentemente</b> — substituir por trilhas ou Wilderness Explorers</li>
+      <li><span class="time">12h30</span> <b>Almoço: Satu’li Canteen</b> (Pandora — bowls)</li>
+      <li><span class="time">13h30</span> Na’vi River Journey (barco, sem altura)</li>
+      <li><span class="time">14h15</span> Avatar Flight of Passage (112 cm)</li>
+      <li><span class="time">15h30</span> It’s Tough to Be a Bug! (3D com sustos)</li>
+      <li><span class="time">16h30</span> Gorilla Falls / Maharajah Jungle Trek · bioluminescência Pandora se ainda claro</li>
     </ol>
     <p class="small">Jantar: Rainforest Café (entrada) ou Pizzafari (mais rápido).</p>
 
     <h3>16/11 · Epic Universe</h3>
+    <div class="day-log">
+      <p><b>Parque (seg 16/11):</b> estimativa <b>10h00–22h00</b> (Epic costuma fechar mais tarde). Jollywood Nights no Studios é 16/11 à noite — vocês estão no Epic, sem conflito.</p>
+      <p><b>Chegar:</b> sair ~<b>8h00</b> · fila nos portões ~<b>8h45–9h00</b> (45–60 min antes da abertura).</p>
+      <p class="small"><b>Prioridade:</b> Super Nintendo World na abertura · reservar Toadstool Cafe no app se for almoçar lá.</p>
+      <table>
+        <tr><td>9h00</td><td>Fila portão · foto Nintendo</td></tr>
+        <tr><td>10h00</td><td>Mario Kart · Donkey Kong</td></tr>
+        <tr><td>12h00</td><td>Isle of Berk</td></tr>
+        <tr><td>13h00</td><td><b>Almoço:</b> Toadstool ou Café L’air De La Sirène</td></tr>
+        <tr><td>15h00</td><td>Battle at the Ministry (122 cm)</td></tr>
+        <tr><td>16h30</td><td>Dark Universe (assustador — criança pode ficar de fora)</td></tr>
+        <tr><td>18h00</td><td>Celestial Park · show da praça (horário no app)</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia</b>
       <ul>
@@ -540,18 +636,34 @@
         <li>Reserva de mesa no aplicativo se quiserem Toadstool Cafe ou Café L’air De La Sirène (lotam).</li>
       </ul>
     </div>
-    <ol>
-      <li>Super Nintendo World — Mario Kart: Bowser’s Challenge</li>
-      <li>Donkey Kong Country — Mine-Cart Madness (medir)</li>
-      <li>Isle of Berk — atrações de dragão</li>
-      <li><b>Almoço: Toadstool Cafe</b> ou Café L’air De La Sirène</li>
-      <li>Harry Potter and the Battle at the Ministry (122 cm típico)</li>
-      <li>Dark Universe — Monsters Unchained (assustador para 6 anos)</li>
-      <li>Celestial Park — lojas e show da praça</li>
+    <ol class="timed">
+      <li><span class="time">10h00</span> Super Nintendo World — Mario Kart: Bowser’s Challenge</li>
+      <li><span class="time">11h00</span> Donkey Kong Country — Mine-Cart Madness (medir)</li>
+      <li><span class="time">12h00</span> Isle of Berk — atrações de dragão</li>
+      <li><span class="time">13h00</span> <b>Almoço: Toadstool Cafe</b> ou Café L’air De La Sirène</li>
+      <li><span class="time">15h00</span> Harry Potter and the Battle at the Ministry (122 cm típico)</li>
+      <li><span class="time">16h30</span> Dark Universe — Monsters Unchained (assustador para 6 anos)</li>
+      <li><span class="time">18h00</span> Celestial Park — lojas e show da praça (app)</li>
     </ol>
     <p class="small">Cada mundo é um portal — não misturar. Folga no dia 17.</p>
 
     <h3>18/11 · Magic Kingdom</h3>
+    <div class="day-log">
+      <p><b>Parque (qua 18/11):</b> estimativa <b>9h00–22h00</b> — <b>sem</b> Mickey’s Very Merry Christmas Party (festa é 17/11 e 19/11). Dia ideal para fogos regulares.</p>
+      <p><b>Chegar:</b> sair ~<b>7h45</b> · monorail/ferry ~<b>8h30</b> · às <b>7h00 na casa:</b> fila virtual Tiana’s Bayou no app.</p>
+      <p class="small"><b>Fechado:</b> Carousel of Progress (até 2027) · Railroad só shuttle Main Street↔Fantasyland.</p>
+      <p class="small"><b>Shows típicos:</b> Festival of Fantasy ~15h00 · Mickey’s Magical Friendship Faire ~12h15 · <b>Happily Ever After</b> ~20h00–21h00 em nov.</p>
+      <table>
+        <tr><td>7h00</td><td>Em casa: fila virtual Tiana (e TRON se quiserem)</td></tr>
+        <tr><td>8h30</td><td>Entrada · Pirates · Big Thunder</td></tr>
+        <tr><td>10h30</td><td>Tiana’s Bayou (fila virtual/reserva)</td></tr>
+        <tr><td>12h00</td><td><b>Almoço:</b> Columbia Harbour House</td></tr>
+        <tr><td>15h00</td><td>Festival of Fantasy (Liberty Square)</td></tr>
+        <tr><td>16h00</td><td>Seven Dwarfs · Space Mountain (adultos/medir)</td></tr>
+        <tr><td>19h00</td><td>TRON (adultos) · Meet Mickey</td></tr>
+        <tr><td>~20h30</td><td><b>Happily Ever After</b> (castelo — app)</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia — procedimentos críticos</b>
       <ul>
@@ -563,22 +675,36 @@
       </ul>
     </div>
     <p class="small">Sem festa de Natal — parque aberto à noite para fogos. Dia sem festa costuma encher mais.</p>
-    <ol>
-      <li>Pirates of the Caribbean</li>
-      <li>Big Thunder Mountain (102 cm)</li>
-      <li>Tiana’s Bayou Adventure (já com fila virtual ou fila rápida)</li>
-      <li><b>Almoço: Columbia Harbour House</b> (pedido pelo celular)</li>
-      <li>Haunted Mansion</li>
-      <li>Festival of Fantasy Parade (por volta das 15h na Liberty Square)</li>
-      <li>Seven Dwarfs Mine Train (97 cm; fila rápida só dessa atração se a fila estiver grande)</li>
-      <li>Space Mountain (113 cm — medir)</li>
-      <li>TRON Lightcycle Run (adultos — fila virtual no fim do dia)</li>
-      <li>Meet Mickey no Town Square Theater + pipoca</li>
-      <li>Show de fogos no castelo (horário no aplicativo)</li>
+    <ol class="timed">
+      <li><span class="time">8h30</span> Pirates of the Caribbean</li>
+      <li><span class="time">9h00</span> Big Thunder Mountain (102 cm)</li>
+      <li><span class="time">10h00</span> Tiana’s Bayou Adventure (fila virtual ou Lightning Lane)</li>
+      <li><span class="time">12h00</span> <b>Almoço: Columbia Harbour House</b> (pedido pelo celular)</li>
+      <li><span class="time">13h00</span> Haunted Mansion</li>
+      <li><span class="time">15h00</span> Festival of Fantasy Parade (Liberty Square — app)</li>
+      <li><span class="time">15h45</span> Seven Dwarfs Mine Train (97 cm; LL se fila grande)</li>
+      <li><span class="time">16h30</span> Space Mountain (113 cm — medir)</li>
+      <li><span class="time">19h00</span> TRON Lightcycle Run (adultos — fila virtual fim do dia)</li>
+      <li><span class="time">19h30</span> Meet Mickey no Town Square Theater + pipoca</li>
+      <li><span class="time">~20h30</span> Happily Ever After (fogos — horário no app)</li>
     </ol>
     <p class="small">Lanche: Casey’s Corner ou Main Street Bakery.</p>
 
     <h3>19/11 · EPCOT</h3>
+    <div class="day-log">
+      <p><b>Parque (qui 19/11):</b> estimativa <b>9h00–21h00</b> (TouringPlans). Food &amp; Wine até ~22/11.</p>
+      <p><b>Chegar:</b> sair ~<b>7h45</b> · portões ~<b>8h30</b> · Test Track cedo.</p>
+      <p class="small"><b>Shows típicos:</b> Beauty and the Beast Sing-Along ~12h30 / ~13h30 / ~14h30 (França) · <b>Luminous</b> ~21h00 · barracas Food &amp; Wine enchem após 18h.</p>
+      <table>
+        <tr><td>8h30</td><td>Test Track · Mission SPACE · Soarin’</td></tr>
+        <tr><td>11h00</td><td>Guardians Cosmic Rewind</td></tr>
+        <tr><td>12h30</td><td><b>Almoço:</b> Sunshine Seasons</td></tr>
+        <tr><td>14h00</td><td>World Showcase (Canadá → França → Remy)</td></tr>
+        <tr><td>16h30</td><td>Frozen Ever After · Gran Fiesta</td></tr>
+        <tr><td>18h30</td><td>Barracas Food &amp; Wine</td></tr>
+        <tr><td>~21h00</td><td><b>Luminous</b> (fogos no lago)</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia</b>
       <ul>
@@ -588,24 +714,37 @@
         <li>No aplicativo: horário do <b>Luminous</b> (fogos).</li>
       </ul>
     </div>
-    <ol>
-      <li>Test Track (102 cm; fila individual — só adulto)</li>
-      <li>Mission: SPACE (verde 102 cm / laranja 112 cm)</li>
-      <li>Soarin’ (102 cm)</li>
-      <li>Living with the Land (se der tempo)</li>
-      <li>Guardians of the Galaxy: Cosmic Rewind (107 cm)</li>
-      <li><b>Almoço: Sunshine Seasons</b></li>
-      <li>Spaceship Earth</li>
-      <li>World Showcase pela direita (Canadá → França)</li>
-      <li>Remy’s Ratatouille Adventure (França)</li>
-      <li>Beauty and the Beast Sing-Along (se der tempo)</li>
-      <li>Frozen Ever After (Noruega)</li>
-      <li>Gran Fiesta Tour (México; se der tempo)</li>
-      <li>Luminous — fogos no lago</li>
+    <ol class="timed">
+      <li><span class="time">8h30</span> Test Track (102 cm; fila individual — só adulto)</li>
+      <li><span class="time">9h15</span> Mission: SPACE (verde 102 cm / laranja 112 cm)</li>
+      <li><span class="time">10h00</span> Soarin’ (102 cm)</li>
+      <li><span class="time">10h45</span> Living with the Land (se der tempo)</li>
+      <li><span class="time">11h15</span> Guardians of the Galaxy: Cosmic Rewind (107 cm)</li>
+      <li><span class="time">12h30</span> <b>Almoço: Sunshine Seasons</b></li>
+      <li><span class="time">13h30</span> Spaceship Earth</li>
+      <li><span class="time">14h30</span> World Showcase pela direita (Canadá → França)</li>
+      <li><span class="time">15h30</span> Remy’s Ratatouille Adventure (França)</li>
+      <li><span class="time">16h00</span> Beauty and the Beast Sing-Along (horário no app)</li>
+      <li><span class="time">16h45</span> Frozen Ever After (Noruega)</li>
+      <li><span class="time">17h30</span> Gran Fiesta Tour (México; se der tempo)</li>
+      <li><span class="time">~21h00</span> Luminous — fogos no lago</li>
     </ol>
     <p class="small">Festival de comida e vinho: barracas à noite; almoço fica no Sunshine Seasons.</p>
 
     <h3>20/11 · Islands of Adventure</h3>
+    <div class="day-log">
+      <p><b>Parque (sex 20/11):</b> estimativa <b>9h00–20h00</b> (sexta pré-Thanksgiving = lotação média-alta).</p>
+      <p><b>Chegar:</b> sair ~<b>7h45</b> · garagem Jurassic ~<b>8h30</b> · VelociCoaster/Hagrid’s cedo.</p>
+      <p class="small"><b>Reserva:</b> Thunder Falls Terrace no app Universal. Hagrid’s e VelociCoaster <b>não</b> entram no Express Pass.</p>
+      <table>
+        <tr><td>8h45</td><td>VelociCoaster · Hagrid’s (fila individual adultos)</td></tr>
+        <tr><td>10h00</td><td>Forbidden Journey · Jurassic River</td></tr>
+        <tr><td>12h00</td><td><b>Almoço:</b> Thunder Falls Terrace (reserva)</td></tr>
+        <tr><td>13h30</td><td>Kong · Popeye · Dudley (molham)</td></tr>
+        <tr><td>15h30</td><td>Spider-Man · Hulk (adultos)</td></tr>
+        <tr><td>17h00</td><td>Sebra / Cat in the Hat se cansarem</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia</b>
       <ul>
@@ -616,22 +755,36 @@
       </ul>
     </div>
     <p class="small">Garagem do lado Jurassic Park. Chegar cedo.</p>
-    <ol>
-      <li>VelociCoaster (130 cm — adultos; fila individual)</li>
-      <li>Hagrid’s Magical Creatures Motorbike Adventure (122 cm; fila individual)</li>
-      <li>Harry Potter and the Forbidden Journey (122 cm)</li>
-      <li>Jurassic Park River Adventure (107 cm; molha)</li>
-      <li><b>Almoço: Thunder Falls Terrace</b> (já reservado)</li>
-      <li>Skull Island: Reign of Kong (91 cm)</li>
-      <li>Popeye &amp; Bluto’s Bilge-Rat Barges (107 cm; molha muito)</li>
-      <li>Dudley Do-Right’s Ripsaw Falls (112 cm; não ir no 1º carrinho)</li>
-      <li>The Amazing Adventures of Spider-Man (102 cm)</li>
-      <li>Doctor Doom’s Fear Fall (se der tempo)</li>
-      <li>Incredible Hulk (137 cm — adultos; armário na frente)</li>
+    <ol class="timed">
+      <li><span class="time">8h45</span> VelociCoaster (130 cm — adultos; fila individual)</li>
+      <li><span class="time">9h30</span> Hagrid’s Magical Creatures Motorbike Adventure (122 cm; fila individual)</li>
+      <li><span class="time">10h15</span> Harry Potter and the Forbidden Journey (122 cm)</li>
+      <li><span class="time">11h00</span> Jurassic Park River Adventure (107 cm; molha)</li>
+      <li><span class="time">12h00</span> <b>Almoço: Thunder Falls Terrace</b> (já reservado)</li>
+      <li><span class="time">13h30</span> Skull Island: Reign of Kong (91 cm)</li>
+      <li><span class="time">14h15</span> Popeye &amp; Bluto’s Bilge-Rat Barges (107 cm; molha muito)</li>
+      <li><span class="time">15h00</span> Dudley Do-Right’s Ripsaw Falls (112 cm; não 1º carrinho)</li>
+      <li><span class="time">15h45</span> The Amazing Adventures of Spider-Man (102 cm)</li>
+      <li><span class="time">16h30</span> Doctor Doom’s Fear Fall (se der tempo)</li>
+      <li><span class="time">17h15</span> Incredible Hulk (137 cm — adultos; armário na frente)</li>
     </ol>
     <p class="small">Se a energia acabar: Cat in the Hat, Caro-Seuss-el, Camp Jurassic, Pteranodon Flyers (92–143 cm).</p>
 
     <h3>22/11 · Busch Gardens Tampa</h3>
+    <div class="day-log">
+      <p><b>Parque (dom 22/11):</b> publicado <b>10h00–22h00</b> (ParkQueueTimes). Domingo pré-Thanksgiving = começa a encher.</p>
+      <p><b>Chegar:</b> sair Kissimmee ~<b>7h30</b> · estacionamento ~<b>9h00</b> (1h15–1h30 de estrada).</p>
+      <p class="small"><b>Verificar app:</b> Congo River Rapids pode estar em manutenção sazonal · Phoenix Rising (novo) — status no dia.</p>
+      <table>
+        <tr><td>9h15</td><td>Cheetah Hunt · Cobra’s Curse</td></tr>
+        <tr><td>10h30</td><td>Serengeti Plain / trenzinho</td></tr>
+        <tr><td>11h30</td><td>Sesame Street Safari of Fun</td></tr>
+        <tr><td>12h30</td><td><b>Almoço:</b> Zambia Smokehouse ou Crown Colony</td></tr>
+        <tr><td>14h00</td><td>Montanhas-russas adultos (Iron Gwazi, SheiKra…)</td></tr>
+        <tr><td>17h00</td><td>Falcon’s Fury · Stanley Falls</td></tr>
+        <tr><td>19h00</td><td>Saída · volta Kissimmee</td></tr>
+      </table>
+    </div>
     <div class="prep">
       <b>Antes / no dia</b>
       <ul>
@@ -641,17 +794,17 @@
         <li>Fila rápida do parque se o domingo antes do Dia de Ação de Graças estiver cheio.</li>
       </ul>
     </div>
-    <ol>
-      <li>Cheetah Hunt (perto do Skyride)</li>
-      <li>Cobra’s Curse</li>
-      <li>Serengeti Plain / trenzinho</li>
-      <li>Sesame Street Safari of Fun (bloco da criança)</li>
-      <li><b>Almoço: Zambia Smokehouse</b> ou Crown Colony</li>
-      <li>Congo River Rapids (molha)</li>
-      <li>Iron Gwazi / SheiKra / Kumba / Montu / Tigris (122–137 cm — adultos)</li>
-      <li>Falcon’s Fury</li>
-      <li>Phoenix Rising (se estiver operando)</li>
-      <li>Stanley Falls Flume</li>
+    <ol class="timed">
+      <li><span class="time">9h15</span> Cheetah Hunt (perto do Skyride)</li>
+      <li><span class="time">9h45</span> Cobra’s Curse</li>
+      <li><span class="time">10h30</span> Serengeti Plain / trenzinho</li>
+      <li><span class="time">11h30</span> Sesame Street Safari of Fun (bloco da criança)</li>
+      <li><span class="time">12h30</span> <b>Almoço: Zambia Smokehouse</b> ou Crown Colony</li>
+      <li><span class="time">14h00</span> Congo River Rapids (molha — confirmar se opera)</li>
+      <li><span class="time">14h45</span> Iron Gwazi / SheiKra / Montu / Tigris (122–137 cm — adultos)</li>
+      <li><span class="time">16h30</span> Falcon’s Fury</li>
+      <li><span class="time">17h15</span> Phoenix Rising (status no app)</li>
+      <li><span class="time">18h00</span> Stanley Falls Flume</li>
     </ol>
     <p class="small">Lory Landing cerca de US$ 5. Se o grupo não curtir montanha-russa: zoológico + Sesame.</p>
     </section>
@@ -681,6 +834,112 @@
         <tbody id="housesBody"></tbody>
       </table>
     </div>
+    <h3>Opções pesquisadas (10–24/11 · 4 adultos + 1 criança · 3 quartos)</h3>
+    <p class="small muted">Cotações Airbnb em 28/08/2026 (total 14 noites, impostos inclusos). Valores podem mudar; conferir no anúncio limpeza e taxas extras.</p>
+    <div class="scroll">
+      <table class="money">
+        <thead>
+          <tr>
+            <th>Imóvel</th>
+            <th>Região</th>
+            <th>Destaque</th>
+            <th class="num">Total 14 noites</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="opt"><td colspan="5"><b>Melhor custo-benefício (Kissimmee geral)</b></td></tr>
+          <tr>
+            <td>Cozy 3bd home 15 min from Disney</td>
+            <td>Kissimmee</td>
+            <td>Casa 3 quartos · ~15 min Disney</td>
+            <td class="num">R$ 8.667<br><span class="small">~US$ 1.683</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1007584062270178126?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>192 &amp; Formosa · Private Soft Pool</td>
+            <td>Kissimmee (192)</td>
+            <td>Townhouse · piscina privada · ~14 min Disney</td>
+            <td class="num">R$ 8.945<br><span class="small">~US$ 1.737</span></td>
+            <td><a href="https://www.airbnb.com/rooms/46282584?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>8976SV · 3BD/2BT Cozy Townhome</td>
+            <td>Kissimmee</td>
+            <td>Townhouse · perto Disney</td>
+            <td class="num">R$ 9.418<br><span class="small">~US$ 1.829</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1142881091178054825?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Legacy Dunes · Heated Pool</td>
+            <td>Kissimmee</td>
+            <td>Condo · piscina aquecida · condomínio fechado</td>
+            <td class="num">R$ 9.086<br><span class="small">~US$ 1.764</span></td>
+            <td><a href="https://www.airbnb.com/rooms/586809227922739023?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr class="opt"><td colspan="5"><b>Windsor Hills — perto da Disney (~10 min)</b></td></tr>
+          <tr>
+            <td>Create Magic Moments · Waterpark</td>
+            <td>Windsor Hills</td>
+            <td>Condo 3BR · parque aquático do resort incluído</td>
+            <td class="num">R$ 10.060<br><span class="small">~US$ 1.953</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1644228844173499266?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Condo close to Disney at Windsor Hills</td>
+            <td>Windsor Hills</td>
+            <td>Condo 3BR · resort com cinema e slides</td>
+            <td class="num">R$ 10.640<br><span class="small">~US$ 2.066</span></td>
+            <td><a href="https://www.airbnb.com/rooms/630316750356726228?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Renovated Townhome · Private Pool</td>
+            <td>Windsor Hills</td>
+            <td>Townhouse 3BR/3BA · piscina privada · quartos temáticos</td>
+            <td class="num">R$ 11.841<br><span class="small">~US$ 2.299</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1665461535535897343?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>304C Windsor Hills · 2 King 3BR</td>
+            <td>Windsor Hills</td>
+            <td>Apartamento 3BR · 2 camas king · mais perto da Disney</td>
+            <td class="num">R$ 11.445<br><span class="small">~US$ 2.222</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1670573511165048456?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Paradise Falls (Magication)</td>
+            <td>Windsor Hills</td>
+            <td>Townhouse 3BR · piscina aquecida · quarto Mickey · game zone</td>
+            <td class="num">sob consulta<br><span class="small">~US$ 2.625*</span></td>
+            <td><a href="https://magication.net/paradise-falls/" target="_blank" rel="noopener">Site</a> · <a href="https://www.windsorhillsprivaterentals.com/property.php?propertyid=132" target="_blank" rel="noopener">WH Rentals</a></td>
+          </tr>
+          <tr class="opt"><td colspan="5"><b>Storey Lake — parque aquático do resort (lazy river)</b></td></tr>
+          <tr>
+            <td>Mario &amp; Fairy 3BR · Free Water Park</td>
+            <td>Storey Lake</td>
+            <td>Condo 3BR · parque aquático · quarto temático (criança)</td>
+            <td class="num">R$ 11.517<br><span class="small">~US$ 2.236</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1577091068159211788?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Perfect Family Stay · 3BR Storey Lake</td>
+            <td>Storey Lake</td>
+            <td>Condo 3BR · lazy river · ~15 min Disney</td>
+            <td class="num">ver no site</td>
+            <td><a href="https://www.vrbo.com/2857930?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Vrbo</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">* Paradise Falls: site do anfitrião cita ~US$ 187/noite (~US$ 2.625/14 noites + taxas). <b>Level Up Retreat</b> (Mario, Windsor Hills, piscina aquecida) estava indisponível nessas datas.</p>
+    <p class="small">
+      Buscar mais:
+      <a href="https://www.airbnb.com/s/Windsor-Hills--Kissimmee--FL/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=3" target="_blank" rel="noopener">Airbnb Windsor Hills</a>
+      ·
+      <a href="https://www.airbnb.com/s/Kissimmee--FL--United-States/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=3" target="_blank" rel="noopener">Airbnb Kissimmee</a>
+      ·
+      <a href="https://www.vrbo.com/search?destination=Kissimmee%2C%20Florida%2C%20United%20States%20of%20America&amp;startDate=2026-11-10&amp;endDate=2026-11-24&amp;adults=4&amp;children=1&amp;minBedrooms=3" target="_blank" rel="noopener">Vrbo Kissimmee</a>
+    </p>
     <p class="small">Conferir no anúncio o que entra (limpeza, imposto, taxa). Check-in costuma ser 16h; o voo chega 11h — pedir early check-in. Se achar a casa certa, manda o link que eu encaixo o valor exato no orçamento.</p>
     <p>No sábado 14: dirigir até o hotel Art of Animation, pedir acesso ao saguão e caminhar o pátio dos Carros (Radiator Springs). Almoço no Landscape of Flavors se quiserem; depois cerca de 10 min até o <b>shopping de desconto Vineland</b> (marcas de luxo — ver seção de compras). Alternativa: ônibus gratuito do Disney Springs + teleférico Skyliner até o Art of Animation.</p>
     </section>
@@ -858,7 +1117,7 @@
       <li>SeaWorld + Busch + refeições o dia todo (Latam) — uso 11 e 22/11.</li>
       <li>Fila rápida Disney só de Hollywood Studios, Magic Kingdom e Epic, mais perto da viagem.</li>
     </ol>
-    <p class="small">Fontes: Disney Tourist Blog (nov/2026), TouringPlans / Undercover Tourist, Universal Orlando 2026, SeaWorld/Busch Gardens, Orlando Diferente (compras e Walmart), Kayak / locadoras SFB→MCO, Kayak voos MCO/SFB/TPA→GRU 24/11. Plano atualizado 28/08/2026.</p>
+    <p class="small">Fontes: Disney Tourist Blog (nov/2026), TouringPlans / Undercover Tourist, Universal Orlando 2026, SeaWorld/Busch Gardens (manutenção 2026), Orlando Diferente (compras e Walmart), Kayak / locadoras SFB→MCO, Kayak voos MCO/SFB/TPA→GRU 24/11. Horários de parque/shows: projeção ago/2026 — confirmar no app 1–2 dias antes e no dia. Plano atualizado 28/08/2026.</p>
     </section>
   </div>
   <script>
