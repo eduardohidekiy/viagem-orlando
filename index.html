@@ -48,6 +48,8 @@
     th, td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
     th { font-size:.75rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
     td.num, th.num { text-align:right; white-space:nowrap; }
+    table.money td.num.time,
+    table.money td.num.wrap { white-space:normal; line-height:1.35; }
     tr.total td { font-weight:700; border-top:2px solid var(--text); }
     tr.opt td { color:var(--muted); }
     .day-log {
@@ -108,6 +110,9 @@
         white-space:nowrap;
         font-variant-numeric:tabular-nums;
       }
+      table.money td.num.time,
+      table.money td.num.wrap { white-space:normal; }
+      table.money td.num.full { grid-column:1 / -1; }
       table.money td.num::before {
         content:attr(data-l);
         font-size:.68rem;
@@ -994,18 +999,18 @@
       ·
       <a href="https://moverentalcars.com/aluguel-de-carros-em-orlando-fl/" target="_blank" rel="noopener">MOVE Rental Cars</a>
     </p>
-    <div class="scroll">
-      <table>
+    <div class="money-wrap">
+      <table class="money">
         <thead>
           <tr>
             <th>Locadora</th>
-            <th>Aluguel 14d</th>
-            <th>+ Seguro</th>
-            <th>+ pedágio</th>
-            <th>Total c/ extras</th>
-            <th>Avaliação</th>
-            <th>Sem balcão?</th>
-            <th>Observação</th>
+            <th class="num">Aluguel 14d</th>
+            <th class="num">+ Seguro</th>
+            <th class="num">+ pedágio</th>
+            <th class="num">Total c/ extras</th>
+            <th class="num">Avaliação</th>
+            <th class="num">Sem balcão?</th>
+            <th class="num">Observação</th>
           </tr>
         </thead>
         <tbody id="rentersBody"></tbody>
@@ -1287,6 +1292,13 @@
     ];
     let cur = "USD";
 
+    function fmtFlightTime(dep, arr) {
+      var m = arr.match(/^(.+?)\s*\(dia seguinte\)$/);
+      if (m) {
+        return dep + " → " + m[1] + "<br><span class=\"small muted\">+1 dia</span>";
+      }
+      return dep + " → " + arr;
+    }
     function fmtNum(n) {
       return Math.round(n).toLocaleString("pt-BR");
     }
@@ -1368,10 +1380,10 @@
         flightsEl.innerHTML = FLIGHTS.map(function (f, i) {
           return "<tr>" +
             "<td><b>#" + (i + 1) + " · " + f.origin + "</b> · " + f.airline + "</td>" +
-            "<td class='num' data-l='Horário'>" + f.dep + " → " + f.arr + "</td>" +
+            "<td class='num time' data-l='Horário'>" + fmtFlightTime(f.dep, f.arr) + "</td>" +
             "<td class='num' data-l='Duração'>" + f.dur + "</td>" +
             "<td class='num' data-l='Parada'>" + f.stop + "</td>" +
-            "<td class='num' data-l='Tarifa'>" + f.fare + " <span class=\"muted\">(" + f.bag + ")</span></td>" +
+            "<td class='num wrap' data-l='Tarifa'>" + f.fare + " <span class=\"muted\">(" + f.bag + ")</span></td>" +
             "<td class='num em' data-l='Preço'>" + fmt(f.usd) + "</td>" +
             "</tr>";
         }).join("");
@@ -1381,13 +1393,13 @@
         rentersEl.innerHTML = RENTERS.map(function (r) {
           return "<tr>" +
             "<td>" + r.name + "</td>" +
-            "<td>" + fmtRange(r.rent[0], r.rent[1]) + "</td>" +
-            "<td>" + fmtExtra(r.ins, r.insNote) + "</td>" +
-            "<td>" + fmtExtra(r.sun, r.sunNote) + "</td>" +
-            "<td>" + fmtRange(r.total[0], r.total[1]) + "</td>" +
-            "<td>" + r.rating + "</td>" +
-            "<td>" + r.counter + "</td>" +
-            "<td>" + r.note + "</td>" +
+            "<td class='num' data-l='Aluguel 14d'>" + fmtRange(r.rent[0], r.rent[1]) + "</td>" +
+            "<td class='num wrap' data-l='+ Seguro'>" + fmtExtra(r.ins, r.insNote) + "</td>" +
+            "<td class='num wrap' data-l='+ pedágio'>" + fmtExtra(r.sun, r.sunNote) + "</td>" +
+            "<td class='num em' data-l='Total c/ extras'>" + fmtRange(r.total[0], r.total[1]) + "</td>" +
+            "<td class='num wrap' data-l='Avaliação'>" + r.rating + "</td>" +
+            "<td class='num' data-l='Sem balcão?'>" + r.counter + "</td>" +
+            "<td class='num wrap full' data-l='Observação'>" + r.note + "</td>" +
             "</tr>";
         }).join("");
       }
