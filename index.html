@@ -113,6 +113,18 @@
       table.money td.num.time,
       table.money td.num.wrap { white-space:normal; }
       table.money td.num.full { grid-column:1 / -1; }
+      table.money.rentals tr { grid-template-columns:1fr; gap:8px; }
+      table.money.rentals td.num {
+        background:#f8f9fb;
+        border-radius:8px;
+        padding:8px 10px;
+        width:100%;
+      }
+      table.money.rentals td.num.em {
+        background:#eef4fa;
+        border:1px solid #c5d9ea;
+        font-weight:600;
+      }
       table.money td.num::before {
         content:attr(data-l);
         font-size:.68rem;
@@ -1000,16 +1012,16 @@
       <a href="https://moverentalcars.com/aluguel-de-carros-em-orlando-fl/" target="_blank" rel="noopener">MOVE Rental Cars</a>
     </p>
     <div class="money-wrap">
-      <table class="money">
+      <table class="money rentals">
         <thead>
           <tr>
             <th>Locadora</th>
             <th class="num">Aluguel 14d</th>
-            <th class="num">+ Seguro</th>
-            <th class="num">+ pedágio</th>
+            <th class="num">Seguro</th>
+            <th class="num">Pedágio</th>
             <th class="num">Total c/ extras</th>
             <th class="num">Avaliação</th>
-            <th class="num">Sem balcão?</th>
+            <th class="num">Sem balcão</th>
             <th class="num">Observação</th>
           </tr>
         </thead>
@@ -1394,11 +1406,11 @@
           return "<tr>" +
             "<td>" + r.name + "</td>" +
             "<td class='num' data-l='Aluguel 14d'>" + fmtRange(r.rent[0], r.rent[1]) + "</td>" +
-            "<td class='num wrap' data-l='+ Seguro'>" + fmtExtra(r.ins, r.insNote) + "</td>" +
-            "<td class='num wrap' data-l='+ pedágio'>" + fmtExtra(r.sun, r.sunNote) + "</td>" +
-            "<td class='num em' data-l='Total c/ extras'>" + fmtRange(r.total[0], r.total[1]) + "</td>" +
+            "<td class='num wrap' data-l='Seguro'>" + fmtExtra(r.ins, r.insNote) + "</td>" +
+            "<td class='num wrap' data-l='Pedágio'>" + fmtExtra(r.sun, r.sunNote) + "</td>" +
+            "<td class='num em' data-l='Total com extras'>" + fmtRange(r.total[0], r.total[1]) + "</td>" +
             "<td class='num wrap' data-l='Avaliação'>" + r.rating + "</td>" +
-            "<td class='num' data-l='Sem balcão?'>" + r.counter + "</td>" +
+            "<td class='num' data-l='Sem balcão'>" + r.counter + "</td>" +
             "<td class='num wrap full' data-l='Observação'>" + r.note + "</td>" +
             "</tr>";
         }).join("");
