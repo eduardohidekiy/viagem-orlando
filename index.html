@@ -772,7 +772,7 @@
             <th>Locadora</th>
             <th>Aluguel 14d</th>
             <th>+ Seguro</th>
-            <th>+ Pedágios</th>
+            <th>+ SunPass</th>
             <th>Total c/ extras</th>
             <th>Avaliação</th>
             <th>Sem balcão?</th>
@@ -782,7 +782,7 @@
         <tbody id="rentersBody"></tbody>
       </table>
     </div>
-    <p class="small">Cotações de referência para minivan 7 lugares, nov/2026, SFB 10/11 11h → MCO 24/11 10h. <b>Pedágios:</b> estimativa só para <b>SFB → Orlando</b> na chegada — não inclui plano diário de 14 dias. <b>Avaliações:</b> Kayak (0–10) em SFB; Florida Rental Car e MOVE = Google; Turo = app. <b>Seguro:</b> LDW/CDW (~US$ 25/dia) ou proteção Turo. Orçamento: <b>US$ 1.650</b> aluguel + <b>US$ 350</b> seguro; pedágio na linha gasolina (~US$ 10 total no grupo).</p>
+    <p class="small">Cotações de referência para minivan 7 lugares, nov/2026, SFB 10/11 11h → MCO 24/11 10h. <b>Avaliações:</b> Kayak (0–10) em SFB; Florida Rental Car e MOVE = Google; Turo = app. <b>Seguro:</b> LDW/CDW (~US$ 25/dia) ou proteção Turo. <b>SunPass:</b> plano diário ilimitado da locadora (~US$ 7–10/dia × 14) na coluna — no nosso roteiro o pedágio real é só na chegada (ver caixa acima). Orçamento: <b>US$ 1.650</b> aluguel + <b>US$ 350</b> seguro; pedágio na linha gasolina.</p>
     <div class="money-wrap">
       <table class="money">
         <thead>
@@ -934,8 +934,8 @@
         name: "<b>Alamo</b> (Pacifica / Odyssey)",
         rent: [1050, 1450],
         ins: 350, insNote: "LDW ~25/dia",
-        sun: [5, 15], sunNote: "só SFB→Orlando",
-        total: [1405, 1915],
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1500, 1930],
         rating: "<b>9,3</b>/10 <span class=\"muted\">Kayak</span>",
         counter: "Quase (Skip Counter)",
         note: "Melhor custo-benefício em SFB. One-way SFB→MCO permitido."
@@ -954,18 +954,19 @@
         name: "<b>MOVE Rental Cars</b>",
         rent: [980, 1350],
         ins: "incluso",
-        sun: "incluso",
-        total: [980, 1350],
+        ins: "incluso",
+        sun: "parcial", sunNote: "cortesia c/ limite semanal",
+        total: [980, 1410],
         rating: "★5,0 Google <span class=\"muted\">(370+)</span>",
         counter: "Sim (estacionamento ou transfer)",
-        note: "Brasileira; cortesia de pedágio cobre o trecho SFB→Orlando. Confirmar SFB e MCO."
+        note: "Brasileira; sem bloqueio no cartão. Confirmar SFB na retirada e MCO na devolução."
       },
       {
         name: "<b>National</b>",
         rent: [1150, 1600],
         ins: 350, insNote: "LDW ~25/dia",
-        sun: [5, 15], sunNote: "só SFB→Orlando",
-        total: [1505, 1965],
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1600, 2090],
         rating: "<b>9,3</b>/10 <span class=\"muted\">Kayak</span>",
         counter: "Quase (Emerald Aisle)",
         note: "~10–20% acima do Alamo; processo rápido."
@@ -974,8 +975,8 @@
         name: "<b>Enterprise</b>",
         rent: [1000, 1500],
         ins: 350, insNote: "LDW ~25/dia",
-        sun: [5, 15], sunNote: "só SFB→Orlando",
-        total: [1355, 1865],
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1450, 1990],
         rating: "<b>8,4</b>/10 <span class=\"muted\">Kayak</span>",
         counter: "Parcial",
         note: "Mesmo pátio que Alamo em SFB."
@@ -984,8 +985,8 @@
         name: "<b>Hertz</b>",
         rent: [1100, 1550],
         ins: 350, insNote: "LDW ~25/dia",
-        sun: [5, 15], sunNote: "só SFB→Orlando",
-        total: [1455, 1915],
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1550, 2040],
         rating: "<b>7,6</b>/10 <span class=\"muted\">Kayak</span>",
         counter: "Membro Gold",
         note: "Reputação mediana em SFB."
@@ -994,8 +995,8 @@
         name: "<b>Budget / Dollar / Thrifty</b>",
         rent: [950, 1400],
         ins: 350, insNote: "LDW ~25/dia",
-        sun: [5, 15], sunNote: "só SFB→Orlando",
-        total: [1395, 1965],
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1400, 1890],
         rating: "<b>6,5–6,9</b>/10 <span class=\"muted\">Kayak</span>",
         counter: "Quase sempre balcão",
         note: "Mais barato no diária; avaliações abaixo das grandes em SFB."
@@ -1004,8 +1005,8 @@
         name: "<b>Turo</b> (Pacifica / Odyssey)",
         rent: [900, 1400],
         ins: [200, 420], insNote: "proteção ~15–30/dia",
-        sun: [5, 15], sunNote: "só SFB→Orlando",
-        total: [1105, 1835],
+        sun: [50, 90], sunNote: "pedágios no uso",
+        total: [1150, 1910],
         rating: "★4,9 app <span class=\"muted\">(varia por anunciante)</span>",
         counter: "Sim (se “sem contato”)",
         note: "Devolução em <b>SFB</b> — one-way MCO em geral não existe."
