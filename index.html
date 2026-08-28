@@ -863,7 +863,7 @@
   </div>
   <script>
     // Link da planilha de gastos (Google Sheets)
-    const PLANILHA_GASTOS = "https://docs.google.com/spreadsheets/d/1G9P6l-I-jjznFVsamtFwvVPok2BZMQNX/edit?usp=sharing";
+    const PLANILHA_GASTOS = "";
 
     (function initTabs() {
       var nav = document.getElementById("mainNav");
@@ -905,7 +905,7 @@
         a.title = "Configure PLANILHA_GASTOS no index.html com o link do Google Sheets";
         a.addEventListener("click", function (e) {
           e.preventDefault();
-          alert("Ainda falta o link da planilha.\n\n1) Envie gastos-compartilhados.xlsx ao Google Drive\n2) Abra com Planilhas Google e compartilhe\n3) Cole o link em PLANILHA_GASTOS no index.html (ou me envie o link)");
+          alert("Link da planilha não configurado. Cole o link do Google Sheets em PLANILHA_GASTOS no index.html (não commitar se o repo é público).");
         });
       }
     })();
