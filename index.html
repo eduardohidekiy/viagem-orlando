@@ -265,9 +265,9 @@
       <button type="button" class="active" data-tab="orcamento">Orçamento</button>
       <button type="button" data-tab="cronograma">Cronograma</button>
       <button type="button" data-tab="roteiros">Roteiro Parques</button>
-      <button type="button" data-tab="hospedagem">Hospedagem</button>
       <button type="button" data-tab="compras">Roteiro Dias Livres</button>
-      <button type="button" data-tab="carro">Carro</button>
+      <button type="button" data-tab="hospedagem">Hospedagem</button>
+      <button type="button" data-tab="carro">Aluguel de Carro</button>
       <button type="button" data-tab="voos">Voos volta</button>
       <button type="button" data-tab="reservas">Reservas</button>
     </nav>
@@ -1053,17 +1053,15 @@
       ·
       <a href="https://www.google.com/travel/flights?q=flights%20from%20MCO%20to%20GRU%20on%202026-11-24%20one%20way" target="_blank" rel="noopener">Google Flights Orlando</a>
     </p>
-    <div class="scroll">
-      <table>
+    <div class="money-wrap">
+      <table class="money">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Origem</th>
-            <th>Companhia</th>
-            <th>Partida → Chegada</th>
-            <th>Duração</th>
-            <th>Parada</th>
-            <th>Tarifa</th>
+            <th>Voo</th>
+            <th class="num">Horário</th>
+            <th class="num">Duração</th>
+            <th class="num">Parada</th>
+            <th class="num">Tarifa</th>
             <th class="num">Preço</th>
           </tr>
         </thead>
@@ -1369,14 +1367,12 @@
       if (flightsEl) {
         flightsEl.innerHTML = FLIGHTS.map(function (f, i) {
           return "<tr>" +
-            "<td>" + (i + 1) + "</td>" +
-            "<td><b>" + f.origin + "</b></td>" +
-            "<td>" + f.airline + "</td>" +
-            "<td>" + f.dep + " → " + f.arr + "</td>" +
-            "<td>" + f.dur + "</td>" +
-            "<td>" + f.stop + "</td>" +
-            "<td>" + f.fare + " <span class=\"muted\">(" + f.bag + ")</span></td>" +
-            "<td class=\"num\">" + fmt(f.usd) + "</td>" +
+            "<td><b>#" + (i + 1) + " · " + f.origin + "</b> · " + f.airline + "</td>" +
+            "<td class='num' data-l='Horário'>" + f.dep + " → " + f.arr + "</td>" +
+            "<td class='num' data-l='Duração'>" + f.dur + "</td>" +
+            "<td class='num' data-l='Parada'>" + f.stop + "</td>" +
+            "<td class='num' data-l='Tarifa'>" + f.fare + " <span class=\"muted\">(" + f.bag + ")</span></td>" +
+            "<td class='num em' data-l='Preço'>" + fmt(f.usd) + "</td>" +
             "</tr>";
         }).join("");
       }
