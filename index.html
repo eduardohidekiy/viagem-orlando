@@ -21,6 +21,19 @@
     button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
     a.btn.accent { background:var(--accent); color:#fff; border-color:var(--accent); }
     a.btn.disabled { opacity:.45; pointer-events:none; }
+    .nav-tabs {
+      display:flex; gap:6px; flex-wrap:wrap;
+      margin:0 0 20px; padding-bottom:12px;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-tabs button {
+      border-radius:8px;
+      padding:8px 14px;
+      font-size:.88rem;
+    }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+    .tab-panel > h2:first-child { margin-top:8px; }
     .stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
     .stat { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
     .stat b { display:block; font-size:1.15rem; }
@@ -151,9 +164,18 @@
         line-height:1.4;
         white-space:normal;
       }
+      .nav-tabs {
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        padding-bottom:10px;
+        margin-bottom:16px;
+      }
+      .nav-tabs button { flex:0 0 auto; white-space:nowrap; }
     }
     @media print {
       .toolbar, .noprint { display:none !important; }
+      .tab-panel { display:block !important; }
       body { background:#fff; }
       .wrap { padding:0; }
       h2, h3 { page-break-after:avoid; }
@@ -229,6 +251,17 @@
       <button type="button" onclick="window.print()">Salvar PDF</button>
     </div>
 
+    <nav class="nav-tabs noprint" id="mainNav" aria-label="Seções do plano">
+      <button type="button" class="active" data-tab="orcamento">Orçamento</button>
+      <button type="button" data-tab="cronograma">Cronograma</button>
+      <button type="button" data-tab="roteiros">Roteiros</button>
+      <button type="button" data-tab="hospedagem">Hospedagem</button>
+      <button type="button" data-tab="compras">Compras</button>
+      <button type="button" data-tab="carro">Carro</button>
+      <button type="button" data-tab="reservas">Reservas</button>
+    </nav>
+
+    <section class="tab-panel active" id="tab-orcamento">
     <h2>Orçamento</h2>
     <div class="stats">
       <div class="stat"><b id="sFam">—</b><span>Família = 2 partes adultas + criança</span></div>
@@ -260,7 +293,9 @@
       </ul>
     </div>
     <p class="small"><b>Internet no celular:</b> chip virtual Nomad ou Airalo nos EUA, cerca de 20 GB por 30 dias (cerca de US$ 34) — mapa, aplicativo dos parques, WhatsApp. A criança usa a internet do celular do adulto. <b>Seguro de viagem:</b> cobertura médica nos EUA por cerca de 15 dias (faixa típica Allianz/Porto). <b>Seguro do carro:</b> proteção contra danos no balcão da locadora ou em empresa à parte (cerca de US$ 25 por dia × 14 dias); cartão brasileiro muitas vezes <i>não</i> cobre aluguel nos EUA — confirmar antes de abrir mão.</p>
+    </section>
 
+    <section class="tab-panel" id="tab-cronograma">
     <h2>Cronograma conjunto</h2>
     <p class="muted">Disney: 4 dias entre <b>13 e 19/11</b> (começando no dia 13). Universal: ingresso que permite trocar de parque, válido por <b>14 dias</b> a partir de <b>12/11</b>. Magic Kingdom no dia <b>18</b> (sem festa de Natal → dá para ver os fogos do parque). Folga no dia 17 depois do Epic. Lotações baseadas em sites de previsão (projeções de 2026 — mudam perto da viagem).</p>
     <div class="schedule-wrap">
@@ -375,7 +410,9 @@
         </tbody>
       </table>
     </div>
+    </section>
 
+    <section class="tab-panel" id="tab-roteiros">
     <h2>Roteiro dentro de cada parque</h2>
     <p class="muted">Ordem, almoço e dicas dos “Roteiros Perfeitos” do <a href="https://orlandodiferente.com.br/">Orlando Diferente</a> (Fê Batista). Seguir nessa sequência. Caixas amarelas = o que fazer <b>antes</b> (aplicativo, fila virtual, fila rápida paga e reservas).</p>
     <p class="small">Criança com cerca de 110–122 cm: onde a altura impedir, um adulto fica com ela e o resto segue até a próxima atração sem limite (ou o almoço). Estacionamento do parque: cerca de US$ 30.</p>
@@ -617,7 +654,9 @@
       <li>Stanley Falls Flume</li>
     </ol>
     <p class="small">Lory Landing cerca de US$ 5. Se o grupo não curtir montanha-russa: zoológico + Sesame.</p>
+    </section>
 
+    <section class="tab-panel" id="tab-hospedagem">
     <h2>Hospedagem com cozinha</h2>
     <p>Faixa de Airbnb/Vrbo em Kissimmee cerca de R$ 8–12 mil pelas 14 noites (10 a 24/11), 3 quartos, cozinha, para 5 pessoas. Totais abaixo em dólar (câmbio R$ 5,15). Dividido em 4 partes adultas. No orçamento está a opção do meio (cerca de R$ 10 mil).</p>
     <p class="small">
@@ -644,7 +683,9 @@
     </div>
     <p class="small">Conferir no anúncio o que entra (limpeza, imposto, taxa). Check-in costuma ser 16h; o voo chega 11h — pedir early check-in. Se achar a casa certa, manda o link que eu encaixo o valor exato no orçamento.</p>
     <p>No sábado 14: dirigir até o hotel Art of Animation, pedir acesso ao saguão e caminhar o pátio dos Carros (Radiator Springs). Almoço no Landscape of Flavors se quiserem; depois cerca de 10 min até o <b>shopping de desconto Vineland</b> (marcas de luxo — ver seção de compras). Alternativa: ônibus gratuito do Disney Springs + teleférico Skyliner até o Art of Animation.</p>
+    </section>
 
+    <section class="tab-panel" id="tab-compras">
     <h2>Compras — shoppings de desconto, liquidação e Walmart</h2>
     <p class="muted">Resumo do <a href="https://orlandodiferente.com.br/" target="_blank" rel="noopener">Orlando Diferente</a> (Fê Batista) nos dias livres: <b>14/11 Vineland</b>, <b>21/11 shopping da International Drive + lojas de liquidação ao lado</b>. Reserve meio dia para cada lugar; pegue cupons no aplicativo Simon+ ou no clube de descontos do shopping; de manhã em dia de semana costuma ser melhor.</p>
 
@@ -703,7 +744,9 @@
       <a href="https://orlandodiferente.com.br/qual-o-melhor-walmart-de-orlando/" target="_blank" rel="noopener">Melhores Walmart</a> ·
       <a href="https://orlandodiferente.com.br/o-que-comprar-no-walmart/" target="_blank" rel="noopener">O que comprar no Walmart</a>.
     </p>
+    </section>
 
+    <section class="tab-panel" id="tab-carro">
     <h2>Carro — 5 pessoas + 4 malas de 24 kg + de mão</h2>
     <p><b>Retirada:</b> aeroporto de Sanford (SFB), <b>10/11/2026 às 11:00</b>. <b>Devolução:</b> aeroporto internacional de Orlando (MCO), <b>24/11/2026 às 10:00</b> (ajustar ao horário do voo). One-way entre aeroportos (~40 km) — taxa pode aparecer na cotação ou embutida na diária. Totais do orçamento: minivan com taxas de aeroporto, <b>sem</b> seguro extra da locadora (LDW). Dividido em 4 partes adultas. SUV compacto (RAV4, CR-V, Tucson) não cabe.</p>
     <p class="small">
@@ -734,78 +777,7 @@
             <th>Observação</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td><b>Alamo</b> (Pacifica / Odyssey)</td>
-            <td>US$ 1.050–1.450</td>
-            <td>~US$ 350 <span class="muted">(LDW ~25/dia)</span></td>
-            <td>~US$ 100–140 <span class="muted">(plano ~7–10/dia)</span></td>
-            <td>~US$ 1.500–1.930</td>
-            <td><b>9,3</b>/10 <span class="muted">Kayak</span></td>
-            <td>Quase (Skip Counter)</td>
-            <td>Melhor custo-benefício em SFB. One-way SFB→MCO permitido.</td>
-          </tr>
-          <tr>
-            <td><b>Florida Rental Car</b></td>
-            <td>US$ 1.020–1.300</td>
-            <td>incluso</td>
-            <td>incluso</td>
-            <td>~US$ 1.020–1.300</td>
-            <td>★4,8 Google <span class="muted">(4,7k)</span> · Reclame AQUI baixo</td>
-            <td>Sim (estacionamento)</td>
-            <td>Brasileira; confirmar devolução MCO e minivan 7 lugares.</td>
-          </tr>
-          <tr>
-            <td><b>National</b></td>
-            <td>US$ 1.150–1.600</td>
-            <td>~US$ 350 <span class="muted">(LDW ~25/dia)</span></td>
-            <td>~US$ 100–140 <span class="muted">(plano ~7–10/dia)</span></td>
-            <td>~US$ 1.600–2.090</td>
-            <td><b>9,3</b>/10 <span class="muted">Kayak</span></td>
-            <td>Quase (Emerald Aisle)</td>
-            <td>~10–20% acima do Alamo; processo rápido.</td>
-          </tr>
-          <tr>
-            <td><b>Enterprise</b></td>
-            <td>US$ 1.000–1.500</td>
-            <td>~US$ 350 <span class="muted">(LDW ~25/dia)</span></td>
-            <td>~US$ 100–140 <span class="muted">(plano ~7–10/dia)</span></td>
-            <td>~US$ 1.450–1.990</td>
-            <td><b>8,4</b>/10 <span class="muted">Kayak</span></td>
-            <td>Parcial</td>
-            <td>Mesmo pátio que Alamo em SFB.</td>
-          </tr>
-          <tr>
-            <td><b>Hertz</b></td>
-            <td>US$ 1.100–1.550</td>
-            <td>~US$ 350 <span class="muted">(LDW ~25/dia)</span></td>
-            <td>~US$ 100–140 <span class="muted">(plano ~7–10/dia)</span></td>
-            <td>~US$ 1.550–2.040</td>
-            <td><b>7,6</b>/10 <span class="muted">Kayak</span></td>
-            <td>Membro Gold</td>
-            <td>Reputação mediana em SFB.</td>
-          </tr>
-          <tr>
-            <td><b>Budget / Dollar / Thrifty</b></td>
-            <td>US$ 950–1.400</td>
-            <td>~US$ 350 <span class="muted">(LDW ~25/dia)</span></td>
-            <td>~US$ 100–140 <span class="muted">(plano ~7–10/dia)</span></td>
-            <td>~US$ 1.400–1.890</td>
-            <td><b>6,5–6,9</b>/10 <span class="muted">Kayak</span></td>
-            <td>Quase sempre balcão</td>
-            <td>Mais barato no diária; avaliações abaixo das grandes em SFB.</td>
-          </tr>
-          <tr>
-            <td><b>Turo</b> (Pacifica / Odyssey)</td>
-            <td>US$ 900–1.400</td>
-            <td>~US$ 200–420 <span class="muted">(proteção ~15–30/dia)</span></td>
-            <td>~US$ 50–90 <span class="muted">(pedágios no uso)</span></td>
-            <td>~US$ 1.150–1.910</td>
-            <td>★4,9 app <span class="muted">(varia por anunciante)</span></td>
-            <td>Sim (se “sem contato”)</td>
-            <td>Devolução em <b>SFB</b> — one-way MCO em geral não existe.</td>
-          </tr>
-        </tbody>
+        <tbody id="rentersBody"></tbody>
       </table>
     </div>
     <p class="small">Cotações de referência para minivan 7 lugares, nov/2026, SFB 10/11 11h → MCO 24/11 10h. <b>Avaliações:</b> notas Kayak (escala 0–10) para locadoras no aeroporto de Sanford; Florida Rental Car = Google; Turo = app (experiência varia por anunciante). <b>Seguro:</b> LDW/CDW da locadora (~US$ 25/dia) ou proteção Turo — cartão brasileiro em geral <i>não</i> cobre. <b>SunPass:</b> plano diário ilimitado da locadora (~US$ 7–10/dia) ou pedágios avulsos (SR-417, I-4). Confirmar totais na reserva. Orçamento do site: <b>US$ 1.650</b> aluguel one-way + <b>US$ 350</b> seguro na linha do orçamento (SunPass está na linha gasolina/pedágio).</p>
@@ -834,7 +806,9 @@
       </ul>
     </div>
     <p class="small">Reservar a <b>categoria</b> (minivan / SUV 7 lugares / SUV grande), não o modelo exato. CNH brasileira vale; cartão de crédito internacional no nome de quem dirige. Seguro contra danos do carro: Florida Rental Car já inclui na reserva; se for Alamo/Enterprise, incluir no orçamento (cerca de US$ 25 por dia) ou confirmar cobertura do cartão — a maioria dos cartões brasileiros <i>não</i> cobre aluguel nos EUA.</p>
+    </section>
 
+    <section class="tab-panel" id="tab-reservas">
     <h2>O que reservar, nesta ordem</h2>
     <ol>
       <li>Casa 3 quartos em Kissimmee (Airbnb/Vrbo cerca de R$ 10 mil).</li>
@@ -847,10 +821,38 @@
       <li>Fila rápida Disney só de Hollywood Studios, Magic Kingdom e Epic, mais perto da viagem.</li>
     </ol>
     <p class="small">Fontes: Disney Tourist Blog (nov/2026), TouringPlans / Undercover Tourist, Universal Orlando 2026, SeaWorld/Busch Gardens, Orlando Diferente (compras e Walmart), Kayak / locadoras SFB→MCO. Plano atualizado 28/08/2026.</p>
+    </section>
   </div>
   <script>
     // Link da planilha de gastos (Google Sheets)
     const PLANILHA_GASTOS = "https://docs.google.com/spreadsheets/d/1G9P6l-I-jjznFVsamtFwvVPok2BZMQNX/edit?usp=sharing";
+
+    (function initTabs() {
+      var nav = document.getElementById("mainNav");
+      if (!nav) return;
+      var tabs = ["orcamento", "cronograma", "roteiros", "hospedagem", "compras", "carro", "reservas"];
+      function showTab(id, updateHash) {
+        if (tabs.indexOf(id) < 0) id = "orcamento";
+        tabs.forEach(function (t) {
+          var panel = document.getElementById("tab-" + t);
+          var btn = nav.querySelector("[data-tab=\"" + t + "\"]");
+          if (panel) panel.classList.toggle("active", t === id);
+          if (btn) btn.classList.toggle("active", t === id);
+        });
+        if (updateHash && history.replaceState) history.replaceState(null, "", "#" + id);
+      }
+      nav.addEventListener("click", function (e) {
+        var btn = e.target.closest("button[data-tab]");
+        if (!btn) return;
+        showTab(btn.getAttribute("data-tab"), true);
+      });
+      window.addEventListener("hashchange", function () {
+        var h = (location.hash || "").replace(/^#/, "");
+        if (tabs.indexOf(h) >= 0) showTab(h, false);
+      });
+      var hash = (location.hash || "").replace(/^#/, "");
+      showTab(tabs.indexOf(hash) >= 0 ? hash : "orcamento", false);
+    })();
 
     (function initPlanilhaLink() {
       var a = document.getElementById("btnPlanilha");
@@ -924,13 +926,101 @@
       ["2. Chrysler Pacifica / Honda Odyssey / Toyota Sienna (minivan one-way SFB→MCO — no orçamento)", 1650],
       ["3. Chevrolet Tahoe / Ford Expedition (SUV grande, sobra espaço — SFB↔SFB)", 1950]
     ];
+    const RENTERS = [
+      {
+        name: "<b>Alamo</b> (Pacifica / Odyssey)",
+        rent: [1050, 1450],
+        ins: 350, insNote: "LDW ~25/dia",
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1500, 1930],
+        rating: "<b>9,3</b>/10 <span class=\"muted\">Kayak</span>",
+        counter: "Quase (Skip Counter)",
+        note: "Melhor custo-benefício em SFB. One-way SFB→MCO permitido."
+      },
+      {
+        name: "<b>Florida Rental Car</b>",
+        rent: [1020, 1300],
+        ins: "incluso",
+        sun: "incluso",
+        total: [1020, 1300],
+        rating: "★4,8 Google <span class=\"muted\">(4,7k)</span> · Reclame AQUI baixo",
+        counter: "Sim (estacionamento)",
+        note: "Brasileira; confirmar devolução MCO e minivan 7 lugares."
+      },
+      {
+        name: "<b>National</b>",
+        rent: [1150, 1600],
+        ins: 350, insNote: "LDW ~25/dia",
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1600, 2090],
+        rating: "<b>9,3</b>/10 <span class=\"muted\">Kayak</span>",
+        counter: "Quase (Emerald Aisle)",
+        note: "~10–20% acima do Alamo; processo rápido."
+      },
+      {
+        name: "<b>Enterprise</b>",
+        rent: [1000, 1500],
+        ins: 350, insNote: "LDW ~25/dia",
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1450, 1990],
+        rating: "<b>8,4</b>/10 <span class=\"muted\">Kayak</span>",
+        counter: "Parcial",
+        note: "Mesmo pátio que Alamo em SFB."
+      },
+      {
+        name: "<b>Hertz</b>",
+        rent: [1100, 1550],
+        ins: 350, insNote: "LDW ~25/dia",
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1550, 2040],
+        rating: "<b>7,6</b>/10 <span class=\"muted\">Kayak</span>",
+        counter: "Membro Gold",
+        note: "Reputação mediana em SFB."
+      },
+      {
+        name: "<b>Budget / Dollar / Thrifty</b>",
+        rent: [950, 1400],
+        ins: 350, insNote: "LDW ~25/dia",
+        sun: [100, 140], sunNote: "plano ~7–10/dia",
+        total: [1400, 1890],
+        rating: "<b>6,5–6,9</b>/10 <span class=\"muted\">Kayak</span>",
+        counter: "Quase sempre balcão",
+        note: "Mais barato no diária; avaliações abaixo das grandes em SFB."
+      },
+      {
+        name: "<b>Turo</b> (Pacifica / Odyssey)",
+        rent: [900, 1400],
+        ins: [200, 420], insNote: "proteção ~15–30/dia",
+        sun: [50, 90], sunNote: "pedágios no uso",
+        total: [1150, 1910],
+        rating: "★4,9 app <span class=\"muted\">(varia por anunciante)</span>",
+        counter: "Sim (se “sem contato”)",
+        note: "Devolução em <b>SFB</b> — one-way MCO em geral não existe."
+      }
+    ];
     let cur = "USD";
 
+    function fmtNum(n) {
+      return Math.round(n).toLocaleString("pt-BR");
+    }
     function fmt(n) {
       if (n === 0) return "—";
       return cur === "BRL"
-        ? "R$ " + Math.round(n * FX).toLocaleString("pt-BR")
-        : "US$ " + Math.round(n).toLocaleString("pt-BR");
+        ? "R$ " + fmtNum(n * FX)
+        : "US$ " + fmtNum(n);
+    }
+    function fmtRange(lo, hi) {
+      if (cur === "BRL") {
+        return "R$ " + fmtNum(lo * FX) + "–" + fmtNum(hi * FX);
+      }
+      return "US$ " + fmtNum(lo) + "–" + fmtNum(hi);
+    }
+    function fmtExtra(val, note) {
+      if (val === "incluso") return "incluso";
+      var text;
+      if (Array.isArray(val)) text = "~" + fmtRange(val[0], val[1]);
+      else text = "~" + fmt(val);
+      return note ? text + " <span class=\"muted\">(" + note + ")</span>" : text;
     }
     function fam(a, c) { return 2 * a + c; }
     function cas(a) { return 2 * a; }
@@ -981,6 +1071,21 @@
 
       document.getElementById("housesBody").innerHTML = HOUSES.map(function (h) { return shareRow(h[0], h[1]); }).join("");
       document.getElementById("carsBody").innerHTML = CARS.map(function (h) { return shareRow(h[0], h[1]); }).join("");
+      var rentersEl = document.getElementById("rentersBody");
+      if (rentersEl) {
+        rentersEl.innerHTML = RENTERS.map(function (r) {
+          return "<tr>" +
+            "<td>" + r.name + "</td>" +
+            "<td>" + fmtRange(r.rent[0], r.rent[1]) + "</td>" +
+            "<td>" + fmtExtra(r.ins, r.insNote) + "</td>" +
+            "<td>" + fmtExtra(r.sun, r.sunNote) + "</td>" +
+            "<td>~" + fmtRange(r.total[0], r.total[1]) + "</td>" +
+            "<td>" + r.rating + "</td>" +
+            "<td>" + r.counter + "</td>" +
+            "<td>" + r.note + "</td>" +
+            "</tr>";
+        }).join("");
+      }
     }
     function setCur(v) { cur = v; render(); }
     render();
