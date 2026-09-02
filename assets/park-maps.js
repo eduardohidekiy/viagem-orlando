@@ -1,4 +1,4 @@
-/* Mapas oficiais (sem pins). Números e cores das regiões ficam no roteiro (index.html). */
+/* Mapas oficiais (sem pins). Clique abre lightbox. Números/cores no roteiro (index.html). */
 var PARK_MAPS = {
   seaworld: {
     title: "SeaWorld Orlando",
@@ -47,13 +47,50 @@ var PARK_MAPS = {
   }
 };
 
+var parkMapLightbox;
+
+function ensureParkMapLightbox() {
+  if (parkMapLightbox) return parkMapLightbox;
+  parkMapLightbox = document.createElement("dialog");
+  parkMapLightbox.className = "park-map-lightbox noprint";
+  parkMapLightbox.setAttribute("aria-label", "Mapa ampliado");
+  parkMapLightbox.innerHTML =
+    "<button type=\"button\" class=\"park-map-lightbox-close\" aria-label=\"Fechar\">×</button>" +
+    "<div class=\"park-map-lightbox-inner\">" +
+    "<p class=\"park-map-lightbox-title\"></p>" +
+    "<div class=\"park-map-lightbox-scroll\"><img src=\"\" alt=\"\"></div>" +
+    "</div>";
+  document.body.appendChild(parkMapLightbox);
+  parkMapLightbox.querySelector(".park-map-lightbox-close").addEventListener("click", function () {
+    parkMapLightbox.close();
+  });
+  parkMapLightbox.addEventListener("click", function (e) {
+    if (e.target === parkMapLightbox) parkMapLightbox.close();
+  });
+  return parkMapLightbox;
+}
+
+function openParkMapLightbox(cfg) {
+  var dlg = ensureParkMapLightbox();
+  dlg.querySelector(".park-map-lightbox-title").textContent = cfg.title;
+  var img = dlg.querySelector(".park-map-lightbox-scroll img");
+  img.src = cfg.img;
+  img.alt = "Mapa " + cfg.title;
+  if (typeof dlg.showModal === "function") dlg.showModal();
+}
+
 function renderParkLayout(parkId) {
   var cfg = PARK_MAPS[parkId];
   var inner = document.querySelector("#roterio-" + parkId + " .park-layout-inner");
   if (!inner || !cfg || inner.dataset.rendered === "1") return;
   inner.innerHTML =
-    "<div class=\"park-map-photo\"><img src=\"" + cfg.img + "\" alt=\"Mapa " + cfg.title + "\" loading=\"lazy\"></div>" +
+    "<button type=\"button\" class=\"park-map-photo\" aria-label=\"Ampliar mapa " + cfg.title + "\">" +
+    "<img src=\"" + cfg.img + "\" alt=\"Mapa " + cfg.title + "\" loading=\"lazy\">" +
+    "<span class=\"park-map-zoom-hint\">Ampliar</span></button>" +
     "<p class=\"park-map-credit small\">" + cfg.credit + "</p>";
+  inner.querySelector(".park-map-photo").addEventListener("click", function () {
+    openParkMapLightbox(cfg);
+  });
   inner.dataset.rendered = "1";
 }
 
