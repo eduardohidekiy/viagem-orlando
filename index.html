@@ -58,6 +58,7 @@
     }
     .day-log b { color:var(--accent); }
     .day-log .warn { color:#7a5b00; font-weight:600; }
+    .warn { color:#7a5b00; font-weight:600; }
     ol.timed { padding-left:0; list-style:none; }
     ol.timed > li { padding-left:0; margin-bottom:6px; }
     .time { display:inline-block; min-width:52px; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums; }
@@ -733,15 +734,8 @@
 
     <section class="tab-panel" id="tab-hospedagem">
     <h2>Hospedagem com cozinha</h2>
-    <p>Faixa de Airbnb/Vrbo em Kissimmee cerca de R$ 8–12 mil pelas 14 noites (10 a 24/11), 3 quartos, cozinha, para 5 pessoas. Totais abaixo em dólar (câmbio R$ 5,15). Dividido em 4 partes adultas. No orçamento está a opção do meio (cerca de R$ 10 mil).</p>
-    <p class="small">
-      Buscar (datas 10–24/11, 3+ quartos, 5 hóspedes):
-      <a href="https://www.airbnb.com/s/Kissimmee--FL--United-States/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=3" target="_blank" rel="noopener">Airbnb Kissimmee</a>
-      ·
-      <a href="https://www.vrbo.com/search?destination=Kissimmee%2C%20Florida%2C%20United%20States%20of%20America&amp;startDate=2026-11-10&amp;endDate=2026-11-24&amp;adults=4&amp;children=1&amp;minBedrooms=3" target="_blank" rel="noopener">Vrbo Kissimmee</a>
-      ·
-      <a href="https://www.google.com/travel/hotels/Kissimmee?q=Kissimmee%20vacation%20rental%203%20bedroom&amp;dates=2026-11-10_2026-11-24" target="_blank" rel="noopener">Google Hotels</a>
-    </p>
+    <p>Base recomendada para <b>menos deslocamento</b> no roteiro (Disney + Universal + dias livres). Filtro desta lista: <b>até R$ 13.000</b> (14 noites, impostos inclusos quando cotado), <b>mín. 2 quartos e 2 banheiros</b>, <b>cozinha</b>, <b>sem resort fee diária</b> no checkout (conferir sempre antes de pagar).</p>
+    <p class="small muted">Cotações Airbnb em <b>28/08/2026</b> (10–24/11 · 4 adultos + 1 criança). Valores estimados (~) precisam confirmação no anúncio. Para 5 pessoas, preferir <b>3 quartos</b>.</p>
     <div class="money-wrap">
       <table class="money">
         <thead>
@@ -756,113 +750,220 @@
         <tbody id="housesBody"></tbody>
       </table>
     </div>
-    <h3>Opções pesquisadas (10–24/11 · 4 adultos + 1 criança · 3 quartos)</h3>
-    <p class="small muted">Cotações Airbnb em 28/08/2026 (total 14 noites, impostos inclusos). Valores podem mudar; conferir no anúncio limpeza e taxas extras.</p>
-    <div class="scroll">
+    <h3>Opções por região (4 por área)</h3>
+    <div class="money-wrap">
       <table class="money">
         <thead>
           <tr>
             <th>Imóvel</th>
-            <th>Região</th>
+            <th class="num">Quartos</th>
             <th>Destaque</th>
             <th class="num">Total 14 noites</th>
             <th>Link</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="opt"><td colspan="5"><b>Melhor custo-benefício (Kissimmee geral)</b></td></tr>
-          <tr>
-            <td>Cozy 3bd home 15 min from Disney</td>
-            <td>Kissimmee</td>
-            <td>Casa 3 quartos · 15 min Disney</td>
-            <td class="num">R$ 8.667<br><span class="small">US$ 1.683</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1007584062270178126?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>192 &amp; Formosa · Private Soft Pool</td>
-            <td>Kissimmee (192)</td>
-            <td>Casa em condomínio · piscina privada · 14 min Disney</td>
-            <td class="num">R$ 8.945<br><span class="small">US$ 1.737</span></td>
-            <td><a href="https://www.airbnb.com/rooms/46282584?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>8976SV · 3BD/2BT Cozy Townhome</td>
-            <td>Kissimmee</td>
-            <td>Casa em condomínio · perto Disney</td>
-            <td class="num">R$ 9.418<br><span class="small">US$ 1.829</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1142881091178054825?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>Legacy Dunes · Heated Pool</td>
-            <td>Kissimmee</td>
-            <td>Apartamento · piscina aquecida · condomínio fechado</td>
-            <td class="num">R$ 9.086<br><span class="small">US$ 1.764</span></td>
-            <td><a href="https://www.airbnb.com/rooms/586809227922739023?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr class="opt"><td colspan="5"><b>Windsor Hills — perto da Disney (10 min)</b></td></tr>
+          <tr class="opt"><td colspan="5"><b>1 · Windsor Hills</b> — Disney 10–15 min · parque aquático do resort</td></tr>
           <tr>
             <td>Create Magic Moments · Waterpark</td>
-            <td>Windsor Hills</td>
-            <td>Apartamento 3 quartos · parque aquático do resort incluído</td>
-            <td class="num">R$ 10.060<br><span class="small">US$ 1.953</span></td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Condo · clube com slides · sem resort fee no Airbnb</td>
+            <td class="num em" data-l="Total">R$ 10.060<br><span class="small">US$ 1.953</span></td>
             <td><a href="https://www.airbnb.com/rooms/1644228844173499266?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
           </tr>
           <tr>
             <td>Condo close to Disney at Windsor Hills</td>
-            <td>Windsor Hills</td>
-            <td>Apartamento 3 quartos · resort com cinema e slides</td>
-            <td class="num">R$ 10.640<br><span class="small">US$ 2.066</span></td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Condo · cinema e slides no resort</td>
+            <td class="num em" data-l="Total">R$ 10.640<br><span class="small">US$ 2.066</span></td>
             <td><a href="https://www.airbnb.com/rooms/630316750356726228?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
           </tr>
           <tr>
-            <td>Renovated Townhome · Private Pool</td>
-            <td>Windsor Hills</td>
-            <td>Casa 3 quartos / 3 banheiros · piscina privada · quartos temáticos</td>
-            <td class="num">R$ 11.841<br><span class="small">US$ 2.299</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1665461535535897343?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
             <td>304C Windsor Hills · 2 King 3BR</td>
-            <td>Windsor Hills</td>
-            <td>Apartamento 3 quartos · 2 camas king · mais perto da Disney</td>
-            <td class="num">R$ 11.445<br><span class="small">US$ 2.222</span></td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Condo · 2 camas king · perto do clube</td>
+            <td class="num em" data-l="Total">R$ 11.445<br><span class="small">US$ 2.222</span></td>
             <td><a href="https://www.airbnb.com/rooms/1670573511165048456?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
           </tr>
           <tr>
-            <td>Paradise Falls (Magication)</td>
-            <td>Windsor Hills</td>
-            <td>Casa 3 quartos · piscina aquecida · quarto Mickey · game zone</td>
-            <td class="num">sob consulta<br><span class="small">US$ 2.625*</span></td>
-            <td><a href="https://magication.net/paradise-falls/" target="_blank" rel="noopener">Site</a> · <a href="https://www.windsorhillsprivaterentals.com/property.php?propertyid=132" target="_blank" rel="noopener">Windsor Hills Rentals</a></td>
+            <td>Renovated Townhome · Private Pool</td>
+            <td class="num" data-l="Quartos">3BR / 3BA</td>
+            <td>Townhome · piscina privada · quartos temáticos</td>
+            <td class="num em" data-l="Total">R$ 11.841<br><span class="small">US$ 2.299</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1665461535535897343?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
           </tr>
-          <tr class="opt"><td colspan="5"><b>Storey Lake — parque aquático do resort (rio lento)</b></td></tr>
+
+          <tr class="opt"><td colspan="5"><b>2 · US-192 oeste / Formosa Gardens</b> — Disney 12–18 min · atalho Sherbeth/Osceola</td></tr>
+          <tr>
+            <td>Cozy 3bd home 15 min from Disney</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Casa · melhor preço da lista</td>
+            <td class="num em" data-l="Total">R$ 8.667<br><span class="small">US$ 1.683</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1007584062270178126?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>192 &amp; Formosa · Private Soft Pool</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Townhome Formosa · piscina privada</td>
+            <td class="num em" data-l="Total">R$ 8.945<br><span class="small">US$ 1.737</span></td>
+            <td><a href="https://www.airbnb.com/rooms/46282584?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>8976SV · 3BD/2BT Cozy Townhome</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Townhome · condomínio fechado</td>
+            <td class="num em" data-l="Total">R$ 9.418<br><span class="small">US$ 1.829</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1142881091178054825?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>577 Pool House w/ Grill near Disney</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Casa · piscina privada · game room na garagem</td>
+            <td class="num em" data-l="Total">~R$ 10.800<br><span class="small">cotar</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1749073749417723550?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+
+          <tr class="opt"><td colspan="5"><b>3 · Lake Buena Vista / Dr Phillips</b> — meio-termo Disney ↔ Universal · evitar hotel com resort fee</td></tr>
+          <tr>
+            <td>Orlando Oasis · Pool + Game Room</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Casa Dr Phillips · piscina · perto Universal/Epic</td>
+            <td class="num em" data-l="Total">~R$ 11.500<br><span class="small">cotar</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1207926197713334093?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Family-Friendly 3BR Wyndham Bonnet Creek</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Condo dentro da Disney · anúncio cita <b>no resort fee</b></td>
+            <td class="num em" data-l="Total">~R$ 12.500<br><span class="small">cotar</span></td>
+            <td><a href="https://www.byowner.com/vacation-rentals-details/condo/family-friendly-3br-condo-at-wyndham-bonnet-creek-inside-disney-world-gates-3830972" target="_blank" rel="noopener">ByOwner</a></td>
+          </tr>
+          <tr>
+            <td>Deluxe 3BR/2BA Wyndham Bonnet Creek</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Timeshare de proprietário · cozinha completa · lazy river do resort</td>
+            <td class="num em" data-l="Total">~R$ 12.800<br><span class="small">cotar</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1113027958630123374?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>7 Mi to Disney · Dr Phillips pool home</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Casa avulsa · sem taxa de resort · ~5 mi Universal</td>
+            <td class="num em" data-l="Total">~R$ 11.000<br><span class="small">cotar</span></td>
+            <td><a href="https://floridarentalvacations.com/property/7-mi-to-disney-world-orlando-home-w-private-pool/BC-11346462" target="_blank" rel="noopener">Vrbo</a></td>
+          </tr>
+
+          <tr class="opt"><td colspan="5"><b>4 · Kissimmee sul / Celebration</b> — Celebration 5–10 min · Walmart Osceola · Old Town</td></tr>
+          <tr>
+            <td>Legacy Dunes · Heated Pool</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Condo · piscina aquecida · perto Celebration</td>
+            <td class="num em" data-l="Total">R$ 9.086<br><span class="small">US$ 1.764</span></td>
+            <td><a href="https://www.airbnb.com/rooms/586809227922739023?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>3BR Townhome by Disney · Westside 192</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Townhome · clube com piscina · anúncio cita <b>no resort fee</b></td>
+            <td class="num em" data-l="Total">~R$ 9.800<br><span class="small">cotar</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1749602195367452797?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Private Pool · Modern Lake Home</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Townhome Paradise Palms · piscina privada · cozinha completa</td>
+            <td class="num em" data-l="Total">~R$ 10.200<br><span class="small">cotar</span></td>
+            <td><a href="https://www.airbnb.com/rooms/41323860?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Disney 3BR · pool, hot tub &amp; game room</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Casa Formosa Gdns · atalho Osceola p/ Disney · ~5 mi parques</td>
+            <td class="num em" data-l="Total">~R$ 10.500<br><span class="small">cotar</span></td>
+            <td><a href="https://www.floridarentals.com/25649/" target="_blank" rel="noopener">Site</a></td>
+          </tr>
+
+          <tr class="opt"><td colspan="5"><b>5 · Storey Lake Resort</b> — Disney 10–15 min · rio lento e slides (ótimo p/ dias livres)</td></tr>
           <tr>
             <td>Mario &amp; Fairy 3BR · Free Water Park</td>
-            <td>Storey Lake</td>
-            <td>Apartamento 3 quartos · parque aquático · quarto temático (criança)</td>
-            <td class="num">R$ 11.517<br><span class="small">US$ 2.236</span></td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Quarto temático · Hideaway Club incluso · sem resort fee</td>
+            <td class="num em" data-l="Total">R$ 11.517<br><span class="small">US$ 2.236</span></td>
             <td><a href="https://www.airbnb.com/rooms/1577091068159211788?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
           </tr>
           <tr>
+            <td>3272 · 3BD/3BA Charming · Close to Parks</td>
+            <td class="num" data-l="Quartos">3BR / 3BA</td>
+            <td>Townhome Storey Lake · acesso ao clube</td>
+            <td class="num em" data-l="Total">~R$ 10.500<br><span class="small">cotar</span></td>
+            <td><a href="https://www.airbnb.com/rooms/1012585225805980184?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Cozy 3 BR Apartment · Near Disney</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Apartamento no resort · piscina do clube</td>
+            <td class="num em" data-l="Total">~R$ 9.500<br><span class="small">cotar</span></td>
+            <td><a href="https://www.airbnb.com/rooms/53509714?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
             <td>Perfect Family Stay · 3BR Storey Lake</td>
-            <td>Storey Lake</td>
-            <td>Apartamento 3 quartos · rio lento · 15 min Disney</td>
-            <td class="num">ver no site</td>
+            <td class="num" data-l="Quartos">3BR / 2BA</td>
+            <td>Townhome · rio lento · 15 min Disney</td>
+            <td class="num em" data-l="Total">~R$ 10.800<br><span class="small">cotar</span></td>
             <td><a href="https://www.vrbo.com/2857930?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Vrbo</a></td>
+          </tr>
+
+          <tr class="opt"><td colspan="5"><b>6 · Regal Oaks Resort</b> — Celebration/Old Town colados · Disney ~8 min · <span class="warn">ver nota abaixo</span></td></tr>
+          <tr>
+            <td>5710 · 3BR Private Hot Tub · Regal Oaks</td>
+            <td class="num" data-l="Quartos">3BR / 3BA</td>
+            <td>Townhome · jacuzzi privada · clube incluso no Airbnb</td>
+            <td class="num em" data-l="Total">~R$ 11.000<br><span class="small">cotar</span></td>
+            <td><a href="https://www.airbnb.com/rooms/51125173?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
+          </tr>
+          <tr>
+            <td>Regal Oaks 3BR · Resort Pool &amp; Slides</td>
+            <td class="num" data-l="Quartos">3BR / 2.5BA</td>
+            <td>Townhome · atrás de Old Town · clube incluso na Vrbo</td>
+            <td class="num em" data-l="Total">~R$ 10.500<br><span class="small">cotar</span></td>
+            <td><a href="https://www.vrbo.com/4113930?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Vrbo</a></td>
+          </tr>
+          <tr>
+            <td>Relaxing 3Bed 3Bath · own Jacuzzi</td>
+            <td class="num" data-l="Quartos">3BR / 3BA</td>
+            <td>Townhome · Old Town a 3 min · cozinha completa</td>
+            <td class="num em" data-l="Total">~R$ 11.200<br><span class="small">cotar</span></td>
+            <td><a href="https://www.vrbo.com/2140615?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Vrbo</a></td>
+          </tr>
+          <tr>
+            <td>Waterfront Gem · 3BR Regal Oaks</td>
+            <td class="num" data-l="Quartos">3BR / 2.5BA</td>
+            <td>Townhome · vista lago · hot tub privada</td>
+            <td class="num em" data-l="Total">~R$ 11.800<br><span class="small">cotar</span></td>
+            <td><a href="https://www.vrbo.com/3136177?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Vrbo</a></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="small">* Paradise Falls: site do anfitrião cita US$ 187/noite (US$ 2.625/14 noites + taxas). <b>Level Up Retreat</b> (Mario, Windsor Hills, piscina aquecida) estava indisponível nessas datas.</p>
+    <div class="note">
+      <b>Regal Oaks — resort fee</b>
+      <p>No site oficial do resort há taxa de ~US$ 27/noite. Os anúncios <b>Airbnb/Vrbo</b> acima costumam incluir o clube no total — mesmo assim, conferir se não aparece “resort fee” ou “community fee” no checkout. Se aparecer taxa diária, descartar.</p>
+    </div>
     <p class="small">
       Buscar mais:
-      <a href="https://www.airbnb.com/s/Windsor-Hills--Kissimmee--FL/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=3" target="_blank" rel="noopener">Airbnb Windsor Hills</a>
+      <a href="https://www.airbnb.com/s/Windsor-Hills--Kissimmee--FL/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=2" target="_blank" rel="noopener">Windsor Hills</a>
       ·
-      <a href="https://www.airbnb.com/s/Kissimmee--FL--United-States/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=3" target="_blank" rel="noopener">Airbnb Kissimmee</a>
+      <a href="https://www.airbnb.com/s/Formosa-Gardens--Kissimmee--FL/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=2" target="_blank" rel="noopener">Formosa</a>
       ·
-      <a href="https://www.vrbo.com/search?destination=Kissimmee%2C%20Florida%2C%20United%20States%20of%20America&amp;startDate=2026-11-10&amp;endDate=2026-11-24&amp;adults=4&amp;children=1&amp;minBedrooms=3" target="_blank" rel="noopener">Vrbo Kissimmee</a>
+      <a href="https://www.airbnb.com/s/Lake-Buena-Vista--FL/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=2" target="_blank" rel="noopener">Lake Buena Vista</a>
+      ·
+      <a href="https://www.airbnb.com/s/Celebration--FL/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=2" target="_blank" rel="noopener">Celebration</a>
+      ·
+      <a href="https://www.airbnb.com/s/Storey-Lake-Resort--Kissimmee--FL/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=2" target="_blank" rel="noopener">Storey Lake</a>
+      ·
+      <a href="https://www.airbnb.com/s/Regal-Oaks-Resort--Kissimmee/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=2" target="_blank" rel="noopener">Regal Oaks</a>
     </p>
-    <p class="small">Conferir no anúncio o que entra (limpeza, imposto, taxa). Check-in costuma ser 16h; o voo chega 11h — pedir early check-in. Se achar a casa certa, manda o link que eu encaixo o valor exato no orçamento.</p>
+    <p class="small">Conferir no anúncio: limpeza, imposto, taxa de resort/community. Check-in costuma ser 16h; voo chega 11h — pedir early check-in. Mande o link da escolha para encaixar no orçamento.</p>
     </section>
     <section class="tab-panel" id="tab-compras">
     <h2>Roteiro Dias Livres</h2>
