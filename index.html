@@ -36,6 +36,30 @@
     .tab-panel { display:none; }
     .tab-panel.active { display:block; }
     .tab-panel > h2:first-child { margin-top:8px; }
+    .roterio-tabs {
+      display:flex; gap:5px; flex-wrap:wrap;
+      margin:0 0 16px; padding:10px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .roterio-tabs button {
+      border-radius:999px;
+      padding:6px 11px;
+      font-size:.78rem;
+      white-space:nowrap;
+    }
+    .roterio-panel { display:none; }
+    .roterio-panel.active { display:block; }
+    #parksMap { height:min(380px, 58vw); min-height:260px; border-radius:8px; z-index:0; }
+    .map-dot.disney { background:#1f4e79; box-shadow:0 0 0 1px #1f4e79; }
+    .map-dot.universal { background:#6b21a8; box-shadow:0 0 0 1px #6b21a8; }
+    .map-dot.seaworld { background:#0891b2; box-shadow:0 0 0 1px #0891b2; }
+    .map-dot.busch { background:#dc2626; box-shadow:0 0 0 1px #dc2626; }
+    @media print {
+      .roterio-tabs { display:none !important; }
+      .roterio-panel { display:block !important; }
+      .roterio-panel > h3 { page-break-before:always; }
+      .roterio-panel > h3:first-child { page-break-before:avoid; }
+    }
     .stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
     .stat { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
     .stat b { display:block; font-size:1.15rem; }
@@ -473,6 +497,32 @@
     <p class="muted">Ordem, almoço e dicas dos “Roteiros Perfeitos” do <a href="https://orlandodiferente.com.br/">Orlando Diferente</a> (Fê Batista). Caixas azuis = horários do parque e chegada; listas = sequência hora a hora; amarelas = preparar antes. Horários são projeções nov/2026 — confirmar no app 1–2 dias antes.</p>
     <p class="small">Criança com cerca de 110–122 cm: onde a altura impedir, um adulto fica com ela e o resto segue até a próxima atração sem limite (ou o almoço). Estacionamento do parque: cerca de US$ 30.</p>
 
+    <div class="map-card noprint">
+      <h3>Mapa dos parques</h3>
+      <p class="small muted" style="margin-bottom:10px">Clique em um parque no mapa ou na aba abaixo. Busch Gardens fica em Tampa (~1h15 de Kissimmee).</p>
+      <div id="parksMap" role="img" aria-label="Mapa dos parques do roteiro na região de Orlando"></div>
+      <div class="map-legend">
+        <span><i class="map-dot disney"></i> Disney</span>
+        <span><i class="map-dot universal"></i> Universal</span>
+        <span><i class="map-dot seaworld"></i> SeaWorld</span>
+        <span><i class="map-dot busch"></i> Busch Gardens</span>
+      </div>
+    </div>
+
+    <nav class="roterio-tabs noprint" id="roterioNav" aria-label="Parques do roteiro">
+      <button type="button" class="active" data-roterio="geral">Geral</button>
+      <button type="button" data-roterio="seaworld">11 · SeaWorld</button>
+      <button type="button" data-roterio="uni-studios">12 · Universal Studios</button>
+      <button type="button" data-roterio="hollywood">13 · Hollywood Studios</button>
+      <button type="button" data-roterio="animal">15 · Animal Kingdom</button>
+      <button type="button" data-roterio="epic">16 · Epic Universe</button>
+      <button type="button" data-roterio="magic">18 · Magic Kingdom</button>
+      <button type="button" data-roterio="epcot">19 · EPCOT</button>
+      <button type="button" data-roterio="ioa">20 · Islands of Adventure</button>
+      <button type="button" data-roterio="busch">22 · Busch Gardens</button>
+    </nav>
+
+    <div class="roterio-panel active" id="roterio-geral">
     <div class="note">
       <b>Alertas importantes (manutenção nov/2026)</b>
       <ul>
@@ -522,7 +572,9 @@
         <li>Opcional pago: personalizar botão na <b>Ye Olde Christmas Shoppe</b> (Magic Kingdom).</li>
       </ul>
     </div>
+    </div>
 
+    <div class="roterio-panel" id="roterio-seaworld">
     <h3>11/11 · SeaWorld</h3>
     <div class="day-log">
       <p><b>Parque (qua 11/11):</b> abertura estimada <b>9h00</b> · fechamento <b>20h00–21h00</b> (Christmas Celebration já ativa desde 6/11 — noites mais longas). Confirmar em <a href="https://seaworld.com/orlando/park-info/theme-park-hours/" target="_blank" rel="noopener">seaworld.com</a> ou app SeaWorld.</p>
@@ -554,7 +606,9 @@
       <li><span class="time">17h30</span> Dolphin Adventures — horário no app</li>
       <li><span class="time">18h30</span> Manta (138 cm — adultos). Lanche: Panini Shore Café</li>
     </ol>
+    </div>
 
+    <div class="roterio-panel" id="roterio-uni-studios">
     <h3>12/11 · Universal Studios Florida</h3>
     <div class="day-log">
       <p><b>Parque (qui 12/11):</b> estimativa <b>9h00–19h00</b> . Sem Jollywood nesta noite (próximo: 14/11 no Studios).</p>
@@ -583,7 +637,9 @@
       <li><span class="time">17h00</span> Hollywood Rip Ride Rockit — confirmar se opera (130 cm)</li>
       <li><span class="time">17h30</span> Despicable Me Minion Mayhem (102 cm acompanhada)</li>
     </ol>
+    </div>
 
+    <div class="roterio-panel" id="roterio-hollywood">
     <h3>13/11 · Hollywood Studios</h3>
     <div class="day-log">
       <p><b>Parque (sex 13/11):</b> estimativa <b>9h00–21h00</b> (dia cheio; sem Jollywood — festa é 14/11). Entrada antecipada para quem fica em hotel Disney.</p>
@@ -614,7 +670,9 @@
       <li><span class="time">15h00</span> Beauty and the Beast Live on Stage (horário no app)</li>
       <li><span class="time">20h30</span> Fantasmic!</li>
     </ol>
+    </div>
 
+    <div class="roterio-panel" id="roterio-animal">
     <h3>15/11 · Animal Kingdom</h3>
     <div class="day-log">
       <p><b>Parque (dom 15/11):</b> estimativa <b>9h00–19h00</b> . Domingo = lotação média-alta.</p>
@@ -643,7 +701,9 @@
       <li><span class="time">15h30</span> It’s Tough to Be a Bug! (3D com sustos)</li>
       <li><span class="time">16h30</span> Gorilla Falls / Maharajah Jungle Trek · bioluminescência Pandora</li>
     </ol>
+    </div>
 
+    <div class="roterio-panel" id="roterio-epic">
     <h3>16/11 · Epic Universe</h3>
     <div class="day-log">
       <p><b>Parque (seg 16/11):</b> estimativa <b>10h00–22h00</b> (Epic costuma fechar mais tarde). Jollywood Nights no Studios é 16/11 à noite — vocês estão no Epic, sem conflito.</p>
@@ -669,7 +729,9 @@
       <li><span class="time">16h30</span> Dark Universe — Monsters Unchained (assustador para 6 anos)</li>
       <li><span class="time">18h00</span> Celestial Park — lojas e show da praça (app)</li>
     </ol>
+    </div>
 
+    <div class="roterio-panel" id="roterio-magic">
     <h3>18/11 · Magic Kingdom</h3>
     <div class="day-log">
       <p><b>Parque (qua 18/11):</b> estimativa <b>9h00–22h00</b> — <b>sem</b> Mickey’s Very Merry Christmas Party (festa é 17/11 e 19/11). Dia ideal para fogos regulares.</p>
@@ -700,7 +762,9 @@
       <li><span class="time">19h30</span> Meet Mickey no Town Square Theater + pipoca</li>
       <li><span class="time">20h30</span> Happily Ever After (fogos — app)</li>
     </ol>
+    </div>
 
+    <div class="roterio-panel" id="roterio-epcot">
     <h3>19/11 · EPCOT</h3>
     <div class="day-log">
       <p><b>Parque (qui 19/11):</b> estimativa <b>9h00–21h00</b> . Food &amp; Wine até 22/11.</p>
@@ -731,7 +795,9 @@
       <li><span class="time">17h30</span> Gran Fiesta Tour (México; se der tempo)</li>
       <li><span class="time">21h00</span> Luminous — fogos no lago</li>
     </ol>
+    </div>
 
+    <div class="roterio-panel" id="roterio-ioa">
     <h3>20/11 · Islands of Adventure</h3>
     <div class="day-log">
       <p><b>Parque (sex 20/11):</b> estimativa <b>9h00–20h00</b> (sexta pré-Thanksgiving = lotação média-alta).</p>
@@ -760,7 +826,9 @@
       <li><span class="time">16h30</span> Doctor Doom’s Fear Fall (se der tempo)</li>
       <li><span class="time">17h15</span> Incredible Hulk (137 cm — adultos; armário na frente)</li>
     </ol>
+    </div>
 
+    <div class="roterio-panel" id="roterio-busch">
     <h3>22/11 · Busch Gardens Tampa</h3>
     <div class="day-log">
       <p><b>Parque (dom 22/11):</b> publicado <b>10h00–22h00</b> . Domingo pré-Thanksgiving = começa a encher.</p>
@@ -787,6 +855,7 @@
       <li><span class="time">17h15</span> Phoenix Rising (status no app)</li>
       <li><span class="time">18h00</span> Stanley Falls Flume · saída 19h00</li>
     </ol>
+    </div>
     </section>
 
     <section class="tab-panel" id="tab-hospedagem">
@@ -1318,6 +1387,12 @@
             if (tripMap) tripMap.invalidateSize();
           }, 80);
         }
+        if (id === "roteiros") {
+          setTimeout(function () {
+            initParksMap();
+            if (parksMap) parksMap.invalidateSize();
+          }, 80);
+        }
       }
       nav.addEventListener("click", function (e) {
         var btn = e.target.closest("button[data-tab]");
@@ -1327,12 +1402,105 @@
       window.addEventListener("hashchange", function () {
         var h = (location.hash || "").replace(/^#/, "");
         if (tabs.indexOf(h) >= 0) showTab(h, false);
+        else if (h === "roteiros" || h.indexOf("roteiros-") === 0) showTab("roteiros", false);
       });
       var hash = (location.hash || "").replace(/^#/, "");
-      showTab(tabs.indexOf(hash) >= 0 ? hash : "orcamento", false);
+      var initial = tabs.indexOf(hash) >= 0 ? hash : (hash === "roteiros" || hash.indexOf("roteiros-") === 0 ? "roteiros" : "orcamento");
+      showTab(initial, false);
     })();
 
+    var ROTEIRO_PARKS = [
+      { id: "seaworld", name: "SeaWorld · 11/11", lat: 28.4110, lng: -81.4612, chain: "seaworld", color: "#0891b2" },
+      { id: "uni-studios", name: "Universal Studios · 12/11", lat: 28.4744, lng: -81.4678, chain: "universal", color: "#6b21a8" },
+      { id: "hollywood", name: "Hollywood Studios · 13/11", lat: 28.3574, lng: -81.5582, chain: "disney", color: "#1f4e79" },
+      { id: "animal", name: "Animal Kingdom · 15/11", lat: 28.3550, lng: -81.5901, chain: "disney", color: "#1f4e79" },
+      { id: "epic", name: "Epic Universe · 16/11", lat: 28.4594, lng: -81.4520, chain: "universal", color: "#6b21a8" },
+      { id: "magic", name: "Magic Kingdom · 18/11", lat: 28.4177, lng: -81.5812, chain: "disney", color: "#1f4e79" },
+      { id: "epcot", name: "EPCOT · 19/11", lat: 28.3747, lng: -81.5494, chain: "disney", color: "#1f4e79" },
+      { id: "ioa", name: "Islands of Adventure · 20/11", lat: 28.4710, lng: -81.4695, chain: "universal", color: "#6b21a8" },
+      { id: "busch", name: "Busch Gardens · 22/11", lat: 28.037, lng: -82.419, chain: "busch", color: "#dc2626" }
+    ];
+    var TRIP_REGIONS = [
+      { name: "Windsor Hills", lat: 28.339, lng: -81.592, r: 1900, color: "#2563eb" },
+      { name: "192 Formosa", lat: 28.288, lng: -81.578, r: 2400, color: "#16a34a" },
+      { name: "Dr Phillips", lat: 28.448, lng: -81.492, r: 2200, color: "#9333ea" },
+      { name: "Kissimmee sul", lat: 28.322, lng: -81.538, r: 2200, color: "#ca8a04" },
+      { name: "Storey Lake", lat: 28.321, lng: -81.533, r: 1600, color: "#0891b2" },
+      { name: "Regal Oaks", lat: 28.306, lng: -81.542, r: 1600, color: "#dc2626" }
+    ];
+    var TRIP_EXTRA_MARKERS = [
+      { name: "Disney Springs · 10/11", lat: 28.3702, lng: -81.5183, free: true },
+      { name: "Vineland Outlets · 14/11", lat: 28.3867, lng: -81.5073, free: true },
+      { name: "Intl Premium Outlets · 21/11", lat: 28.4716, lng: -81.4514, free: true },
+      { name: "Walmart Turkey Lake · 21/11", lat: 28.4476, lng: -81.4758, free: true },
+      { name: "Aeroporto Sanford · chegada 10/11", lat: 28.7775, lng: -81.2375, free: true }
+    ];
+    var mapTip = { permanent: false, direction: "top", className: "map-tip", offset: [0, -6] };
     var tripMap = null;
+    var parksMap = null;
+    var parksMarkers = {};
+
+    function showRoteiroPanel(id, updateHash) {
+      var nav = document.getElementById("roterioNav");
+      if (!nav) return;
+      var ids = ["geral"].concat(ROTEIRO_PARKS.map(function (p) { return p.id; }));
+      if (ids.indexOf(id) < 0) id = "geral";
+      ids.forEach(function (rid) {
+        var panel = document.getElementById("roterio-" + rid);
+        var btn = nav.querySelector("[data-roterio=\"" + rid + "\"]");
+        if (panel) panel.classList.toggle("active", rid === id);
+        if (btn) btn.classList.toggle("active", rid === id);
+      });
+      if (updateHash && history.replaceState) {
+        history.replaceState(null, "", id === "geral" ? "#roteiros" : "#roteiros-" + id);
+      }
+      if (parksMap && parksMarkers[id]) {
+        parksMap.flyTo(parksMarkers[id].getLatLng(), id === "busch" ? 9 : 12, { duration: 0.6 });
+      } else if (parksMap && id === "geral") {
+        parksMap.flyTo([28.36, -81.53], 10, { duration: 0.6 });
+      }
+    }
+
+    (function initRoteiroTabs() {
+      var nav = document.getElementById("roterioNav");
+      if (!nav) return;
+      nav.addEventListener("click", function (e) {
+        var btn = e.target.closest("button[data-roterio]");
+        if (!btn) return;
+        showRoteiroPanel(btn.getAttribute("data-roterio"), true);
+      });
+      window.addEventListener("hashchange", function () {
+        var h = (location.hash || "").replace(/^#/, "");
+        if (h === "roteiros") showRoteiroPanel("geral", false);
+        else if (h.indexOf("roteiros-") === 0) showRoteiroPanel(h.slice(9), false);
+      });
+      var hash = (location.hash || "").replace(/^#/, "");
+      if (hash.indexOf("roteiros-") === 0) showRoteiroPanel(hash.slice(9), false);
+    })();
+
+    function initParksMap() {
+      if (parksMap || typeof L === "undefined") return;
+      var el = document.getElementById("parksMap");
+      if (!el) return;
+      parksMap = L.map(el, { scrollWheelZoom: false }).setView([28.36, -81.53], 10);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: "&copy; OpenStreetMap &copy; CARTO",
+        maxZoom: 19,
+        subdomains: "abcd"
+      }).addTo(parksMap);
+      ROTEIRO_PARKS.forEach(function (p) {
+        var marker = L.circleMarker([p.lat, p.lng], {
+          radius: p.id === "busch" ? 8 : 9,
+          color: "#fff",
+          weight: 2,
+          fillColor: p.color,
+          fillOpacity: 0.95
+        }).bindTooltip(p.name, mapTip).addTo(parksMap);
+        marker.on("click", function () { showRoteiroPanel(p.id, true); });
+        parksMarkers[p.id] = marker;
+      });
+    }
+
     function initTripMap() {
       if (tripMap || typeof L === "undefined") return;
       var el = document.getElementById("tripMap");
@@ -1343,52 +1511,33 @@
         maxZoom: 19,
         subdomains: "abcd"
       }).addTo(tripMap);
-      var tip = { permanent: false, direction: "top", className: "map-tip", offset: [0, -6] };
-      var regions = [
-        { name: "Windsor Hills", lat: 28.339, lng: -81.592, r: 1900, color: "#2563eb" },
-        { name: "192 Formosa", lat: 28.288, lng: -81.578, r: 2400, color: "#16a34a" },
-        { name: "Dr Phillips", lat: 28.448, lng: -81.492, r: 2200, color: "#9333ea" },
-        { name: "Kissimmee sul", lat: 28.322, lng: -81.538, r: 2200, color: "#ca8a04" },
-        { name: "Storey Lake", lat: 28.321, lng: -81.533, r: 1600, color: "#0891b2" },
-        { name: "Regal Oaks", lat: 28.306, lng: -81.542, r: 1600, color: "#dc2626" }
-      ];
-      regions.forEach(function (reg) {
+      TRIP_REGIONS.forEach(function (reg) {
         L.circle([reg.lat, reg.lng], {
           radius: reg.r,
           color: reg.color,
           weight: 2,
           fillColor: reg.color,
           fillOpacity: 0.14
-        }).bindTooltip(reg.name, tip).addTo(tripMap);
+        }).bindTooltip(reg.name, mapTip).addTo(tripMap);
       });
-      var parks = [
-        { name: "Magic Kingdom · 18/11", lat: 28.4177, lng: -81.5812 },
-        { name: "Hollywood Studios · 13/11", lat: 28.3574, lng: -81.5582 },
-        { name: "Animal Kingdom · 15/11", lat: 28.3550, lng: -81.5901 },
-        { name: "Disney Springs · 10/11", lat: 28.3702, lng: -81.5183, free: true },
-        { name: "Universal Studios · 12/11", lat: 28.4744, lng: -81.4678 },
-        { name: "Islands of Adventure · 20/11", lat: 28.4710, lng: -81.4695 },
-        { name: "Epic Universe · 16/11", lat: 28.4594, lng: -81.4520 },
-        { name: "SeaWorld · 11/11", lat: 28.4110, lng: -81.4612 },
-        { name: "EPCOT · 19/11", lat: 28.3747, lng: -81.5494 },
-        { name: "Vineland Outlets · 14/11", lat: 28.3867, lng: -81.5073, free: true },
-        { name: "Intl Premium Outlets · 21/11", lat: 28.4716, lng: -81.4514, free: true },
-        { name: "Walmart Turkey Lake · 21/11", lat: 28.4476, lng: -81.4758, free: true },
-        { name: "Aeroporto Sanford · chegada 10/11", lat: 28.7775, lng: -81.2375, free: true }
-      ];
-      parks.forEach(function (p) {
-        var color = p.free ? "#c9a227" : "#1f4e79";
+      ROTEIRO_PARKS.forEach(function (p) {
         L.circleMarker([p.lat, p.lng], {
-          radius: p.free ? 6 : 7,
+          radius: p.id === "busch" ? 6 : 7,
           color: "#fff",
           weight: 2,
-          fillColor: color,
+          fillColor: p.color,
           fillOpacity: 0.95
-        }).bindTooltip(p.name, tip).addTo(tripMap);
+        }).bindTooltip(p.name, mapTip).addTo(tripMap);
       });
-      L.circleMarker([28.037, -82.419], {
-        radius: 6, color: "#fff", weight: 2, fillColor: "#1f4e79", fillOpacity: 0.45
-      }).bindTooltip("Busch Gardens · Tampa · 22/11 (~1h15)", tip).addTo(tripMap);
+      TRIP_EXTRA_MARKERS.forEach(function (p) {
+        L.circleMarker([p.lat, p.lng], {
+          radius: 6,
+          color: "#fff",
+          weight: 2,
+          fillColor: "#c9a227",
+          fillOpacity: 0.95
+        }).bindTooltip(p.name, mapTip).addTo(tripMap);
+      });
     }
 
     (function initPlanilhaLink() {
