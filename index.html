@@ -23,30 +23,87 @@
     button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
     a.btn.accent { background:var(--accent); color:#fff; border-color:var(--accent); }
     a.btn.disabled { opacity:.45; pointer-events:none; }
-    .nav-tabs {
-      display:flex; gap:6px; flex-wrap:wrap;
-      margin:0 0 20px; padding-bottom:12px;
-      border-bottom:1px solid var(--line);
+    .nav-tabs, .roterio-tabs { display:none !important; }
+    .site-header {
+      position:fixed; top:0; left:0; z-index:200;
+      padding:10px 12px; pointer-events:none;
     }
-    .nav-tabs button {
-      border-radius:8px;
-      padding:8px 14px;
-      font-size:.88rem;
+    .menu-toggle {
+      pointer-events:auto;
+      display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
+      width:44px; height:44px; padding:0; border:1px solid var(--line);
+      border-radius:10px; background:var(--card); cursor:pointer;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    .menu-toggle:hover { border-color:var(--accent); }
+    .menu-toggle:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+    .menu-toggle-bar {
+      display:block; width:20px; height:2px; border-radius:1px; background:var(--text);
+      transition:transform .2s, opacity .2s;
+    }
+    .menu-open .menu-toggle-bar:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .menu-open .menu-toggle-bar:nth-child(2) { opacity:0; }
+    .menu-open .menu-toggle-bar:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .menu-backdrop {
+      position:fixed; inset:0; z-index:250;
+      background:rgba(0,0,0,.45); opacity:0; visibility:hidden;
+      transition:opacity .25s, visibility .25s;
+    }
+    .menu-backdrop.open { opacity:1; visibility:visible; }
+    .side-menu {
+      position:fixed; top:0; left:0; z-index:300;
+      width:min(320px, 88vw); height:100%; max-height:100dvh;
+      background:var(--card); border-right:1px solid var(--line);
+      box-shadow:4px 0 24px rgba(0,0,0,.12);
+      transform:translateX(-100%); transition:transform .28s ease;
+      display:flex; flex-direction:column; overflow:hidden;
+    }
+    .side-menu.open { transform:translateX(0); }
+    .side-menu-head {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:16px 14px 12px; border-bottom:1px solid var(--line);
+      flex-shrink:0;
+    }
+    .side-menu-head b { font-size:.95rem; color:var(--accent); }
+    .side-menu-close {
+      width:36px; height:36px; padding:0; border:none; border-radius:8px;
+      background:transparent; font-size:1.4rem; line-height:1; cursor:pointer; color:var(--muted);
+    }
+    .side-menu-close:hover { background:var(--bg); color:var(--text); }
+    .side-menu-list {
+      list-style:none; margin:0; padding:8px 0 24px; overflow-y:auto; flex:1;
+      -webkit-overflow-scrolling:touch;
+    }
+    .side-menu-list > li { margin:0; }
+    .side-menu-list button {
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      width:100%; padding:11px 16px; border:none; border-radius:0;
+      background:transparent; text-align:left; font:inherit; font-size:.92rem;
+      cursor:pointer; color:var(--text);
+    }
+    .side-menu-list button:hover { background:var(--bg); }
+    .side-menu-list button.active { background:var(--accent); color:#fff; }
+    .side-menu-list button.active .side-menu-chevron { color:rgba(255,255,255,.85); }
+    .side-menu-parent .side-menu-chevron {
+      font-size:1.1rem; color:var(--muted); transition:transform .2s;
+    }
+    .has-sub.open > .side-menu-parent .side-menu-chevron { transform:rotate(90deg); }
+    .side-menu-sub {
+      list-style:none; margin:0; padding:0; max-height:0; overflow:hidden;
+      transition:max-height .28s ease; background:#f5f7fa;
+    }
+    .has-sub.open > .side-menu-sub { max-height:520px; }
+    .side-menu-sub button {
+      padding:9px 16px 9px 28px; font-size:.86rem;
+    }
+    .side-menu-sub button.active { background:#163d5c; }
+    body.menu-open { overflow:hidden; }
+    @media screen {
+      .wrap { padding:56px 20px 64px 56px; }
     }
     .tab-panel { display:none; }
     .tab-panel.active { display:block; }
     .tab-panel > h2:first-child { margin-top:8px; }
-    .roterio-tabs {
-      display:flex; gap:5px; flex-wrap:wrap;
-      margin:0 0 16px; padding:10px 0;
-      border-bottom:1px solid var(--line);
-    }
-    .roterio-tabs button {
-      border-radius:999px;
-      padding:6px 11px;
-      font-size:.78rem;
-      white-space:nowrap;
-    }
     .roterio-panel { display:none; }
     .roterio-panel.active { display:block; }
     .park-layout { margin:0 0 16px; }
@@ -184,7 +241,6 @@
     .map-land--serengeti { background:#33691e; }
     .map-land--jungala { background:#2e7d32; }
     @media print {
-      .roterio-tabs { display:none !important; }
       .roterio-panel { display:block !important; }
       .roterio-panel > h3 { page-break-before:always; }
       .roterio-panel > h3:first-child { page-break-before:avoid; }
@@ -373,14 +429,7 @@
         line-height:1.4;
         white-space:normal;
       }
-      .nav-tabs {
-        flex-wrap:nowrap;
-        overflow-x:auto;
-        -webkit-overflow-scrolling:touch;
-        padding-bottom:10px;
-        margin-bottom:16px;
-      }
-      .nav-tabs button { flex:0 0 auto; white-space:nowrap; }
+      .nav-tabs, .roterio-tabs { display:none !important; }
     }
     @media print {
       .toolbar, .noprint { display:none !important; }
@@ -449,6 +498,46 @@
   </style>
 </head>
 <body>
+  <header class="site-header noprint">
+    <button type="button" id="menuToggle" class="menu-toggle" aria-label="Abrir menu" aria-controls="sideMenu" aria-expanded="false">
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
+  </header>
+  <div class="menu-backdrop noprint" id="menuBackdrop" hidden></div>
+  <nav class="side-menu noprint" id="sideMenu" aria-label="Navegação do plano">
+    <div class="side-menu-head">
+      <b>Orlando 2026</b>
+      <button type="button" class="side-menu-close" id="menuClose" aria-label="Fechar menu">×</button>
+    </div>
+    <ul class="side-menu-list">
+      <li><button type="button" data-tab="orcamento">Orçamento</button></li>
+      <li><button type="button" data-tab="cronograma">Cronograma</button></li>
+      <li class="has-sub" id="roteirosMenuGroup">
+        <button type="button" class="side-menu-parent" id="roteirosMenuToggle" aria-expanded="false">
+          Roteiro Parques <span class="side-menu-chevron" aria-hidden="true">›</span>
+        </button>
+        <ul class="side-menu-sub" id="roteirosSubmenu">
+          <li><button type="button" data-tab="roteiros" data-roterio="geral">Visão geral</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="seaworld">11 · SeaWorld</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="uni-studios">12 · Universal Studios</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="hollywood">13 · Hollywood Studios</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="animal">15 · Animal Kingdom</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="epic">16 · Epic Universe</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="magic">18 · Magic Kingdom</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="epcot">19 · EPCOT</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="ioa">20 · Islands of Adventure</button></li>
+          <li><button type="button" data-tab="roteiros" data-roterio="busch">22 · Busch Gardens</button></li>
+        </ul>
+      </li>
+      <li><button type="button" data-tab="compras">Roteiro Dias Livres</button></li>
+      <li><button type="button" data-tab="hospedagem">Hospedagem</button></li>
+      <li><button type="button" data-tab="carro">Aluguel de Carro</button></li>
+      <li><button type="button" data-tab="voos">Voos volta</button></li>
+      <li><button type="button" data-tab="reservas">Reservas</button></li>
+    </ul>
+  </nav>
   <div class="wrap">
     <h1>Orlando · 10 a 24 nov 2026</h1>
     <p class="muted">Família (2 adultos + criança de 6 anos) e casal (2 adultos). Sem passagens. Itens comuns (casa, carro, seguro do carro, estacionamento, gasolina, mercado): divididos em <b>4 partes iguais — uma por adulto</b>. A criança não paga parte desses itens. Ingressos, comida de parque, internet no celular (chip virtual) e seguro de viagem: cada um paga pelas próprias pessoas.</p>
@@ -459,17 +548,6 @@
       <a id="btnPlanilha" class="btn accent disabled" href="#" target="_blank" rel="noopener">Gastos da viagem</a>
       <button type="button" onclick="window.print()">Salvar PDF</button>
     </div>
-
-    <nav class="nav-tabs noprint" id="mainNav" aria-label="Seções do plano">
-      <button type="button" class="active" data-tab="orcamento">Orçamento</button>
-      <button type="button" data-tab="cronograma">Cronograma</button>
-      <button type="button" data-tab="roteiros">Roteiro Parques</button>
-      <button type="button" data-tab="compras">Roteiro Dias Livres</button>
-      <button type="button" data-tab="hospedagem">Hospedagem</button>
-      <button type="button" data-tab="carro">Aluguel de Carro</button>
-      <button type="button" data-tab="voos">Voos volta</button>
-      <button type="button" data-tab="reservas">Reservas</button>
-    </nav>
 
     <section class="tab-panel active" id="tab-orcamento">
     <h2>Orçamento</h2>
@@ -624,20 +702,7 @@
     <section class="tab-panel" id="tab-roteiros">
     <h2>Roteiro Parques</h2>
     <p class="muted">Ordem, almoço e dicas dos “Roteiros Perfeitos” do <a href="https://orlandodiferente.com.br/">Orlando Diferente</a> (Fê Batista). Caixas azuis = horários do parque e chegada; listas = sequência hora a hora; amarelas = preparar antes. Horários são projeções nov/2026 — confirmar no app 1–2 dias antes.</p>
-    <p class="small">Criança com cerca de 110–122 cm: onde a altura impedir, um adulto fica com ela e o resto segue até a próxima atração sem limite (ou o almoço). Estacionamento do parque: cerca de US$ 30. Use as <b>sub-abas</b> abaixo — cada parque traz <b>mapa interno</b> com as atrações numeradas na ordem do roteiro.</p>
-
-    <nav class="roterio-tabs noprint" id="roterioNav" aria-label="Parques do roteiro">
-      <button type="button" class="active" data-roterio="geral">Geral</button>
-      <button type="button" data-roterio="seaworld">11 · SeaWorld</button>
-      <button type="button" data-roterio="uni-studios">12 · Universal Studios</button>
-      <button type="button" data-roterio="hollywood">13 · Hollywood Studios</button>
-      <button type="button" data-roterio="animal">15 · Animal Kingdom</button>
-      <button type="button" data-roterio="epic">16 · Epic Universe</button>
-      <button type="button" data-roterio="magic">18 · Magic Kingdom</button>
-      <button type="button" data-roterio="epcot">19 · EPCOT</button>
-      <button type="button" data-roterio="ioa">20 · Islands of Adventure</button>
-      <button type="button" data-roterio="busch">22 · Busch Gardens</button>
-    </nav>
+    <p class="small">Criança com cerca de 110–122 cm: onde a altura impedir, um adulto fica com ela e o resto segue até a próxima atração sem limite (ou o almoço). Estacionamento do parque: cerca de US$ 30. Abra o <b>menu</b> (☰) e escolha cada parque — cada um traz mapa oficial com números da legenda.</p>
 
     <div class="roterio-panel active" id="roterio-geral">
     <div class="note">
@@ -1530,42 +1595,6 @@
     // Link da planilha de gastos (Google Sheets)
     const PLANILHA_GASTOS = "https://docs.google.com/spreadsheets/d/1G9P6l-I-jjznFVsamtFwvVPok2BZMQNX/edit?gid=2014409850#gid=2014409850";
 
-    (function initTabs() {
-      var nav = document.getElementById("mainNav");
-      if (!nav) return;
-      var tabs = ["orcamento", "cronograma", "roteiros", "hospedagem", "compras", "carro", "voos", "reservas"];
-      function showTab(id, updateHash) {
-        if (id === "dias-livres") id = "compras";
-        if (tabs.indexOf(id) < 0) id = "orcamento";
-        tabs.forEach(function (t) {
-          var panel = document.getElementById("tab-" + t);
-          var btn = nav.querySelector("[data-tab=\"" + t + "\"]");
-          if (panel) panel.classList.toggle("active", t === id);
-          if (btn) btn.classList.toggle("active", t === id);
-        });
-        if (updateHash && history.replaceState) history.replaceState(null, "", "#" + id);
-        if (id === "hospedagem") {
-          setTimeout(function () {
-            initTripMap();
-            if (tripMap) tripMap.invalidateSize();
-          }, 80);
-        }
-      }
-      nav.addEventListener("click", function (e) {
-        var btn = e.target.closest("button[data-tab]");
-        if (!btn) return;
-        showTab(btn.getAttribute("data-tab"), true);
-      });
-      window.addEventListener("hashchange", function () {
-        var h = (location.hash || "").replace(/^#/, "");
-        if (tabs.indexOf(h) >= 0) showTab(h, false);
-        else if (h === "roteiros" || h.indexOf("roteiros-") === 0) showTab("roteiros", false);
-      });
-      var hash = (location.hash || "").replace(/^#/, "");
-      var initial = tabs.indexOf(hash) >= 0 ? hash : (hash === "roteiros" || hash.indexOf("roteiros-") === 0 ? "roteiros" : "orcamento");
-      showTab(initial, false);
-    })();
-
     var ROTEIRO_PARKS = [
       { id: "seaworld", name: "SeaWorld · 11/11", lat: 28.4110, lng: -81.4612, chain: "seaworld", color: "#0891b2" },
       { id: "uni-studios", name: "Universal Studios · 12/11", lat: 28.4744, lng: -81.4678, chain: "universal", color: "#6b21a8" },
@@ -1577,6 +1606,145 @@
       { id: "ioa", name: "Islands of Adventure · 20/11", lat: 28.4710, lng: -81.4695, chain: "universal", color: "#6b21a8" },
       { id: "busch", name: "Busch Gardens · 22/11", lat: 28.037, lng: -82.419, chain: "busch", color: "#dc2626" }
     ];
+
+    (function initSideMenu() {
+      var sideMenu = document.getElementById("sideMenu");
+      var menuToggle = document.getElementById("menuToggle");
+      var menuBackdrop = document.getElementById("menuBackdrop");
+      var menuClose = document.getElementById("menuClose");
+      var roteirosGroup = document.getElementById("roteirosMenuGroup");
+      var roteirosToggle = document.getElementById("roteirosMenuToggle");
+      if (!sideMenu || !menuToggle) return;
+
+      var tabs = ["orcamento", "cronograma", "roteiros", "compras", "hospedagem", "carro", "voos", "reservas"];
+      var currentTab = "orcamento";
+      var currentRoteiro = "geral";
+
+      function openMenu() {
+        sideMenu.classList.add("open");
+        menuBackdrop.classList.add("open");
+        menuBackdrop.hidden = false;
+        menuToggle.setAttribute("aria-expanded", "true");
+        document.body.classList.add("menu-open");
+      }
+
+      function closeMenu() {
+        sideMenu.classList.remove("open");
+        menuBackdrop.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("menu-open");
+        window.setTimeout(function () {
+          if (!sideMenu.classList.contains("open")) menuBackdrop.hidden = true;
+        }, 280);
+      }
+
+      function setRoteirosSubOpen(open) {
+        if (!roteirosGroup || !roteirosToggle) return;
+        roteirosGroup.classList.toggle("open", open);
+        roteirosToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      function updateMenuActive() {
+        sideMenu.querySelectorAll("button[data-tab]").forEach(function (btn) {
+          var tab = btn.getAttribute("data-tab");
+          var roteiro = btn.getAttribute("data-roterio");
+          if (roteiro) {
+            btn.classList.toggle("active", tab === currentTab && roteiro === currentRoteiro);
+          } else {
+            btn.classList.toggle("active", tab === currentTab && tab !== "roteiros");
+          }
+        });
+        setRoteirosSubOpen(currentTab === "roteiros");
+        if (roteirosToggle) roteirosToggle.classList.toggle("active", currentTab === "roteiros");
+      }
+
+      function showTab(id, updateHash) {
+        if (id === "dias-livres") id = "compras";
+        if (tabs.indexOf(id) < 0) id = "orcamento";
+        currentTab = id;
+        if (id !== "roteiros") currentRoteiro = "geral";
+        tabs.forEach(function (t) {
+          var panel = document.getElementById("tab-" + t);
+          if (panel) panel.classList.toggle("active", t === id);
+        });
+        if (id === "roteiros") showRoteiroPanel(currentRoteiro, false);
+        updateMenuActive();
+        if (updateHash && history.replaceState) {
+          if (id === "roteiros") {
+            history.replaceState(null, "", currentRoteiro === "geral" ? "#roteiros" : "#roteiros-" + currentRoteiro);
+          } else {
+            history.replaceState(null, "", "#" + id);
+          }
+        }
+        if (id === "hospedagem") {
+          setTimeout(function () {
+            initTripMap();
+            if (tripMap) tripMap.invalidateSize();
+          }, 80);
+        }
+      }
+
+      window.showTab = showTab;
+
+      window.showRoteiroPanel = function (id, updateHash) {
+        var ids = ["geral"].concat(ROTEIRO_PARKS.map(function (p) { return p.id; }));
+        if (ids.indexOf(id) < 0) id = "geral";
+        currentTab = "roteiros";
+        currentRoteiro = id;
+        tabs.forEach(function (t) {
+          var panel = document.getElementById("tab-" + t);
+          if (panel) panel.classList.toggle("active", t === "roteiros");
+        });
+        ids.forEach(function (rid) {
+          var panel = document.getElementById("roterio-" + rid);
+          if (panel) panel.classList.toggle("active", rid === id);
+        });
+        updateMenuActive();
+        if (updateHash && history.replaceState) {
+          history.replaceState(null, "", id === "geral" ? "#roteiros" : "#roteiros-" + id);
+        }
+        if (id !== "geral" && typeof PARK_MAPS !== "undefined" && PARK_MAPS[id]) renderParkLayout(id);
+      };
+
+      menuToggle.addEventListener("click", function () {
+        if (sideMenu.classList.contains("open")) closeMenu();
+        else openMenu();
+      });
+      if (menuClose) menuClose.addEventListener("click", closeMenu);
+      menuBackdrop.addEventListener("click", closeMenu);
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && sideMenu.classList.contains("open")) closeMenu();
+      });
+
+      if (roteirosToggle) {
+        roteirosToggle.addEventListener("click", function () {
+          setRoteirosSubOpen(!roteirosGroup.classList.contains("open"));
+        });
+      }
+
+      sideMenu.addEventListener("click", function (e) {
+        var btn = e.target.closest("button[data-tab]");
+        if (!btn || btn.classList.contains("side-menu-parent")) return;
+        var tab = btn.getAttribute("data-tab");
+        var roteiro = btn.getAttribute("data-roterio");
+        if (tab === "roteiros" && roteiro) showRoteiroPanel(roteiro, true);
+        else showTab(tab, true);
+        closeMenu();
+      });
+
+      window.addEventListener("hashchange", function () {
+        var h = (location.hash || "").replace(/^#/, "");
+        if (h.indexOf("roteiros-") === 0) showRoteiroPanel(h.slice(9), false);
+        else if (h === "roteiros") showRoteiroPanel("geral", false);
+        else if (tabs.indexOf(h) >= 0) showTab(h, false);
+      });
+
+      var hash = (location.hash || "").replace(/^#/, "");
+      if (hash.indexOf("roteiros-") === 0) showRoteiroPanel(hash.slice(9), false);
+      else if (hash === "roteiros") showRoteiroPanel("geral", false);
+      else showTab(tabs.indexOf(hash) >= 0 ? hash : "orcamento", false);
+    })();
+
     var TRIP_REGIONS = [
       { name: "Windsor Hills", lat: 28.339, lng: -81.592, r: 1900, color: "#2563eb" },
       { name: "192 Formosa", lat: 28.288, lng: -81.578, r: 2400, color: "#16a34a" },
@@ -1595,39 +1763,6 @@
     var mapTip = { permanent: false, direction: "top", className: "map-tip", offset: [0, -6] };
     var tripMap = null;
 
-    function showRoteiroPanel(id, updateHash) {
-      var nav = document.getElementById("roterioNav");
-      if (!nav) return;
-      var ids = ["geral"].concat(ROTEIRO_PARKS.map(function (p) { return p.id; }));
-      if (ids.indexOf(id) < 0) id = "geral";
-      ids.forEach(function (rid) {
-        var panel = document.getElementById("roterio-" + rid);
-        var btn = nav.querySelector("[data-roterio=\"" + rid + "\"]");
-        if (panel) panel.classList.toggle("active", rid === id);
-        if (btn) btn.classList.toggle("active", rid === id);
-      });
-      if (updateHash && history.replaceState) {
-        history.replaceState(null, "", id === "geral" ? "#roteiros" : "#roteiros-" + id);
-      }
-      if (id !== "geral" && PARK_MAPS[id]) renderParkLayout(id);
-    }
-
-    (function initRoteiroTabs() {
-      var nav = document.getElementById("roterioNav");
-      if (!nav) return;
-      nav.addEventListener("click", function (e) {
-        var btn = e.target.closest("button[data-roterio]");
-        if (!btn) return;
-        showRoteiroPanel(btn.getAttribute("data-roterio"), true);
-      });
-      window.addEventListener("hashchange", function () {
-        var h = (location.hash || "").replace(/^#/, "");
-        if (h === "roteiros") showRoteiroPanel("geral", false);
-        else if (h.indexOf("roteiros-") === 0) showRoteiroPanel(h.slice(9), false);
-      });
-      var hash = (location.hash || "").replace(/^#/, "");
-      if (hash.indexOf("roteiros-") === 0) showRoteiroPanel(hash.slice(9), false);
-    })();
     renderAllParkLayouts();
 
     function initTripMap() {
