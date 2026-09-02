@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Orlando · 10 a 24 nov 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <style>
     :root { --text:#1a1a1a; --muted:#5c5c5c; --line:#e2e2e2; --bg:#fafafa; --card:#fff; --accent:#1f4e79; }
     * { box-sizing: border-box; }
@@ -64,6 +65,28 @@
     .fee-check { color:#7a5b00; font-weight:600; }
     .region-intro { font-size:.88rem; color:var(--muted); margin:-4px 0 12px; line-height:1.45; }
     .region-intro b { color:var(--text); }
+    .map-card {
+      background:var(--card); border:1px solid var(--line); border-radius:12px;
+      padding:12px 12px 10px; margin:0 0 20px; overflow:hidden;
+    }
+    .map-card h3 { margin:0 0 8px; }
+    #tripMap { height:min(420px, 62vw); min-height:280px; border-radius:8px; z-index:0; }
+    .map-legend {
+      display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:10px;
+      font-size:.8rem; color:var(--muted); line-height:1.35;
+    }
+    .map-legend span { display:inline-flex; align-items:center; gap:5px; }
+    .map-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .map-dot.park { background:var(--accent); border:2px solid #fff; box-shadow:0 0 0 1px var(--accent); }
+    .map-dot.free { background:#c9a227; border:2px solid #fff; box-shadow:0 0 0 1px #c9a227; }
+    .map-ring {
+      width:14px; height:14px; border-radius:50%; border:2px solid; flex-shrink:0;
+      background:rgba(255,255,255,.5);
+    }
+    .leaflet-tooltip.map-tip {
+      font:600 .78rem "Segoe UI",system-ui,sans-serif; padding:4px 8px;
+      border-radius:6px; border:1px solid var(--line); box-shadow:0 2px 8px rgba(0,0,0,.12);
+    }
     ol.timed { padding-left:0; list-style:none; }
     ol.timed > li { padding-left:0; margin-bottom:6px; }
     .time { display:inline-block; min-width:52px; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums; }
@@ -739,6 +762,21 @@
 
     <section class="tab-panel" id="tab-hospedagem">
     <h2>Hospedagem</h2>
+    <div class="map-card noprint">
+      <h3>Mapa · parques e regiões de casa</h3>
+      <p class="small muted" style="margin-bottom:10px">Círculos coloridos = faixa aproximada das 6 regiões de acomodação. Pontos azuis = parques do roteiro · pontos dourados = dias livres (outlets, Disney Springs). Busch Gardens fica em Tampa (~1h15) — fora do recorte.</p>
+      <div id="tripMap" role="img" aria-label="Mapa de Orlando com parques e regiões de hospedagem"></div>
+      <div class="map-legend">
+        <span><i class="map-dot park"></i> Parque (roteiro)</span>
+        <span><i class="map-dot free"></i> Dia livre / compras</span>
+        <span><i class="map-ring" style="border-color:#2563eb"></i> Windsor Hills</span>
+        <span><i class="map-ring" style="border-color:#16a34a"></i> 192 Formosa</span>
+        <span><i class="map-ring" style="border-color:#9333ea"></i> Dr Phillips</span>
+        <span><i class="map-ring" style="border-color:#ca8a04"></i> Kissimmee sul</span>
+        <span><i class="map-ring" style="border-color:#0891b2"></i> Storey Lake</span>
+        <span><i class="map-ring" style="border-color:#dc2626"></i> Regal Oaks</span>
+      </div>
+    </div>
     <h3>Opções por região (4 em cada)</h3>
     <p class="small">Coluna <b>Resort fee</b>: taxa diária extra do condomínio/resort (além do aluguel). Filtro da lista = <b>sem fee</b> ou fee já inclusa no total do anúncio.</p>
 
@@ -1226,6 +1264,7 @@
     <p class="small">Fontes: blogs de horários Disney (nov/2026), Universal Orlando 2026, SeaWorld/Busch Gardens (manutenção 2026), Orlando Diferente (compras e Walmart), Kayak / locadoras Sanford para Orlando, Kayak voos Orlando/Sanford/Tampa para Guarulhos 24/11. Horários de parque/shows: projeção ago/2026 — confirmar no app 1–2 dias antes e no dia. Plano atualizado 28/08/2026.</p>
     </section>
   </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     // Link da planilha de gastos (Google Sheets)
     const PLANILHA_GASTOS = "https://docs.google.com/spreadsheets/d/1G9P6l-I-jjznFVsamtFwvVPok2BZMQNX/edit?usp=sharing";
@@ -1244,6 +1283,12 @@
           if (btn) btn.classList.toggle("active", t === id);
         });
         if (updateHash && history.replaceState) history.replaceState(null, "", "#" + id);
+        if (id === "hospedagem") {
+          setTimeout(function () {
+            initTripMap();
+            if (tripMap) tripMap.invalidateSize();
+          }, 80);
+        }
       }
       nav.addEventListener("click", function (e) {
         var btn = e.target.closest("button[data-tab]");
@@ -1257,6 +1302,65 @@
       var hash = (location.hash || "").replace(/^#/, "");
       showTab(tabs.indexOf(hash) >= 0 ? hash : "orcamento", false);
     })();
+
+    var tripMap = null;
+    function initTripMap() {
+      if (tripMap || typeof L === "undefined") return;
+      var el = document.getElementById("tripMap");
+      if (!el) return;
+      tripMap = L.map(el, { scrollWheelZoom: false }).setView([28.36, -81.53], 10);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: "&copy; OpenStreetMap &copy; CARTO",
+        maxZoom: 19,
+        subdomains: "abcd"
+      }).addTo(tripMap);
+      var tip = { permanent: false, direction: "top", className: "map-tip", offset: [0, -6] };
+      var regions = [
+        { name: "Windsor Hills", lat: 28.339, lng: -81.592, r: 1900, color: "#2563eb" },
+        { name: "192 Formosa", lat: 28.288, lng: -81.578, r: 2400, color: "#16a34a" },
+        { name: "Dr Phillips", lat: 28.448, lng: -81.492, r: 2200, color: "#9333ea" },
+        { name: "Kissimmee sul", lat: 28.322, lng: -81.538, r: 2200, color: "#ca8a04" },
+        { name: "Storey Lake", lat: 28.321, lng: -81.533, r: 1600, color: "#0891b2" },
+        { name: "Regal Oaks", lat: 28.306, lng: -81.542, r: 1600, color: "#dc2626" }
+      ];
+      regions.forEach(function (reg) {
+        L.circle([reg.lat, reg.lng], {
+          radius: reg.r,
+          color: reg.color,
+          weight: 2,
+          fillColor: reg.color,
+          fillOpacity: 0.14
+        }).bindTooltip(reg.name, tip).addTo(tripMap);
+      });
+      var parks = [
+        { name: "Magic Kingdom · 18/11", lat: 28.4177, lng: -81.5812 },
+        { name: "Hollywood Studios · 13/11", lat: 28.3574, lng: -81.5582 },
+        { name: "Animal Kingdom · 15/11", lat: 28.3550, lng: -81.5901 },
+        { name: "Disney Springs · 10/11", lat: 28.3702, lng: -81.5183, free: true },
+        { name: "Universal Studios · 12/11", lat: 28.4744, lng: -81.4678 },
+        { name: "Islands of Adventure · 20/11", lat: 28.4710, lng: -81.4695 },
+        { name: "Epic Universe · 16/11", lat: 28.4594, lng: -81.4520 },
+        { name: "SeaWorld · 11/11", lat: 28.4110, lng: -81.4612 },
+        { name: "EPCOT · 19/11", lat: 28.3747, lng: -81.5494 },
+        { name: "Vineland Outlets · 14/11", lat: 28.3867, lng: -81.5073, free: true },
+        { name: "Intl Premium Outlets · 21/11", lat: 28.4716, lng: -81.4514, free: true },
+        { name: "Walmart Turkey Lake · 21/11", lat: 28.4476, lng: -81.4758, free: true },
+        { name: "Aeroporto Sanford · chegada 10/11", lat: 28.7775, lng: -81.2375, free: true }
+      ];
+      parks.forEach(function (p) {
+        var color = p.free ? "#c9a227" : "#1f4e79";
+        L.circleMarker([p.lat, p.lng], {
+          radius: p.free ? 6 : 7,
+          color: "#fff",
+          weight: 2,
+          fillColor: color,
+          fillOpacity: 0.95
+        }).bindTooltip(p.name, tip).addTo(tripMap);
+      });
+      L.circleMarker([28.037, -82.419], {
+        radius: 6, color: "#fff", weight: 2, fillColor: "#1f4e79", fillOpacity: 0.45
+      }).bindTooltip("Busch Gardens · Tampa · 22/11 (~1h15)", tip).addTo(tripMap);
+    }
 
     (function initPlanilhaLink() {
       var a = document.getElementById("btnPlanilha");
