@@ -15,14 +15,20 @@ DIRECT = {
     "magic.pdf": "https://cdn1.parksmedia.wdprapps.disney.com/vision-dam/digital/parks-platform/parks-standard-assets/disney-world/guide-maps/magic-kingdom/MK_0126_EN.pdf",
     "epcot.pdf": "https://cdn1.parksmedia.wdprapps.disney.com/vision-dam/digital/parks-platform/parks-global-assets/disney-world/guest-services/guide-maps/EPCOT-guidemap_0726_ENG-DIGITAL.pdf",
     "uni-studios.pdf": "https://www.vaipradisney.com/blog/wp-content/uploads/2020/06/universal-studios-florida-park-map-2025.pdf",
-    "animal.jpg": "https://media.blogmickey.com/wp-content/uploads/2026/05/26073540/animal-kingdom-map-may-2026-1.jpg",
+    "animal.pdf": "https://deeparrival.com/wp-content/uploads/2026/05/Animal-Kingdom-Park-Map-2026.pdf",
     "ioa.jpg": "https://www.planuniversal.com/wp-content/uploads/2026/06/islands-of-adventure-park-map-english.jpg",
     "epic.jpg": "https://www.planuniversal.com/wp-content/uploads/2026/06/universal-epic-universe-park-map-english.jpg",
     "seaworld.png": "https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/images/park-maps/2026/swparkmaporcastadium300july2026-1-1.png",
     "busch.pdf": "https://deeparrival.com/wp-content/uploads/2026/07/busch-gardens-tampa-bay-map-2026-web.pdf",
 }
 
-PDF_MAP_PAGE = {"hollywood.pdf": 1, "magic.pdf": 1, "epcot.pdf": 0, "uni-studios.pdf": 0}
+PDF_MAP_PAGE = {
+    "hollywood.pdf": 1,
+    "magic.pdf": 1,
+    "epcot.pdf": 1,
+    "uni-studios.pdf": 0,
+    "animal.pdf": 1,
+}
 
 
 def download(name, url):
@@ -60,6 +66,7 @@ if __name__ == "__main__":
         ("epcot.pdf", "epcot"),
         ("uni-studios.pdf", "uni-studios"),
         ("busch.pdf", "busch"),
+        ("animal.pdf", "animal"),
     ]:
         p = os.path.join(OUT, pdf)
         if not os.path.exists(p):

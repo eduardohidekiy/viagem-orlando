@@ -59,23 +59,92 @@
     .park-map-photo img {
       display:block; width:100%; height:auto; vertical-align:top;
     }
-    .park-pin {
-      position:absolute; transform:translate(-50%, -50%);
-      min-width:22px; height:22px; padding:0 5px; border:none; border-radius:999px;
-      background:var(--accent); color:#fff; font-size:.68rem; font-weight:700;
-      line-height:22px; text-align:center; cursor:default;
-      box-shadow:0 0 0 2px #fff, 0 1px 4px rgba(0,0,0,.35);
-      transition:background .15s, transform .15s;
-    }
-    .park-pin.is-on { background:#c9a227; transform:translate(-50%, -50%) scale(1.12); z-index:2; }
     .park-map-credit { margin:8px 0 0; font-size:.78rem; color:var(--muted); }
-    ol.timed .stop-badge {
+    ol.timed .map-num {
       display:inline-flex; align-items:center; justify-content:center;
-      min-width:20px; height:20px; margin-right:6px; padding:0 5px;
-      border-radius:999px; background:var(--accent); color:#fff;
-      font-size:.72rem; font-weight:700; vertical-align:middle;
+      min-width:22px; height:22px; margin-right:5px; padding:0 5px;
+      border-radius:999px; color:#fff; font-size:.68rem; font-weight:700;
+      vertical-align:middle; flex-shrink:0;
     }
-    ol.timed li.is-on { background:#f3f7fb; border-radius:6px; margin-left:-4px; padding-left:4px; }
+    ol.timed .map-land {
+      display:inline-block; margin-right:6px; padding:1px 7px;
+      border-radius:4px; font-size:.72rem; font-weight:600; vertical-align:middle;
+      color:#fff;
+    }
+    /* Hollywood Studios */
+    .map-num--hollywood-blvd, .map-land--hollywood-blvd { background:#2ea872; }
+    .map-num--echo-lake, .map-land--echo-lake { background:#5ba4d9; }
+    .map-num--commissary, .map-land--commissary { background:#3d8b5a; }
+    .map-num--grand-ave, .map-land--grand-ave { background:#8b2942; }
+    .map-num--galaxys-edge, .map-land--galaxys-edge { background:#c9a44a; color:#1a1a1a; }
+    .map-num--toy-story, .map-land--toy-story { background:#e87722; }
+    .map-num--pixar, .map-land--pixar { background:#9b7ec7; }
+    .map-num--animation, .map-land--animation { background:#d64a8a; }
+    .map-num--sunset, .map-land--sunset { background:#c41e3a; }
+    /* Magic Kingdom */
+    .map-num--main-street, .map-land--main-street { background:#c41e3a; }
+    .map-num--adventureland, .map-land--adventureland { background:#3d8b7a; }
+    .map-num--frontierland, .map-land--frontierland { background:#e87722; }
+    .map-num--liberty-square, .map-land--liberty-square { background:#b8860b; }
+    .map-num--fantasyland, .map-land--fantasyland { background:#c71585; }
+    .map-num--tomorrowland, .map-land--tomorrowland { background:#2563eb; }
+    /* EPCOT */
+    .map-num--celebration, .map-land--celebration { background:#2563eb; }
+    .map-num--discovery, .map-land--discovery { background:#c41e3a; }
+    .map-num--nature, .map-land--nature { background:#2e7d32; }
+    .map-num--showcase, .map-land--showcase { background:#e07a5f; }
+    /* Animal Kingdom */
+    .map-num--oasis, .map-land--oasis { background:#c41e3a; }
+    .map-num--discovery-island, .map-land--discovery-island { background:#2e7d32; }
+    .map-num--pandora, .map-land--pandora { background:#00a8c9; }
+    .map-num--africa, .map-land--africa { background:#8b2942; }
+    .map-num--conservation, .map-land--conservation { background:#e87722; }
+    .map-num--asia, .map-land--asia { background:#7b4397; }
+    .map-num--theater-wild, .map-land--theater-wild { background:#4a3728; }
+    /* Universal Studios */
+    .map-num--minion-land, .map-land--minion-land { background:#f4c430; color:#1a1a1a; }
+    .map-num--new-york, .map-land--new-york { background:#1e5631; }
+    .map-num--san-francisco, .map-land--san-francisco { background:#e87722; }
+    .map-num--diagon-alley, .map-land--diagon-alley { background:#1a365d; }
+    .map-num--world-expo, .map-land--world-expo { background:#3182ce; }
+    .map-num--springfield, .map-land--springfield { background:#a0522d; }
+    .map-num--dreamworks, .map-land--dreamworks { background:#7cb342; }
+    .map-num--uni-hollywood, .map-land--uni-hollywood { background:#7b4397; }
+    /* Islands of Adventure */
+    .map-num--port-entry, .map-land--port-entry { background:#8b2942; }
+    .map-num--marvel, .map-land--marvel { background:#1a365d; }
+    .map-num--toon-lagoon, .map-land--toon-lagoon { background:#c71585; }
+    .map-num--skull-island, .map-land--skull-island { background:#333; }
+    .map-num--jurassic, .map-land--jurassic { background:#2e7d32; }
+    .map-num--hogsmeade, .map-land--hogsmeade { background:#1a365d; }
+    .map-num--lost-continent, .map-land--lost-continent { background:#0891b2; }
+    .map-num--seuss, .map-land--seuss { background:#eab308; color:#1a1a1a; }
+    /* Epic Universe */
+    .map-num--celestial, .map-land--celestial { background:#2563eb; }
+    .map-num--nintendo, .map-land--nintendo { background:#dc2626; }
+    .map-num--dark-universe, .map-land--dark-universe { background:#7b4397; }
+    .map-num--ministry, .map-land--ministry { background:#1e3a5f; }
+    .map-num--isle-berk, .map-land--isle-berk { background:#e87722; }
+    /* SeaWorld */
+    .map-land--sea-harbor { background:#607d8b; }
+    .map-land--bayside { background:#455a64; }
+    .map-land--wild-arctic { background:#0288d1; }
+    .map-land--sesame-street { background:#7cb342; }
+    .map-land--orca-stadium { background:#00897b; }
+    .map-land--antarctica { background:#0277bd; }
+    .map-land--pacific-point { background:#5c6bc0; }
+    .map-land--infinity-falls { background:#26a69a; }
+    .map-land--key-west { background:#00838f; }
+    /* Busch Gardens */
+    .map-land--morocco { background:#8d6e63; }
+    .map-land--stanleyville { background:#c62828; }
+    .map-land--nairobi { background:#558b2f; }
+    .map-land--egypt { background:#1565c0; }
+    .map-land--congo { background:#00695c; }
+    .map-land--pantopia { background:#6a1b9a; }
+    .map-land--sesame-fun { background:#f9a825; color:#1a1a1a; }
+    .map-land--serengeti { background:#33691e; }
+    .map-land--jungala { background:#2e7d32; }
     @media print {
       .roterio-tabs { display:none !important; }
       .roterio-panel { display:block !important; }
@@ -602,24 +671,24 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial do parceiro · números = ordem do roteiro abaixo. Passe o mouse no pin ou na lista.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Mapa oficial · números coloridos abaixo = legenda do mapa (região entre parênteses). Atrações do SeaWorld não têm número na legenda — só a região.</p>
       <div class="park-layout-inner" data-park-layout="seaworld"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">8h45</span> Entrada · anotar horários de Orca e Dolphin no app</li>
-      <li><span class="time">9h15</span> Pipeline (138 cm — adultos)</li>
-      <li><span class="time">9h45</span> Ice Breaker (121 cm — medir)</li>
-      <li><span class="time">10h15</span> Wild Arctic (belugas)</li>
-      <li><span class="time">10h30</span> Sesame Street Land (bloco da criança; algumas molham)</li>
-      <li><span class="time">12h00</span> Orca Encounter — horário no app</li>
-      <li><span class="time">12h30</span> <b>Almoço: Waterway Grill</b> (ou Altitude Burger). Refeição o dia todo: prato + bebida + sobremesa a cada 90 min</li>
-      <li><span class="time">—</span> <s>Infinity Falls</s> <b>fechada</b> nov/2026 — substituir por Antarctica / Penguin Trek</li>
-      <li><span class="time">14h30</span> Mako (138 cm — adultos)</li>
-      <li><span class="time">15h15</span> Shark Encounter (túnel)</li>
-      <li><span class="time">15h45</span> Penguin Trek + Antarctica Penguin Encounter</li>
-      <li><span class="time">17h30</span> Dolphin Adventures — horário no app</li>
-      <li><span class="time">18h30</span> Manta (138 cm — adultos). Lanche: Panini Shore Café</li>
+      <li><span class="map-land map-land--sea-harbor">Sea Harbor</span><span class="time">8h45</span> Entrada · anotar horários de Orca e Dolphin no app</li>
+      <li><span class="map-land map-land--bayside">Bayside</span><span class="time">9h15</span> Pipeline (138 cm — adultos)</li>
+      <li><span class="map-land map-land--bayside">Bayside</span><span class="time">9h45</span> Ice Breaker (121 cm — medir)</li>
+      <li><span class="map-land map-land--wild-arctic">Wild Arctic</span><span class="time">10h15</span> Wild Arctic (belugas)</li>
+      <li><span class="map-land map-land--sesame-street">Sesame Street Land</span><span class="time">10h30</span> Sesame Street Land (bloco da criança; algumas molham)</li>
+      <li><span class="map-land map-land--orca-stadium">Orca Stadium</span><span class="time">12h00</span> Orca Encounter — horário no app</li>
+      <li><span class="map-land map-land--infinity-falls">Infinity Falls</span><span class="time">12h30</span> <b>Almoço: Waterway Grill</b> (ou Altitude Burger). Refeição o dia todo: prato + bebida + sobremesa a cada 90 min</li>
+      <li><span class="map-land map-land--infinity-falls">Infinity Falls</span><span class="time">—</span> <s>Infinity Falls</s> <b>fechada</b> nov/2026 — substituir por Antarctica / Penguin Trek</li>
+      <li><span class="map-land map-land--key-west">Key West / Manta</span><span class="time">14h30</span> Mako (138 cm — adultos)</li>
+      <li><span class="map-land map-land--pacific-point">Pacific Point</span><span class="time">15h15</span> Shark Encounter (túnel)</li>
+      <li><span class="map-land map-land--antarctica">Antarctica</span><span class="time">15h45</span> Penguin Trek + Antarctica Penguin Encounter</li>
+      <li><span class="map-land map-land--orca-stadium">Orca Stadium</span><span class="time">17h30</span> Dolphin Adventures — horário no app</li>
+      <li><span class="map-land map-land--key-west">Key West / Manta</span><span class="time">18h30</span> Manta (138 cm — adultos). Lanche: Panini Shore Café</li>
     </ol>
     </div>
 
@@ -640,22 +709,22 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial do parceiro · números = ordem do roteiro abaixo.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Mapa oficial Universal · números coloridos = legenda do mapa (região entre parênteses).</p>
       <div class="park-layout-inner" data-park-layout="uni-studios"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">9h00</span> Harry Potter and the Escape from Gringotts (107 cm; armário; fila individual só adulto)</li>
-      <li><span class="time">9h45</span> Men in Black Alien Attack (se der tempo)</li>
-      <li><span class="time">10h15</span> The Simpsons Ride (102 cm)</li>
-      <li><span class="time">12h00</span> <b>Almoço: Louie’s Italian</b> (spaghetti US$ 11,99) ou Moe’s Tavern</li>
-      <li><span class="time">13h30</span> The Bourne Stuntacular (teatro — horário no app)</li>
-      <li><span class="time">14h30</span> Fast &amp; Furious Supercharged</li>
-      <li><span class="time">15h00</span> Transformers 3D (fila individual só adulto)</li>
-      <li><span class="time">15h30</span> Race Through New York Starring Jimmy Fallon</li>
-      <li><span class="time">16h15</span> Revenge of the Mummy (102 cm; armário; no escuro)</li>
-      <li><span class="time">17h00</span> Hollywood Rip Ride Rockit — confirmar se opera (130 cm)</li>
-      <li><span class="time">17h30</span> Despicable Me Minion Mayhem (102 cm acompanhada)</li>
+      <li><span class="map-num map-num--diagon-alley">15</span><span class="map-land map-land--diagon-alley">Diagon Alley</span><span class="time">9h00</span> Harry Potter and the Escape from Gringotts (107 cm; armário; fila individual só adulto)</li>
+      <li><span class="map-num map-num--world-expo">19</span><span class="map-land map-land--world-expo">World Expo</span><span class="time">9h45</span> Men in Black Alien Attack (se der tempo)</li>
+      <li><span class="map-num map-num--springfield">20</span><span class="map-land map-land--springfield">Springfield</span><span class="time">10h15</span> The Simpsons Ride (102 cm)</li>
+      <li><span class="map-land map-land--new-york">New York</span><span class="time">12h00</span> <b>Almoço: Louie’s Italian</b> (spaghetti US$ 11,99) ou Moe’s Tavern</li>
+      <li><span class="map-num map-num--uni-hollywood">42</span><span class="map-land map-land--uni-hollywood">Hollywood</span><span class="time">13h30</span> The Bourne Stuntacular (teatro — horário no app)</li>
+      <li><span class="map-num map-num--san-francisco">12</span><span class="map-land map-land--san-francisco">San Francisco</span><span class="time">14h30</span> Fast &amp; Furious Supercharged</li>
+      <li><span class="map-num map-num--new-york">6</span><span class="map-land map-land--new-york">New York</span><span class="time">15h00</span> Transformers 3D (fila individual só adulto)</li>
+      <li><span class="map-num map-num--new-york">7</span><span class="map-land map-land--new-york">New York</span><span class="time">15h30</span> Race Through New York Starring Jimmy Fallon</li>
+      <li><span class="map-num map-num--new-york">8</span><span class="map-land map-land--new-york">New York</span><span class="time">16h15</span> Revenge of the Mummy (102 cm; armário; no escuro)</li>
+      <li><span class="map-num map-num--new-york">4</span><span class="map-land map-land--new-york">New York</span><span class="time">17h00</span> Hollywood Rip Ride Rockit — confirmar se opera (130 cm)</li>
+      <li><span class="map-num map-num--minion-land">2</span><span class="map-land map-land--minion-land">Minion Land</span><span class="time">17h30</span> Despicable Me Minion Mayhem (102 cm acompanhada)</li>
     </ol>
     </div>
 
@@ -678,22 +747,22 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial Disney · números = ordem do roteiro abaixo.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Guidemap oficial Disney · números coloridos = legenda do mapa (região entre parênteses).</p>
       <div class="park-layout-inner" data-park-layout="hollywood"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">8h30</span> Jedi Training (inscritos na entrada) — anotar horário do show</li>
-      <li><span class="time">8h45</span> Slinky Dog Dash (97 cm)</li>
-      <li><span class="time">9h15</span> Toy Story Mania</li>
-      <li><span class="time">9h45</span> Alien Swirling Saucers</li>
-      <li><span class="time">10h15</span> Star Wars: Rise of the Resistance (101 cm)</li>
-      <li><span class="time">11h00</span> Millennium Falcon: Smugglers Run</li>
-      <li><span class="time">12h30</span> <b>Almoço: Woody’s Lunch Box</b> ou Docking Bay 7</li>
-      <li><span class="time">13h30</span> Mickey &amp; Minnie’s Runaway Railway</li>
-      <li><span class="time">14h30</span> Tower of Terror / Rock ‘n’ Roller Coaster (102 / 122 cm — adultos)</li>
-      <li><span class="time">15h00</span> Beauty and the Beast Live on Stage (horário no app)</li>
-      <li><span class="time">20h30</span> Fantasmic!</li>
+      <li><span class="map-land map-land--echo-lake">Echo Lake</span><span class="time">8h30</span> Jedi Training (inscritos na entrada) — anotar horário do show</li>
+      <li><span class="map-num map-num--toy-story">42</span><span class="map-land map-land--toy-story">Toy Story Land</span><span class="time">8h45</span> Slinky Dog Dash (97 cm)</li>
+      <li><span class="map-num map-num--toy-story">43</span><span class="map-land map-land--toy-story">Toy Story Land</span><span class="time">9h15</span> Toy Story Mania</li>
+      <li><span class="map-num map-num--toy-story">41</span><span class="map-land map-land--toy-story">Toy Story Land</span><span class="time">9h45</span> Alien Swirling Saucers</li>
+      <li><span class="map-num map-num--galaxys-edge">28</span><span class="map-land map-land--galaxys-edge">Galaxy’s Edge</span><span class="time">10h15</span> Star Wars: Rise of the Resistance (101 cm)</li>
+      <li><span class="map-num map-num--galaxys-edge">29</span><span class="map-land map-land--galaxys-edge">Galaxy’s Edge</span><span class="time">11h00</span> Millennium Falcon: Smugglers Run</li>
+      <li><span class="map-num map-num--toy-story">44</span><span class="map-land map-land--toy-story">Toy Story Land</span><span class="time">12h30</span> <b>Almoço: Woody’s Lunch Box</b> ou Docking Bay 7</li>
+      <li><span class="map-num map-num--hollywood-blvd">1</span><span class="map-land map-land--hollywood-blvd">Hollywood Blvd</span><span class="time">13h30</span> Mickey &amp; Minnie’s Runaway Railway</li>
+      <li><span class="map-num map-num--sunset">56</span><span class="map-land map-land--sunset">Sunset Blvd</span><span class="time">14h30</span> Tower of Terror / Rock ‘n’ Roller Coaster (102 / 122 cm — adultos)</li>
+      <li><span class="map-num map-num--sunset">54</span><span class="map-land map-land--sunset">Sunset Blvd</span><span class="time">15h00</span> Beauty and the Beast Live on Stage (horário no app)</li>
+      <li><span class="map-num map-num--sunset">55</span><span class="map-land map-land--sunset">Sunset Blvd</span><span class="time">20h30</span> Fantasmic!</li>
     </ol>
     </div>
 
@@ -715,21 +784,21 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial Disney (mai/2026) · DinoLand fechada.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Guidemap oficial Disney (mai/2026) · números coloridos = legenda do mapa · DinoLand fechada.</p>
       <div class="park-layout-inner" data-park-layout="animal"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">8h30</span> Kilimanjaro Safaris (manhã: animais mais ativos)</li>
-      <li><span class="time">10h00</span> Festival of the Lion King (25 min; horário no app)</li>
-      <li><span class="time">11h00</span> Kali River Rapids (97 cm; molha)</li>
-      <li><span class="time">11h45</span> Expedition Everest (112 cm)</li>
-      <li><span class="time">—</span> <s>Dinosaur</s> <b>fechada permanentemente</b> — substituir por trilhas ou Wilderness Explorers</li>
-      <li><span class="time">12h30</span> <b>Almoço: Satu’li Canteen</b> (Pandora — bowls)</li>
-      <li><span class="time">13h30</span> Na’vi River Journey (barco, sem altura)</li>
-      <li><span class="time">14h15</span> Avatar Flight of Passage (112 cm)</li>
-      <li><span class="time">15h30</span> It’s Tough to Be a Bug! (3D com sustos)</li>
-      <li><span class="time">16h30</span> Gorilla Falls / Maharajah Jungle Trek · bioluminescência Pandora</li>
+      <li><span class="map-num map-num--africa">26</span><span class="map-land map-land--africa">Africa</span><span class="time">8h30</span> Kilimanjaro Safaris (manhã: animais mais ativos)</li>
+      <li><span class="map-num map-num--africa">25</span><span class="map-land map-land--africa">Africa</span><span class="time">10h00</span> Festival of the Lion King (25 min; horário no app)</li>
+      <li><span class="map-num map-num--asia">43</span><span class="map-land map-land--asia">Asia</span><span class="time">11h00</span> Kali River Rapids (97 cm; molha)</li>
+      <li><span class="map-num map-num--asia">44</span><span class="map-land map-land--asia">Asia</span><span class="time">11h45</span> Expedition Everest (112 cm)</li>
+      <li><span class="map-land map-land--discovery-island">Discovery Island</span><span class="time">—</span> <s>Dinosaur</s> <b>fechada permanentemente</b> — substituir por trilhas ou Wilderness Explorers</li>
+      <li><span class="map-num map-num--pandora">23</span><span class="map-land map-land--pandora">Pandora</span><span class="time">12h30</span> <b>Almoço: Satu’li Canteen</b> (Pandora — bowls)</li>
+      <li><span class="map-num map-num--pandora">20</span><span class="map-land map-land--pandora">Pandora</span><span class="time">13h30</span> Na’vi River Journey (barco, sem altura)</li>
+      <li><span class="map-num map-num--pandora">21</span><span class="map-land map-land--pandora">Pandora</span><span class="time">14h15</span> Avatar Flight of Passage (112 cm)</li>
+      <li><span class="map-land map-land--discovery-island">Discovery Island</span><span class="time">15h30</span> It’s Tough to Be a Bug! (3D com sustos)</li>
+      <li><span class="map-num map-num--africa">27</span><span class="map-land map-land--africa">Africa</span> / <span class="map-num map-num--asia">42</span><span class="map-land map-land--asia">Asia</span><span class="time">16h30</span> Gorilla Falls / Maharajah Jungle Trek · bioluminescência Pandora</li>
     </ol>
     </div>
 
@@ -750,19 +819,19 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial Universal (jun/2026) · números = ordem do roteiro.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Mapa oficial Universal (jun/2026) · números coloridos = legenda do mapa (região entre parênteses).</p>
       <div class="park-layout-inner" data-park-layout="epic"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">9h00</span> Fila no portão · foto Nintendo</li>
-      <li><span class="time">10h00</span> Super Nintendo World — Mario Kart: Bowser’s Challenge</li>
-      <li><span class="time">11h00</span> Donkey Kong Country — Mine-Cart Madness (medir)</li>
-      <li><span class="time">12h00</span> Isle of Berk — atrações de dragão</li>
-      <li><span class="time">13h00</span> <b>Almoço: Toadstool Cafe</b> ou Café L’air De La Sirène</li>
-      <li><span class="time">15h00</span> Harry Potter and the Battle at the Ministry (122 cm típico)</li>
-      <li><span class="time">16h30</span> Dark Universe — Monsters Unchained (assustador para 6 anos)</li>
-      <li><span class="time">18h00</span> Celestial Park — lojas e show da praça (app)</li>
+      <li><span class="map-land map-land--celestial">Celestial Park</span><span class="time">9h00</span> Fila no portão · foto Nintendo</li>
+      <li><span class="map-num map-num--nintendo">4</span><span class="map-land map-land--nintendo">Super Nintendo World</span><span class="time">10h00</span> Super Nintendo World — Mario Kart: Bowser’s Challenge</li>
+      <li><span class="map-num map-num--nintendo">5</span><span class="map-land map-land--nintendo">Super Nintendo World</span><span class="time">11h00</span> Donkey Kong Country — Mine-Cart Madness (medir)</li>
+      <li><span class="map-num map-num--isle-berk">18</span><span class="map-land map-land--isle-berk">Isle of Berk</span><span class="time">12h00</span> Isle of Berk — atrações de dragão</li>
+      <li><span class="map-land map-land--nintendo">Super Nintendo World</span><span class="time">13h00</span> <b>Almoço: Toadstool Cafe</b> ou Café L’air De La Sirène</li>
+      <li><span class="map-num map-num--ministry">15</span><span class="map-land map-land--ministry">Ministry of Magic</span><span class="time">15h00</span> Harry Potter and the Battle at the Ministry (122 cm típico)</li>
+      <li><span class="map-num map-num--dark-universe">11</span><span class="map-land map-land--dark-universe">Dark Universe</span><span class="time">16h30</span> Dark Universe — Monsters Unchained (assustador para 6 anos)</li>
+      <li><span class="map-land map-land--celestial">Celestial Park</span><span class="time">18h00</span> Celestial Park — lojas e show da praça (app)</li>
     </ol>
     </div>
 
@@ -784,23 +853,23 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial Disney · números = ordem do roteiro abaixo.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Guidemap oficial Disney · números coloridos = legenda do mapa (região entre parênteses).</p>
       <div class="park-layout-inner" data-park-layout="magic"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">7h00</span> Em casa: fila virtual Tiana’s Bayou (retentar 13h se esgotar)</li>
-      <li><span class="time">8h30</span> Pirates of the Caribbean</li>
-      <li><span class="time">9h00</span> Big Thunder Mountain (102 cm)</li>
-      <li><span class="time">10h00</span> Tiana’s Bayou Adventure (fila virtual ou Lightning Lane)</li>
-      <li><span class="time">12h00</span> <b>Almoço: Columbia Harbour House</b> (pedido pelo celular)</li>
-      <li><span class="time">13h00</span> Haunted Mansion</li>
-      <li><span class="time">15h00</span> Festival of Fantasy Parade (Liberty Square — app)</li>
-      <li><span class="time">15h45</span> Seven Dwarfs Mine Train (97 cm; fila rápida se a fila estiver grande)</li>
-      <li><span class="time">16h30</span> Space Mountain (113 cm — medir)</li>
-      <li><span class="time">19h00</span> TRON Lightcycle Run (adultos — fila virtual fim do dia)</li>
-      <li><span class="time">19h30</span> Meet Mickey no Town Square Theater + pipoca</li>
-      <li><span class="time">20h30</span> Happily Ever After (fogos — app)</li>
+      <li><span class="map-num map-num--frontierland">25</span><span class="map-land map-land--frontierland">Frontierland</span><span class="time">7h00</span> Em casa: fila virtual Tiana’s Bayou (retentar 13h se esgotar)</li>
+      <li><span class="map-num map-num--adventureland">17</span><span class="map-land map-land--adventureland">Adventureland</span><span class="time">8h30</span> Pirates of the Caribbean</li>
+      <li><span class="map-num map-num--frontierland">26</span><span class="map-land map-land--frontierland">Frontierland</span><span class="time">9h00</span> Big Thunder Mountain (102 cm)</li>
+      <li><span class="map-num map-num--frontierland">25</span><span class="map-land map-land--frontierland">Frontierland</span><span class="time">10h00</span> Tiana’s Bayou Adventure (fila virtual ou Lightning Lane)</li>
+      <li><span class="map-num map-num--liberty-square">39</span><span class="map-land map-land--liberty-square">Liberty Square</span><span class="time">12h00</span> <b>Almoço: Columbia Harbour House</b> (pedido pelo celular)</li>
+      <li><span class="map-num map-num--liberty-square">34</span><span class="map-land map-land--liberty-square">Liberty Square</span><span class="time">13h00</span> Haunted Mansion</li>
+      <li><span class="map-land map-land--liberty-square">Liberty Square</span><span class="time">15h00</span> Festival of Fantasy Parade (Liberty Square — app)</li>
+      <li><span class="map-num map-num--fantasyland">48</span><span class="map-land map-land--fantasyland">Fantasyland</span><span class="time">15h45</span> Seven Dwarfs Mine Train (97 cm; fila rápida se a fila estiver grande)</li>
+      <li><span class="map-num map-num--tomorrowland">70</span><span class="map-land map-land--tomorrowland">Tomorrowland</span><span class="time">16h30</span> Space Mountain (113 cm — medir)</li>
+      <li><span class="map-num map-num--tomorrowland">68</span><span class="map-land map-land--tomorrowland">Tomorrowland</span><span class="time">19h00</span> TRON Lightcycle Run (adultos — fila virtual fim do dia)</li>
+      <li><span class="map-num map-num--main-street">3</span><span class="map-land map-land--main-street">Main Street</span><span class="time">19h30</span> Meet Mickey no Town Square Theater + pipoca</li>
+      <li><span class="map-land map-land--main-street">Main Street</span><span class="time">20h30</span> Happily Ever After (fogos — app)</li>
     </ol>
     </div>
 
@@ -821,24 +890,24 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial Disney (jul/2026) · números = ordem do roteiro.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Guidemap oficial Disney (jul/2026) · números coloridos = legenda do mapa (região entre parênteses).</p>
       <div class="park-layout-inner" data-park-layout="epcot"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">8h30</span> Test Track (102 cm; fila individual — só adulto)</li>
-      <li><span class="time">9h15</span> Mission: SPACE (verde 102 cm / laranja 112 cm)</li>
-      <li><span class="time">10h00</span> Soarin’ (102 cm)</li>
-      <li><span class="time">10h45</span> Living with the Land (se der tempo)</li>
-      <li><span class="time">11h15</span> Guardians of the Galaxy: Cosmic Rewind (107 cm)</li>
-      <li><span class="time">12h30</span> <b>Almoço: Sunshine Seasons</b></li>
-      <li><span class="time">13h30</span> Spaceship Earth</li>
-      <li><span class="time">14h30</span> World Showcase pela direita (Canadá → França)</li>
-      <li><span class="time">15h30</span> Remy’s Ratatouille Adventure (França)</li>
-      <li><span class="time">16h00</span> Beauty and the Beast Sing-Along (horário no app)</li>
-      <li><span class="time">16h45</span> Frozen Ever After (Noruega)</li>
-      <li><span class="time">17h30</span> Gran Fiesta Tour (México; se der tempo)</li>
-      <li><span class="time">21h00</span> Luminous — fogos no lago</li>
+      <li><span class="map-num map-num--discovery">15</span><span class="map-land map-land--discovery">World Discovery</span><span class="time">8h30</span> Test Track (102 cm; fila individual — só adulto)</li>
+      <li><span class="map-num map-num--discovery">14</span><span class="map-land map-land--discovery">World Discovery</span><span class="time">9h15</span> Mission: SPACE (verde 102 cm / laranja 112 cm)</li>
+      <li><span class="map-num map-num--nature">23</span><span class="map-land map-land--nature">World Nature</span><span class="time">10h00</span> Soarin’ (102 cm)</li>
+      <li><span class="map-num map-num--nature">24</span><span class="map-land map-land--nature">World Nature</span><span class="time">10h45</span> Living with the Land (se der tempo)</li>
+      <li><span class="map-num map-num--discovery">13</span><span class="map-land map-land--discovery">World Discovery</span><span class="time">11h15</span> Guardians of the Galaxy: Cosmic Rewind (107 cm)</li>
+      <li><span class="map-num map-num--nature">28</span><span class="map-land map-land--nature">World Nature</span><span class="time">12h30</span> <b>Almoço: Sunshine Seasons</b></li>
+      <li><span class="map-num map-num--celebration">1</span><span class="map-land map-land--celebration">World Celebration</span><span class="time">13h30</span> Spaceship Earth</li>
+      <li><span class="map-land map-land--showcase">World Showcase</span><span class="time">14h30</span> World Showcase pela direita (Canadá → França)</li>
+      <li><span class="map-num map-num--showcase">38</span><span class="map-land map-land--showcase">França</span><span class="time">15h30</span> Remy’s Ratatouille Adventure (França)</li>
+      <li><span class="map-num map-num--showcase">37</span><span class="map-land map-land--showcase">França</span><span class="time">16h00</span> Beauty and the Beast Sing-Along (horário no app)</li>
+      <li><span class="map-num map-num--showcase">33</span><span class="map-land map-land--showcase">Noruega</span><span class="time">16h45</span> Frozen Ever After (Noruega)</li>
+      <li><span class="map-num map-num--showcase">31</span><span class="map-land map-land--showcase">México</span><span class="time">17h30</span> Gran Fiesta Tour (México; se der tempo)</li>
+      <li><span class="map-land map-land--showcase">World Showcase</span><span class="time">21h00</span> Luminous — fogos no lago</li>
     </ol>
     </div>
 
@@ -859,22 +928,22 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial Universal (jun/2026) · números = ordem do roteiro.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Mapa oficial Universal (jun/2026) · números coloridos = legenda do mapa (região entre parênteses).</p>
       <div class="park-layout-inner" data-park-layout="ioa"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">8h45</span> VelociCoaster (130 cm — adultos; fila individual)</li>
-      <li><span class="time">9h30</span> Hagrid’s Magical Creatures Motorbike Adventure (122 cm; fila individual)</li>
-      <li><span class="time">10h15</span> Harry Potter and the Forbidden Journey (122 cm)</li>
-      <li><span class="time">11h00</span> Jurassic Park River Adventure (107 cm; molha)</li>
-      <li><span class="time">12h00</span> <b>Almoço: Thunder Falls Terrace</b> (já reservado)</li>
-      <li><span class="time">13h30</span> Skull Island: Reign of Kong (91 cm)</li>
-      <li><span class="time">14h15</span> Popeye &amp; Bluto’s Bilge-Rat Barges (107 cm; molha muito)</li>
-      <li><span class="time">15h00</span> Dudley Do-Right’s Ripsaw Falls (112 cm; não 1º carrinho)</li>
-      <li><span class="time">15h45</span> The Amazing Adventures of Spider-Man (102 cm)</li>
-      <li><span class="time">16h30</span> Doctor Doom’s Fear Fall (se der tempo)</li>
-      <li><span class="time">17h15</span> Incredible Hulk (137 cm — adultos; armário na frente)</li>
+      <li><span class="map-num map-num--jurassic">16</span><span class="map-land map-land--jurassic">Jurassic Park</span><span class="time">8h45</span> VelociCoaster (130 cm — adultos; fila individual)</li>
+      <li><span class="map-num map-num--hogsmeade">21</span><span class="map-land map-land--hogsmeade">Hogsmeade</span><span class="time">9h30</span> Hagrid’s Magical Creatures Motorbike Adventure (122 cm; fila individual)</li>
+      <li><span class="map-num map-num--hogsmeade">17</span><span class="map-land map-land--hogsmeade">Hogsmeade</span><span class="time">10h15</span> Harry Potter and the Forbidden Journey (122 cm)</li>
+      <li><span class="map-num map-num--jurassic">13</span><span class="map-land map-land--jurassic">Jurassic Park</span><span class="time">11h00</span> Jurassic Park River Adventure (107 cm; molha)</li>
+      <li><span class="map-land map-land--jurassic">Jurassic Park</span><span class="time">12h00</span> <b>Almoço: Thunder Falls Terrace</b> (já reservado)</li>
+      <li><span class="map-num map-num--skull-island">10</span><span class="map-land map-land--skull-island">Skull Island</span><span class="time">13h30</span> Skull Island: Reign of Kong (91 cm)</li>
+      <li><span class="map-num map-num--toon-lagoon">8</span><span class="map-land map-land--toon-lagoon">Toon Lagoon</span><span class="time">14h15</span> Popeye &amp; Bluto’s Bilge-Rat Barges (107 cm; molha muito)</li>
+      <li><span class="map-num map-num--toon-lagoon">9</span><span class="map-land map-land--toon-lagoon">Toon Lagoon</span><span class="time">15h00</span> Dudley Do-Right’s Ripsaw Falls (112 cm; não 1º carrinho)</li>
+      <li><span class="map-num map-num--marvel">4</span><span class="map-land map-land--marvel">Marvel Super Hero Island</span><span class="time">15h45</span> The Amazing Adventures of Spider-Man (102 cm)</li>
+      <li><span class="map-num map-num--marvel">3</span><span class="map-land map-land--marvel">Marvel Super Hero Island</span><span class="time">16h30</span> Doctor Doom’s Fear Fall (se der tempo)</li>
+      <li><span class="map-num map-num--marvel">1</span><span class="map-land map-land--marvel">Marvel Super Hero Island</span><span class="time">17h15</span> Incredible Hulk (137 cm — adultos; armário na frente)</li>
     </ol>
     </div>
 
@@ -894,21 +963,21 @@
       </ul>
     </div>
     <div class="park-layout map-card">
-      <h4>Mapa do parque · atrações numeradas</h4>
-      <p class="small muted" style="margin-bottom:8px">Mapa oficial Busch Gardens (2026) · números = ordem do roteiro.</p>
+      <h4>Mapa do parque</h4>
+      <p class="small muted" style="margin-bottom:8px">Mapa oficial Busch Gardens (2026) · regiões coloridas = legenda do mapa (montanhas-russas não têm número na legenda).</p>
       <div class="park-layout-inner" data-park-layout="busch"></div>
     </div>
     <ol class="timed">
-      <li><span class="time">9h15</span> Cheetah Hunt (perto do Skyride)</li>
-      <li><span class="time">9h45</span> Cobra’s Curse</li>
-      <li><span class="time">10h30</span> Serengeti Plain / trenzinho</li>
-      <li><span class="time">11h30</span> Sesame Street Safari of Fun (bloco da criança)</li>
-      <li><span class="time">12h30</span> <b>Almoço: Zambia Smokehouse</b> ou Crown Colony</li>
-      <li><span class="time">14h00</span> Congo River Rapids (molha — confirmar se opera)</li>
-      <li><span class="time">14h45</span> Iron Gwazi / SheiKra / Montu / Tigris (122–137 cm — adultos)</li>
-      <li><span class="time">16h30</span> Falcon’s Fury</li>
-      <li><span class="time">17h15</span> Phoenix Rising (status no app)</li>
-      <li><span class="time">18h00</span> Stanley Falls Flume · saída 19h00</li>
+      <li><span class="map-land map-land--nairobi">Nairobi</span><span class="time">9h15</span> Cheetah Hunt (perto do Skyride)</li>
+      <li><span class="map-land map-land--egypt">Egypt</span><span class="time">9h45</span> Cobra’s Curse</li>
+      <li><span class="map-land map-land--serengeti">Serengeti Plain</span><span class="time">10h30</span> Serengeti Plain / trenzinho</li>
+      <li><span class="map-land map-land--sesame-fun">Sesame Street Safari of Fun</span><span class="time">11h30</span> Sesame Street Safari of Fun (bloco da criança)</li>
+      <li><span class="map-land map-land--stanleyville">Stanleyville</span><span class="time">12h30</span> <b>Almoço: Zambia Smokehouse</b> ou Crown Colony</li>
+      <li><span class="map-land map-land--congo">Congo</span><span class="time">14h00</span> Congo River Rapids (molha — confirmar se opera)</li>
+      <li><span class="map-land map-land--stanleyville">Stanleyville</span> / <span class="map-land map-land--egypt">Egypt</span><span class="time">14h45</span> Iron Gwazi / SheiKra / Montu / Tigris (122–137 cm — adultos)</li>
+      <li><span class="map-land map-land--pantopia">Pantopia</span><span class="time">16h30</span> Falcon’s Fury</li>
+      <li><span class="map-land map-land--pantopia">Pantopia</span><span class="time">17h15</span> Phoenix Rising (status no app)</li>
+      <li><span class="map-land map-land--stanleyville">Stanleyville</span><span class="time">18h00</span> Stanley Falls Flume · saída 19h00</li>
     </ol>
     </div>
     </section>
