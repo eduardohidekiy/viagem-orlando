@@ -319,7 +319,7 @@
       padding:12px 12px 10px; margin:0 0 20px; overflow:hidden;
     }
     .map-card h3 { margin:0 0 8px; }
-    #tripMap { height:min(420px, 62vw); min-height:280px; border-radius:8px; z-index:0; }
+    #tripMap { height:min(480px, 70vw); min-height:300px; border-radius:8px; z-index:0; background:#e8eef3; }
     .map-legend {
       display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:10px;
       font-size:.8rem; color:var(--muted); line-height:1.35;
@@ -1891,29 +1891,40 @@
       if (tripMap || typeof L === "undefined") return;
       var el = document.getElementById("tripMap");
       if (!el) return;
-      tripMap = L.map(el, { scrollWheelZoom: false }).setView([28.36, -81.53], 10);
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        attribution: "&copy; OpenStreetMap &copy; CARTO",
-        maxZoom: 19,
-        subdomains: "abcd"
+      tripMap = L.map(el, {
+        scrollWheelZoom: false,
+        zoomControl: true
+      });
+      // Esri Light Gray — gratuito, sem API key (substitui CARTO, que passou a exigir chave)
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+        attribution: "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
+        maxZoom: 16
       }).addTo(tripMap);
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {
+        maxZoom: 16,
+        opacity: 0.9
+      }).addTo(tripMap);
+
+      var fitPts = [];
       TRIP_REGIONS.forEach(function (reg) {
         L.circle([reg.lat, reg.lng], {
           radius: reg.r,
           color: reg.color,
-          weight: 2,
+          weight: 2.5,
           fillColor: reg.color,
-          fillOpacity: 0.14
+          fillOpacity: 0.18
         }).bindTooltip(reg.name, mapTip).addTo(tripMap);
+        fitPts.push([reg.lat, reg.lng]);
       });
       ROTEIRO_PARKS.forEach(function (p) {
         L.circleMarker([p.lat, p.lng], {
-          radius: p.id === "busch" ? 6 : 7,
+          radius: p.id === "busch" ? 6 : 8,
           color: "#fff",
           weight: 2,
           fillColor: p.color,
           fillOpacity: 0.95
         }).bindTooltip(p.name, mapTip).addTo(tripMap);
+        if (p.id !== "busch") fitPts.push([p.lat, p.lng]);
       });
       TRIP_EXTRA_MARKERS.forEach(function (p) {
         L.circleMarker([p.lat, p.lng], {
@@ -1923,7 +1934,14 @@
           fillColor: "#c9a227",
           fillOpacity: 0.95
         }).bindTooltip(p.name, mapTip).addTo(tripMap);
+        // Sanford fica longe — não entra no enquadramento
+        if (p.lat < 28.6) fitPts.push([p.lat, p.lng]);
       });
+      if (fitPts.length) {
+        tripMap.fitBounds(fitPts, { padding: [28, 28], maxZoom: 11 });
+      } else {
+        tripMap.setView([28.36, -81.53], 10);
+      }
     }
 
     (function initPlanilhaLink() {
