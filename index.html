@@ -567,8 +567,8 @@
   <div class="wrap">
 
     <div class="toolbar noprint">
-      <button id="btnUsd" class="active" type="button" onclick="setCur('USD')">Dólar</button>
-      <button id="btnBrl" type="button" onclick="setCur('BRL')">Real</button>
+      <button id="btnUsd" type="button" onclick="setCur('USD')">Dólar</button>
+      <button id="btnBrl" class="active" type="button" onclick="setCur('BRL')">Real</button>
       <a id="btnPlanilha" class="btn accent disabled" href="#" target="_blank" rel="noopener">Gastos da viagem</a>
     </div>
 
@@ -592,7 +592,7 @@
         <tbody id="budgetBody"></tbody>
       </table>
     </div>
-    <p class="small">Câmbio R$ 5,15. Ingressos Disney / Universal / SeaWorld+Busch: cotação <b>Latam Travel</b> para família (2 adultos + 1 criança) = R$ 21.609,45 no total dos três. Como a cotação não separa adulto e criança, o valor é <b>dividido igualmente por pessoa</b> (total dividido por 3). Casal = 2 vezes essa parte. Itens comuns: divididos por 4 adultos. <b>Disney:</b> 4 dias, começando em 13/11. <b>Universal:</b> ingresso de 3 parques por 14 dias, começando em 12/11. <b>SeaWorld + Busch:</b> 2 parques + refeições o dia todo (dias 11 e 22/11). O câmbio da Latam na hora do pagamento pode mudar o total em reais.</p>
+    <p class="small">Câmbio R$ 5,15. Passagens aéreas ida e volta: cerca de <b>R$ 3.300 por pessoa</b> (adulto e criança). Ingressos Disney / Universal / SeaWorld+Busch: cotação <b>Latam Travel</b> para família (2 adultos + 1 criança) = R$ 21.609,45 no total dos três. Como a cotação não separa adulto e criança, o valor é <b>dividido igualmente por pessoa</b> (total dividido por 3). Casal = 2 vezes essa parte. Itens comuns: divididos por 4 adultos. <b>Disney:</b> 4 dias, começando em 13/11. <b>Universal:</b> ingresso de 3 parques por 14 dias, começando em 12/11. <b>SeaWorld + Busch:</b> 2 parques + refeições o dia todo (dias 11 e 22/11). O câmbio da Latam na hora do pagamento pode mudar o total em reais.</p>
     <div class="note">Uma família reserva a casa e o carro no cartão; a outra transfere as 2 partes dos adultos (Pix ou Zelle). Ingressos, chip de internet e seguro de viagem: cada um compra só das próprias pessoas. Seguro do carro vai junto com a minivan (dividido por 4 adultos).</div>
     <div class="prep noprint">
       <b>Gastos (compartilhados + pessoais)</b>
@@ -1859,7 +1859,10 @@
     // Casa no orçamento: R$ 10.000 ÷ 5,15
     const HOUSE_USD = Math.round(10000 / FX);
     const CAR_INS = 350; // seguro contra danos US$ 25/dia × 14
+    // Passagens ida+volta: cerca de R$ 3.300 por pessoa
+    const FLIGHT_PP = 3300 / FX;
     const A = {
+      flight: FLIGHT_PP,
       disney: disneyPp,
       uni: uniPp,
       sw: swPp,
@@ -1875,6 +1878,7 @@
       ll: 100
     };
     const C = {
+      flight: FLIGHT_PP,
       disney: disneyPp,
       uni: uniPp,
       sw: swPp,
@@ -1988,7 +1992,7 @@
         note: "Devolução em <b>Sanford</b> — devolução em Orlando em geral não existe."
       }
     ];
-    let cur = "USD";
+    let cur = "BRL";
 
     function fmtFlightTime(dep, arr) {
       var m = arr.match(/^(.+?)\s*\(dia seguinte\)$/);
@@ -2050,12 +2054,13 @@
       document.getElementById("btnUsd").classList.toggle("active", cur === "USD");
       document.getElementById("btnBrl").classList.toggle("active", cur === "BRL");
 
-      const totA = A.disney + A.uni + A.sw + A.food + A.house + A.car + A.carIns + A.parking + A.gas + A.groceries + A.esim + A.travelIns;
-      const totC = C.disney + C.uni + C.sw + C.food + C.esim + C.travelIns;
+      const totA = A.flight + A.disney + A.uni + A.sw + A.food + A.house + A.car + A.carIns + A.parking + A.gas + A.groceries + A.esim + A.travelIns;
+      const totC = C.flight + C.disney + C.uni + C.sw + C.food + C.esim + C.travelIns;
       document.getElementById("sFam").textContent = fmt(fam(totA, totC));
       document.getElementById("sCasal").textContent = fmt(cas(totA));
 
       document.getElementById("budgetBody").innerHTML =
+        row("Passagens aéreas ida e volta (cerca de R$ 3.300/pessoa)", A.flight, C.flight) +
         row("Disney 4 dias (Latam · começa 13/11)", A.disney, C.disney) +
         row("Universal 3 parques / 14 dias (Latam · começa 12/11)", A.uni, C.uni) +
         row("SeaWorld + Busch + refeições o dia todo (Latam)", A.sw, C.sw) +
