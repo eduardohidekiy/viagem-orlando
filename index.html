@@ -294,6 +294,26 @@
     .fee-check { color:#7a5b00; font-weight:600; }
     .region-intro { font-size:.88rem; color:var(--muted); margin:-4px 0 12px; line-height:1.45; }
     .region-intro b { color:var(--text); }
+    .stay-grid { display:grid; gap:14px; margin:0 0 22px; }
+    .stay-card {
+      display:grid; grid-template-columns:140px 1fr; gap:12px;
+      background:var(--card); border:1px solid var(--line); border-radius:12px;
+      overflow:hidden; align-items:stretch;
+    }
+    .stay-card img {
+      width:100%; height:100%; min-height:110px; object-fit:cover; display:block; background:#e8eef4;
+    }
+    .stay-card-body { padding:10px 12px 12px 0; min-width:0; }
+    .stay-card h5 { margin:0 0 4px; font-size:.95rem; line-height:1.3; }
+    .stay-meta { font-size:.82rem; color:var(--muted); margin:0 0 6px; }
+    .stay-price { font-size:1rem; font-weight:700; color:var(--accent); margin:0 0 6px; }
+    .stay-price .small { font-weight:500; }
+    .stay-card a.btn { margin-top:2px; font-size:.82rem; padding:4px 10px; }
+    @media (max-width:560px) {
+      .stay-card { grid-template-columns:1fr; }
+      .stay-card img { height:160px; }
+      .stay-card-body { padding:10px 12px 12px; }
+    }
     .map-card {
       background:var(--card); border:1px solid var(--line); border-radius:12px;
       padding:12px 12px 10px; margin:0 0 20px; overflow:hidden;
@@ -1133,41 +1153,53 @@
     <p class="small">Coluna <b>Resort fee</b>: taxa diária extra do condomínio/resort (além do aluguel). Filtro da lista = <b>sem fee</b> ou fee já inclusa no total do anúncio. Todos os links = <b>Airbnb</b>.</p>
 
     <h4>Windsor Hills</h4>
-    <p class="region-intro"><b>Prós:</b> Disney 10–15 min · parque aquático do clube (slides) · muitos condos sem resort fee no Airbnb.<br><b>Contras:</b> Universal 25–30 min · trânsito na 192 no horário de parque (+10 min).</p>
-    <div class="money-wrap">
-      <table class="money">
-        <thead><tr><th>Imóvel</th><th class="num">Quartos</th><th class="num">Resort fee</th><th class="num">Total 14 noites</th><th>Link</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Create Magic Moments · Waterpark</td>
-            <td class="num" data-l="Quartos">3BR / 2BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-no">Não</span></td>
-            <td class="num em" data-l="Total">R$ 10.060<br><span class="small">US$ 1.953</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1644228844173499266?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>Condo close to Disney at Windsor Hills</td>
-            <td class="num" data-l="Quartos">3BR / 2BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-no">Não</span></td>
-            <td class="num em" data-l="Total">R$ 10.640<br><span class="small">US$ 2.066</span></td>
-            <td><a href="https://www.airbnb.com/rooms/630316750356726228?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>304C Windsor Hills · 2 King 3BR</td>
-            <td class="num" data-l="Quartos">3BR / 2BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-no">Não</span></td>
-            <td class="num em" data-l="Total">R$ 11.445<br><span class="small">US$ 2.222</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1670573511165048456?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>Renovated Townhome · Private Pool</td>
-            <td class="num" data-l="Quartos">3BR / 3BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-no">Não</span></td>
-            <td class="num em" data-l="Total">R$ 11.841<br><span class="small">US$ 2.299</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1665461535535897343?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-        </tbody>
-      </table>
+    <p class="region-intro"><b>Prós:</b> Disney 10–15 min · parque aquático do clube (slides) · muitos condos sem resort fee no Airbnb.<br><b>Contras:</b> Universal 25–30 min · trânsito na 192 no horário de parque (+10 min).<br><b>Filtro (cotação 23/09/2026):</b> 10–24/11/2026 · 4 adultos + 1 criança · ≥2 quartos / ≥2 banheiros · ≤ R$ 13.000 · Guest Favorite · ≥20 avaliações · sem resort fee no anúncio.</p>
+    <div class="stay-grid">
+      <article class="stay-card">
+        <img src="assets/hospedagem/windsor-hills-544126824935102121.jpg" alt="Windsor Hills waterpark arcade theater" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Windsor Hills · Waterpark / Arcade / Theater</h5>
+          <p class="stay-meta">3BR / 2BA · ★ 4,99 (107) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 7.880 <span class="small">· ~US$ 1.530 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/544126824935102121?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/windsor-hills-1389222492503371472.jpg" alt="3BR Windsor Hills condo water slides" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>3BR Condo + Water Slides · By Disney</h5>
+          <p class="stay-meta">3BR / 2BA · ★ 4,88 (24) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 8.510 <span class="small">· ~US$ 1.652 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/1389222492503371472?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/windsor-hills-22401667.jpg" alt="Themed room Windsor Hills amenities" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Themed room · Walk to amenities · 5 mi Disney</h5>
+          <p class="stay-meta">3BR / 3BA · ★ 4,94 (216) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 8.667 <span class="small">· ~US$ 1.683 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/22401667?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/windsor-hills-52010045.jpg" alt="Windsor Hills Galaxys Edge themed condo" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Galaxy’s Edge themed · 2 mi to Disney</h5>
+          <p class="stay-meta">3BR / 2BA · ★ 4,86 (190) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 10.660 <span class="small">· ~US$ 2.070 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/52010045?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/windsor-hills-809349616128122394.jpg" alt="Crete poolside condo Windsor Hills" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Crete Poolside Condo · Windsor Hills</h5>
+          <p class="stay-meta">3BR / 2BA · ★ 4,95 (58) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 11.806 <span class="small">· ~US$ 2.292 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/809349616128122394?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
     </div>
 
     <h4>192 Formosa</h4>
@@ -1282,81 +1314,105 @@
     </div>
 
     <h4>Storey Lake</h4>
-    <p class="region-intro"><b>Prós:</b> Rio lento + slides (Hideaway Club) · ótimo para criança nos dias livres · Disney 10–15 min · sem resort fee na maioria dos Airbnbs.<br><b>Contras:</b> Universal 25 min · alguns anunciantes cobram taxa de proteção (~US$ 6/dia) — não é resort fee, mas entra no total.</p>
-    <div class="money-wrap">
-      <table class="money">
-        <thead><tr><th>Imóvel</th><th class="num">Quartos</th><th class="num">Resort fee</th><th class="num">Total 14 noites</th><th>Link</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Mario &amp; Fairy 3BR · Free Water Park</td>
-            <td class="num" data-l="Quartos">3BR / 2BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-no">Não</span></td>
-            <td class="num em" data-l="Total">R$ 11.517<br><span class="small">US$ 2.236</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1577091068159211788?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>3272 · 3BD/3BA Charming · Close to Parks</td>
-            <td class="num" data-l="Quartos">3BR / 3BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-no">Não</span></td>
-            <td class="num em" data-l="Total">~R$ 10.500<br><span class="small">cotar</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1012585225805980184?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>Cozy 3 BR Apartment · Near Disney</td>
-            <td class="num" data-l="Quartos">3BR / 2BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-no">Não</span></td>
-            <td class="num em" data-l="Total">~R$ 9.500<br><span class="small">cotar</span></td>
-            <td><a href="https://www.airbnb.com/rooms/53509714?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>Spacious 3BR Townhome · Storey Lake</td>
-            <td class="num" data-l="Quartos">3BR / 2BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-no">Não</span></td>
-            <td class="num em" data-l="Total">~R$ 10.800<br><span class="small">cotar</span></td>
-            <td><a href="https://www.airbnb.com/rooms/1448832022863017884?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-        </tbody>
-      </table>
+    <p class="region-intro"><b>Prós:</b> Rio lento + slides (Hideaway Club) · ótimo para criança nos dias livres · Disney 10–15 min · sem resort fee na maioria dos Airbnbs.<br><b>Contras:</b> Universal 25 min · alguns anunciantes cobram taxa de proteção (~US$ 6/dia) — não é resort fee, mas entra no total.<br><b>Nota da cotação:</b> 3BR dentro de R$ 13 mil com ≥20 reviews estava escasso nesta data — as 5 opções abaixo são 2BR/2BA Guest Favorite, cabem 4+1 e passam no filtro.</p>
+    <div class="stay-grid">
+      <article class="stay-card">
+        <img src="assets/hospedagem/storey-lake-1413138594700430690.jpg" alt="Storey Lake spacious 2BR condo" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Spacious 2-BR Condo · Resort Amenities</h5>
+          <p class="stay-meta">2BR / 2BA · ★ 4,83 (29) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 9.061 <span class="small">· ~US$ 1.759 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/1413138594700430690?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/storey-lake-53079642.jpg" alt="Storey Lake gated resort free water park" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Gated Resort · 5 mi Disney · 2 FREE Water Parks</h5>
+          <p class="stay-meta">2BR / 2BA · ★ 4,94 (189) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 10.567 <span class="small">· ~US$ 2.052 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/53079642?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/storey-lake-552011734973528772.jpg" alt="Storey Lake 3120-103 condo" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Storey Lake 3120-103 · 2BR / 2BA</h5>
+          <p class="stay-meta">2BR / 2BA · ★ 4,78 (101) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 11.236 <span class="small">· ~US$ 2.182 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/552011734973528772?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/storey-lake-1181934664303720882.jpg" alt="Storey Lake 3150-205 condo" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Storey Lake 3150-205 · 2BR / 2BA</h5>
+          <p class="stay-meta">2BR / 2BA · ★ 4,88 (60) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 12.358 <span class="small">· ~US$ 2.400 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/1181934664303720882?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/storey-lake-998396567480699742.jpg" alt="Storey Lake 4731-204CT condo" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Storey Lake 4731-204CT · 2BR / 2BA</h5>
+          <p class="stay-meta">2BR / 2BA · ★ 4,77 (57) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 12.547 <span class="small">· ~US$ 2.436 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/998396567480699742?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
     </div>
 
     <h4>Regal Oaks</h4>
-    <p class="region-intro"><b>Prós:</b> Old Town e Celebration colados · Disney ~8 min · hot tub privada em cada townhome · clube com slides.<br><b>Contras:</b> Site oficial cobra <b>~US$ 27/noite</b> de resort fee · barulho de Old Town/Fun Spot no fim de semana · sempre validar total no checkout.</p>
-    <div class="money-wrap">
-      <table class="money">
-        <thead><tr><th>Imóvel</th><th class="num">Quartos</th><th class="num">Resort fee</th><th class="num">Total 14 noites</th><th>Link</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>5710 · 3BR Private Hot Tub</td>
-            <td class="num" data-l="Quartos">3BR / 3BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-check">Incluso no Airbnb*</span></td>
-            <td class="num em" data-l="Total">~R$ 11.000<br><span class="small">cotar</span></td>
-            <td><a href="https://www.airbnb.com/rooms/51125173?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>3BR Townhome · Hot Tub incl.</td>
-            <td class="num" data-l="Quartos">3BR / 3BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-check">Incluso no Airbnb*</span></td>
-            <td class="num em" data-l="Total">~R$ 10.500<br><span class="small">cotar</span></td>
-            <td><a href="https://www.airbnb.com/rooms/47514506?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>Relaxing 3Bed 3Bath · own Jacuzzi</td>
-            <td class="num" data-l="Quartos">3BR / 3BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-check">Incluso no Airbnb*</span></td>
-            <td class="num em" data-l="Total">~R$ 11.200<br><span class="small">cotar</span></td>
-            <td><a href="https://www.airbnb.com/rooms/33970557?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-          <tr>
-            <td>Waterfront Gem · 3BR Regal Oaks</td>
-            <td class="num" data-l="Quartos">3BR / 2.5BA</td>
-            <td class="num" data-l="Resort fee"><span class="fee-check">Incluso no Airbnb*</span></td>
-            <td class="num em" data-l="Total">~R$ 11.800<br><span class="small">cotar</span></td>
-            <td><a href="https://www.airbnb.com/rooms/49406015?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Airbnb</a></td>
-          </tr>
-        </tbody>
-      </table>
+    <p class="region-intro"><b>Prós:</b> Old Town e Celebration colados · Disney ~8 min · hot tub / spa privada em vários townhomes · clube com slides.<br><b>Contras:</b> Site oficial cobra ~US$ 27/noite de resort fee — as opções abaixo são Airbnb <b>sem</b> resort fee no checkout cotado · barulho de Old Town/Fun Spot no fim de semana.</p>
+    <div class="stay-grid">
+      <article class="stay-card">
+        <img src="assets/hospedagem/regal-oaks-1167631003248457609.jpg" alt="Regal Oaks resort home with spa" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Resort home with spa · 10 min Disney</h5>
+          <p class="stay-meta">2BR / 2,5BA · ★ 4,93 (80) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 9.372 <span class="small">· ~US$ 1.820 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/1167631003248457609?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/regal-oaks-48358909.jpg" alt="Entire townhouse Regal Oaks resort style" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Entire townhouse · Resort style · 5 mi Disney</h5>
+          <p class="stay-meta">2BR / 2,5BA · ★ 4,86 (148) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 10.859 <span class="small">· ~US$ 2.109 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/48358909?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/regal-oaks-49053205.jpg" alt="Resort style vacation townhouse Regal Oaks" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Resort Style Vacation Townhouse · 10 min Disney</h5>
+          <p class="stay-meta">2BR / 2,5BA · ★ 4,93 (183) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 11.568 <span class="small">· ~US$ 2.246 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/49053205?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/regal-oaks-908782885971955109.jpg" alt="Mickey and Star Wars townhome Regal Oaks" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Mickey &amp; Star Wars Fun · Pool &amp; Slide</h5>
+          <p class="stay-meta">4BR / 3BA · ★ 4,87 (119) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 12.385 <span class="small">· ~US$ 2.405 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/908782885971955109?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="assets/hospedagem/regal-oaks-1420293544024330764.jpg" alt="Luxury Mario Bros townhome near Disney" loading="lazy" width="280" height="200">
+        <div class="stay-card-body">
+          <h5>Luxury Mario Bros. Townhome Near Disney</h5>
+          <p class="stay-meta">2BR / 2,5BA · ★ 4,93 (30) · Guest Favorite · <span class="fee-no">sem resort fee</span></p>
+          <p class="stay-price">R$ 12.404 <span class="small">· ~US$ 2.409 · 14 noites</span></p>
+          <a class="btn" href="https://www.airbnb.com/rooms/1420293544024330764?check_in=2026-11-10&amp;check_out=2026-11-24&amp;adults=4&amp;children=1" target="_blank" rel="noopener">Ver no Airbnb</a>
+        </div>
+      </article>
     </div>
-    <p class="small">* Regal Oaks via site oficial (<a href="https://www.regaloaksorlando.com/" target="_blank" rel="noopener">regaloaksorlando.com</a>): resort fee ~US$ 27/noite. Preferir Airbnb só se o total <b>não</b> mostrar fee extra no checkout.</p>
+    <p class="small">Preços Airbnb cotados em <b>23/09/2026</b> (BRL, total com taxas exibido no anúncio). Conferir de novo no checkout: limpeza, imposto e qualquer fee de comunidade. Check-in costuma ser 16h; voo chega 11h — pedir early check-in.</p>
     <p class="small">
       Buscar mais:
       <a href="https://www.airbnb.com/s/Windsor-Hills--Kissimmee--FL/homes?checkin=2026-11-10&amp;checkout=2026-11-24&amp;adults=4&amp;children=1&amp;min_bedrooms=2" target="_blank" rel="noopener">Windsor Hills</a>
