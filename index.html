@@ -272,8 +272,11 @@
     .note { border:1px solid var(--line); border-left:4px solid var(--accent); background:var(--card); padding:12px 14px; border-radius:8px; margin:14px 0; }
     .note.dine { border-left-color:#0d9488; }
     .note.dine-healthy { border-left-color:#16a34a; background:#f6fbf7; }
-    .note.dine table.schedule { font-size:.84rem; margin-top:8px; }
-    .note.dine th, .note.dine td { padding:7px 8px; }
+    .note.dine table.schedule,
+    .note.dine-healthy table.schedule { font-size:.84rem; margin-top:8px; }
+    .note.dine th, .note.dine td,
+    .note.dine-healthy th, .note.dine-healthy td { padding:7px 8px; }
+    .note.dine-healthy td:first-child { font-weight:600; white-space:nowrap; }
     .prep { border:1px solid #c9a227; border-left:4px solid #c9a227; background:#fffdf5; padding:12px 14px; border-radius:8px; margin:8px 0 14px; }
     .prep b { color:#7a5b00; }
     .prep ul { margin:6px 0 0; }
@@ -868,7 +871,15 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · SeaWorld</b>
-      <p class="small" style="margin:6px 0 0">No All-Day Dining pedir <b>grelhado / bowl com salada</b> no Waterway Grill · água / refrigerante zero · fruta se tiver no plano. Evitar só batata frita no Altitude.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Waterway Grill</td><td>Grelhado ou bowl com salada (All-Day Dining)</td><td>Água ou refrigerante zero; fruta se tiver no plano</td></tr>
+            <tr><td>Altitude Burger</td><td>—</td><td>Só batata frita / combo fritura</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
 
@@ -923,7 +934,17 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · Studios / CityWalk</b>
-      <p class="small" style="margin:6px 0 0">No Louie’s: massa com molho de tomate + salada se houver · no Springfield: turkey dog / opções menores · CityWalk: <b>Voodoo Doughnut</b> não é saudável — preferir <b>salad / bowl</b> em Antojitos (guacamole + proteína grelhada) se forem jantar sentados sem milkshake.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Louie’s Italian</td><td>Massa com molho de tomate + salada (se houver)</td><td>Porção extra de fritura</td></tr>
+            <tr><td>Moe’s Tavern / Springfield</td><td>Turkey dog ou opção menor</td><td>Flaming Moe + frituras como refeição principal</td></tr>
+            <tr><td>Antojitos (CityWalk)</td><td>Proteína grelhada + guacamole + salad/bowl</td><td>Burrito gigante se quiserem leve</td></tr>
+            <tr><td>Toothsome / Voodoo Doughnut</td><td>—</td><td>Milkshake e donut = indulgência, não “saudável”</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
 
@@ -981,7 +1002,17 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · Hollywood Studios</b>
-      <p class="small" style="margin:6px 0 0"><b>Docking Bay 7</b> (bowl com verduras + proteína) · no Woody’s pedir sanduíche sem fritar demais / fruit cup se houver · Sci-Fi: salada ou prato grelhado no kids/adult menu · água no app Mobile Order.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Docking Bay 7</td><td>Bowl com verduras + proteína</td><td>Melhor opção saudável do parque</td></tr>
+            <tr><td>Woody’s Lunch Box</td><td>Sanduíche + fruit cup (se houver)</td><td>Tots / fritura como único acompanhamento</td></tr>
+            <tr><td>Sci-Fi Dine-In</td><td>Salada ou prato grelhado (menu adulto/kids)</td><td>Shake + burger fritura se quiserem leve</td></tr>
+            <tr><td>Mobile Order (geral)</td><td>Água</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
 
@@ -1034,7 +1065,16 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · Animal Kingdom</b>
-      <p class="small" style="margin:6px 0 0"><b>Satu’li</b>: bowl com base de quinoa/salada + proteína grelhada · <b>Flame Tree Barbecue</b>: carne grelhada + sides de vegetais · Rainforest: salada / peixe grelhado se no cardápio · evitar só tots e milkshake.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Satu’li Canteen</td><td>Bowl: base quinoa ou salada + proteína grelhada</td><td>Melhor quick-service saudável Disney</td></tr>
+            <tr><td>Flame Tree Barbecue</td><td>Carne grelhada + sides de vegetais</td><td>Só tots / mac &amp; cheese</td></tr>
+            <tr><td>Rainforest Café</td><td>Salada ou peixe grelhado (se no cardápio)</td><td>Só tots e milkshake/vulcão</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
 
@@ -1086,7 +1126,16 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · Epic</b>
-      <p class="small" style="margin:6px 0 0">Mead Hall: proteína + vegetais do platter · evitar só doce do Nintendo · água entre snacks coloridos · Toadstool: prato com salada/kids grilled se existir no cardápio do dia.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Mead Hall (Berk)</td><td>Proteína + vegetais do platter</td><td>Só sides fritas</td></tr>
+            <tr><td>Toadstool Cafe</td><td>Prato com salada ou kids grilled (se no cardápio)</td><td>Só doce / snack colorido como refeição</td></tr>
+            <tr><td>Snacks Nintendo</td><td>Água entre um snack e outro</td><td>Vários doces seguidos</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
 
@@ -1142,7 +1191,16 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · Magic Kingdom</b>
-      <p class="small" style="margin:6px 0 0"><b>Columbia Harbour House</b>: peixe grelhado / salada / frango sem fritura · fruit cup · água. Casey’s e bakery são indulgência — 1 item para compartilhar basta.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Columbia Harbour House</td><td>Peixe grelhado, salada ou frango sem fritura + fruit cup</td><td>Água; melhor almoço leve do MK</td></tr>
+            <tr><td>Casey’s Corner</td><td>1 item para compartilhar (se quiserem)</td><td>Hot dog como refeição completa</td></tr>
+            <tr><td>Main Street Bakery</td><td>1 doce para compartilhar</td><td>Indulgência, não opção saudável</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
 
@@ -1199,7 +1257,16 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · EPCOT</b>
-      <p class="small" style="margin:6px 0 0"><b>Sunshine Seasons</b> é o melhor ponto saudável do parque (salada montada, peixe/frango grelhado) · no Food &amp; Wine escolher barracas de salada/frutos do mar · Via Napoli: pizza margherita + salada · água entre taças do festival.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Sunshine Seasons</td><td>Salada montada ou peixe/frango grelhado</td><td>Melhor ponto saudável do EPCOT</td></tr>
+            <tr><td>Food &amp; Wine (barracas)</td><td>Barracas de salada ou frutos do mar</td><td>Só doce + bebida alcoólica em sequência</td></tr>
+            <tr><td>Via Napoli</td><td>Pizza margherita + salada</td><td>Várias pizzas fritas / calzones</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
 
@@ -1252,7 +1319,16 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · IOA</b>
-      <p class="small" style="margin:6px 0 0">Thunder Falls: frango grelhado + vegetais · Three Broomsticks: roasted chicken (não fish &amp; chips) · Butterbeer como sobremesa compartilhada · CityWalk: Antojitos com proteína grelhada + guacamole (sem burrito gigante se quiserem leve).</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Thunder Falls Terrace</td><td>Frango grelhado + vegetais</td><td>Só costela + fritura</td></tr>
+            <tr><td>Three Broomsticks</td><td>Roasted chicken</td><td>Fish &amp; chips; Butterbeer = sobremesa compartilhada</td></tr>
+            <tr><td>Antojitos (CityWalk)</td><td>Proteína grelhada + guacamole</td><td>Burrito gigante se quiserem leve</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
 
@@ -1302,7 +1378,15 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · Busch</b>
-      <p class="small" style="margin:6px 0 0">No All-Day Dining: proteína grelhada + sides de vegetais · água · fruta se disponível · evitar 3 rodadas só de fritura.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Zambia Smokehouse (All-Day Dining)</td><td>Proteína grelhada + sides de vegetais + fruta (se houver)</td><td>Várias rodadas só de fritura</td></tr>
+            <tr><td>Crown Colony</td><td>Prato com proteína + vegetais</td><td>Só acompanhamentos fritos</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     </div>
     </section>
@@ -1876,7 +1960,17 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · 10/11</b>
-      <p class="small" style="margin:6px 0 0">Blaze: pizza fina com muita verdura · Homecomin’: prato com vegetais / salad · T-Rex/Rainforest: salada ou peixe grelhado no cardápio · água e fruta do Walmart no carro.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Blaze Pizza</td><td>Pizza fina com muita verdura</td><td>Borda recheada + refrigerante grande</td></tr>
+            <tr><td>Homecomin’</td><td>Prato com vegetais ou salad</td><td>Só frango frito + biscuits</td></tr>
+            <tr><td>T-Rex / Rainforest Café</td><td>Salada ou peixe grelhado (se no cardápio)</td><td>Só burger + shake</td></tr>
+            <tr><td>Walmart (carro)</td><td>Água + fruta</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <h4>14/11 · Acessórios de parque (sábado)</h4>
@@ -1906,7 +2000,16 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · 14/11</b>
-      <p class="small" style="margin:6px 0 0">No outlet: bowl / poke / salada se houver · Landscape of Flavors: estação de saladas e grelhados · jantar em casa com proteína + vegetais do Walmart/Publix.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Food court Vineland Premium</td><td>Bowl, poke ou salada (se houver)</td><td>Só fast-food frito</td></tr>
+            <tr><td>Landscape of Flavors (se AoA)</td><td>Estação de saladas e grelhados</td><td>Só pizza / doce</td></tr>
+            <tr><td>Cozinha Regal Oaks</td><td>Proteína + vegetais (Walmart/Publix)</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <h4>17/11 · Descanso (terça)</h4>
@@ -1935,7 +2038,16 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · 17/11</b>
-      <p class="small" style="margin:6px 0 0">Columbia: peixe / pratos com feijão e arroz sem fritura excessiva · Celebration: salada + proteína · dia de descanso = boa noite para <b>cozinhar leve em casa</b> (frango grelhado, salada, fruta).</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Columbia Restaurant (Celebration)</td><td>Peixe ou prato com feijão/arroz sem fritura excessiva</td><td>—</td></tr>
+            <tr><td>Lago Celebration (casual)</td><td>Salada + proteína</td><td>Só gelato como jantar</td></tr>
+            <tr><td>Cozinha Regal Oaks</td><td>Frango grelhado, salada, fruta</td><td>Melhor noite para comer leve (pós-Epic)</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <h4>21/11 · Compras grandes + iPhone (sábado)</h4>
@@ -1966,7 +2078,15 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · 21/11</b>
-      <p class="small" style="margin:6px 0 0">Food court: bowl / grilled chicken / Mediterranean plate · evitar só Cinnabon + soda · jantar em casa leve — dia seguinte é Busch cedo.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Food court Intl Premium / Florida Mall</td><td>Bowl, grilled chicken ou prato mediterrâneo</td><td>Só Cinnabon + refrigerante</td></tr>
+            <tr><td>Cozinha Regal Oaks</td><td>Jantar leve</td><td>Dia seguinte = Busch cedo</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <h4>23/11 · Malas (segunda)</h4>
@@ -1993,16 +2113,35 @@
     </div>
     <div class="note dine-healthy">
       <b>Mais saudáveis · 23/11</b>
-      <p class="small" style="margin:6px 0 0">Dia ideal para <b>refeição caseira leve</b> (ovos, salada, frango, iogurte, fruta) — estômago calmo para o voo do dia 24.</p>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Restaurante</th><th>Pedir</th><th>Evitar / nota</th></tr></thead>
+          <tbody>
+            <tr><td>Cozinha Regal Oaks</td><td>Ovos, salada, frango, iogurte, fruta</td><td>Estômago calmo para o voo do dia 24</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="note dine-healthy">
       <b>Guia rápido · opções saudáveis (todos os dias)</b>
-      <ul style="margin:6px 0 0;padding-left:18px">
-        <li><b>Dentro dos parques:</b> Satu’li Canteen · Sunshine Seasons · Columbia Harbour House · Docking Bay 7 · Thunder Falls (frango grelhado) · Waterway Grill (bowl/grelhado).</li>
-        <li><b>Fora:</b> cozinha do Regal Oaks · Blaze com verduras · bowls nos food courts · Columbia Celebration (pratos sem fritura).</li>
-        <li><b>Regra prática:</b> 1 refeição “festa” por dia (temática / milkshake / Food &amp; Wine) + as outras mais leves · água sempre · Mobile Order evita fila e escolha por impulso.</li>
-      </ul>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Onde</th><th>Restaurante</th><th>Pedir</th></tr></thead>
+          <tbody>
+            <tr><td>Animal Kingdom</td><td>Satu’li Canteen</td><td>Bowl quinoa/salada + proteína grelhada</td></tr>
+            <tr><td>EPCOT</td><td>Sunshine Seasons</td><td>Salada montada ou peixe/frango grelhado</td></tr>
+            <tr><td>Magic Kingdom</td><td>Columbia Harbour House</td><td>Peixe grelhado / salada / frango sem fritura</td></tr>
+            <tr><td>Hollywood Studios</td><td>Docking Bay 7</td><td>Bowl com verduras + proteína</td></tr>
+            <tr><td>Islands of Adventure</td><td>Thunder Falls Terrace</td><td>Frango grelhado + vegetais</td></tr>
+            <tr><td>SeaWorld</td><td>Waterway Grill</td><td>Bowl / grelhado (All-Day Dining)</td></tr>
+            <tr><td>Fora dos parques</td><td>Cozinha Regal Oaks</td><td>Proteína + vegetais / fruta</td></tr>
+            <tr><td>Disney Springs</td><td>Blaze Pizza</td><td>Pizza fina com verduras</td></tr>
+            <tr><td>Celebration</td><td>Columbia Restaurant</td><td>Peixe ou prato sem fritura excessiva</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin:10px 0 0"><b>Regra prática:</b> 1 refeição “festa” por dia (temática / milkshake / Food &amp; Wine) · as outras mais leves · água sempre · Mobile Order evita escolha por impulso na fila.</p>
     </div>
 
     <p class="small">Referência: <a href="https://www.regaloaksorlando.com/location/" target="_blank" rel="noopener">Regal Oaks — localização</a> · <a href="https://orlandodiferente.com.br/outlets-e-shoppings-em-orlando/" target="_blank" rel="noopener">Orlando Diferente — outlets</a> · <a href="https://orlandodiferente.com.br/qual-o-melhor-walmart-de-orlando/" target="_blank" rel="noopener">melhores Walmart</a> · reservas Disney ~60 dias no app · Universal app / OpenTable.</p>
