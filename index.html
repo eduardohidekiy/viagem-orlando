@@ -270,6 +270,10 @@
     .stat b { display:block; font-size:1.15rem; }
     .stat span { font-size:.8rem; color:var(--muted); }
     .note { border:1px solid var(--line); border-left:4px solid var(--accent); background:var(--card); padding:12px 14px; border-radius:8px; margin:14px 0; }
+    .note.dine { border-left-color:#0d9488; }
+    .note.dine-healthy { border-left-color:#16a34a; background:#f6fbf7; }
+    .note.dine table.schedule { font-size:.84rem; margin-top:8px; }
+    .note.dine th, .note.dine td { padding:7px 8px; }
     .prep { border:1px solid #c9a227; border-left:4px solid #c9a227; background:#fffdf5; padding:12px 14px; border-radius:8px; margin:8px 0 14px; }
     .prep b { color:#7a5b00; }
     .prep ul { margin:6px 0 0; }
@@ -775,7 +779,8 @@
         <li>Baixar e entrar nas contas: <b>My Disney Experience</b>, <b>Universal Orlando</b>, <b>SeaWorld</b> (e Busch, se for o mesmo aplicativo).</li>
         <li>Vincular ingressos Disney e Universal nas contas; foto de cada pessoa no perfil Disney.</li>
         <li>Cartão dos EUA (por exemplo Nomad) na conta Disney — necessário para <b>pedir comida pelo celular</b> e para Lightning Lane.</li>
-        <li>Reservas de mesa Disney: abrem cerca de 60 dias antes no aplicativo (Hollywood &amp; Vine, Via Napoli; Thunder Falls é da Universal).</li>
+        <li>Reservas de mesa Disney: abrem cerca de <b>60 dias antes</b> no app (Sci-Fi, 50’s, Via Napoli, Be Our Guest…). Universal: app / OpenTable (Toothsome, Thunder Falls, Toadstool waitlist).</li>
+        <li>Em cada parque e nos dias livres há bloco <b>Onde comer</b> (tipo de refeição · temático · reserva) + <b>opções saudáveis</b> à parte.</li>
         <li>Lightning Lane Multi/Single Pass (quem não fica em hotel Disney): compra a partir de <b>3 dias antes</b>, às <b>7h no horário de Orlando</b>. <b>Não há mais fila virtual</b> nos parques Disney.</li>
         <li>Medir a criança em casa e guardar foto da fita métrica.</li>
       </ul>
@@ -848,6 +853,23 @@
       <li><span class="map-land map-land--orca-stadium">Orca Stadium</span><span class="time">17h30</span> Dolphin Adventures — horário no app <span class="small muted">(sem altura)</span></li>
       <li><span class="map-land map-land--key-west">Key West / Manta</span><span class="time">18h30</span> Manta <b>138 cm</b> — adultos. Lanche: Panini Shore Café · luzes do Christmas Celebration</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · SeaWorld</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Waterway Grill</b></td><td>Grelhados, bowls, prato + bebida + sobremesa (All-Day Dining)</td><td>Não</td><td>Não</td></tr>
+            <tr><td>Almoço alt.</td><td><b>Altitude Burger</b></td><td>Burgers / batata</td><td>Não</td><td>Não</td></tr>
+            <tr><td>Lanche</td><td><b>Panini Shore Café</b></td><td>Sanduíches / café</td><td>Não</td><td>Não</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · SeaWorld</b>
+      <p class="small" style="margin:6px 0 0">No All-Day Dining pedir <b>grelhado / bowl com salada</b> no Waterway Grill · água / refrigerante zero · fruta se tiver no plano. Evitar só batata frita no Altitude.</p>
+    </div>
     </div>
 
     <div class="roterio-panel" id="roterio-uni-studios">
@@ -885,6 +907,24 @@
       <li><span class="map-num map-num--minion-land">2</span><span class="map-land map-land--minion-land">Minion Land</span><span class="time">17h30</span> Despicable Me Minion Mayhem <b>102 cm</b> · Villain-Con Minion Blast (tiro ao alvo, sem altura mínima típica)</li>
       <li><span class="map-land map-land--san-francisco">San Francisco</span><span class="time">—</span> <s>Fast &amp; Furious Supercharged</s> <b>fechada permanentemente</b> (ago/2026) — não planejar</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · Universal Studios</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Louie’s Italian</b> (NY)</td><td>Massa, pizza, spaghetti (rápido / barato)</td><td>Leve (Little Italy)</td><td>Não</td></tr>
+            <tr><td>Almoço alt.</td><td><b>Moe’s Tavern</b> (Springfield)</td><td>Hot dog, Flaming Moe, snacks Simpsons</td><td>Sim (Simpsons)</td><td>Não</td></tr>
+            <tr><td>Lanche</td><td><b>Central Park Crepes</b></td><td>Crepes doce/salgado</td><td>Não</td><td>Não</td></tr>
+            <tr><td>Jantar (após parque)</td><td><b>Toothsome Chocolate Emporium</b> (CityWalk)</td><td>Americana + milkshakes enormes</td><td>Sim (steampunk)</td><td>Recomendada (app / OpenTable)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · Studios / CityWalk</b>
+      <p class="small" style="margin:6px 0 0">No Louie’s: massa com molho de tomate + salada se houver · no Springfield: turkey dog / opções menores · CityWalk: <b>Voodoo Doughnut</b> não é saudável — preferir <b>salad / bowl</b> em Antojitos (guacamole + proteína grelhada) se forem jantar sentados sem milkshake.</p>
+    </div>
     </div>
 
     <div class="roterio-panel" id="roterio-hollywood">
@@ -924,6 +964,25 @@
       <li><span class="map-num map-num--sunset">54</span><span class="map-land map-land--sunset">Sunset Blvd</span><span class="time">15h00</span> Beauty and the Beast Live on Stage (horário no app) <span class="small muted">(sem altura)</span></li>
       <li><span class="map-num map-num--sunset">55</span><span class="map-land map-land--sunset">Sunset Blvd</span><span class="time">20h30</span> Fantasmic! <span class="small muted">(sem altura)</span></li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · Hollywood Studios</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Woody’s Lunch Box</b></td><td>Sanduíches, tots, lunch box tart (rápido)</td><td>Sim (Toy Story)</td><td>Não · pedir no app</td></tr>
+            <tr><td>Almoço alt.</td><td><b>Docking Bay 7</b> (Batuu)</td><td>Bowls, “proteínas” Star Wars</td><td>Sim (Star Wars)</td><td>Não · app</td></tr>
+            <tr><td>Almoço / jantar sentado</td><td><b>Sci-Fi Dine-In</b></td><td>Americana (burger, shake) · cinema drive-in</td><td>Sim (forte)</td><td>Sim · 60 dias (Disney Dining)</td></tr>
+            <tr><td>Almoço / jantar sentado</td><td><b>50’s Prime Time Café</b></td><td>Comida caseira americana · “tia” no serviço</td><td>Sim (anos 50)</td><td>Sim · 60 dias</td></tr>
+            <tr><td>Lanche</td><td><b>Ronto Roasters</b> + leite azul</td><td>Wrap / hot dog + bebida</td><td>Sim (Star Wars)</td><td>Não</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · Hollywood Studios</b>
+      <p class="small" style="margin:6px 0 0"><b>Docking Bay 7</b> (bowl com verduras + proteína) · no Woody’s pedir sanduíche sem fritar demais / fruit cup se houver · Sci-Fi: salada ou prato grelhado no kids/adult menu · água no app Mobile Order.</p>
+    </div>
     </div>
 
     <div class="roterio-panel" id="roterio-animal">
@@ -960,6 +1019,23 @@
       <li><span class="map-land map-land--discovery-island">Discovery Island</span><span class="time">—</span> <s>Dinosaur / DinoLand</s> <b>fechados</b> — Wilderness Explorers ou trilhas</li>
       <li><span class="map-num map-num--africa">27</span><span class="map-land map-land--africa">Africa</span> / <span class="map-num map-num--asia">42</span><span class="map-land map-land--asia">Asia</span><span class="time">16h30</span> Gorilla Falls / Maharajah Jungle Trek · bioluminescência Pandora se o parque fechar tarde <span class="small muted">(sem altura)</span></li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · Animal Kingdom</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Satu’li Canteen</b> (Pandora)</td><td>Bowls (proteína + base + molho) — melhor quick-service Disney</td><td>Sim (Avatar)</td><td>Não · pedir no app</td></tr>
+            <tr><td>Jantar / saída</td><td><b>Rainforest Café</b> (entrada)</td><td>Americana (burger, pasta, saladas)</td><td>Sim (selva / animatrônicos)</td><td>Recomendada (Disney Dining) · sem ingresso para entrar no restaurante</td></tr>
+            <tr><td>Almoço alt.</td><td><b>Pizzafari</b> / Flame Tree</td><td>Pizza ou grelhados ao ar livre</td><td>Leve</td><td>Não</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · Animal Kingdom</b>
+      <p class="small" style="margin:6px 0 0"><b>Satu’li</b>: bowl com base de quinoa/salada + proteína grelhada · <b>Flame Tree Barbecue</b>: carne grelhada + sides de vegetais · Rainforest: salada / peixe grelhado se no cardápio · evitar só tots e milkshake.</p>
+    </div>
     </div>
 
     <div class="roterio-panel" id="roterio-epic">
@@ -994,6 +1070,24 @@
       <li><span class="map-num map-num--ministry">15</span><span class="map-land map-land--ministry">Ministry of Magic</span><span class="time">20h00</span> Harry Potter and the Battle at the Ministry <b>102 cm</b> — <b>melhor janela ~20–21h</b> (fila cai forte)</li>
       <li><span class="map-land map-land--nintendo">Super Nintendo World</span><span class="time">21h00</span> Segunda passagem Mario Kart / Mine-Cart se sobrar energia (também melhor à noite)</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · Epic Universe</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Toadstool Cafe</b> (Nintendo)</td><td>Pratos Mario / pasta / kids</td><td>Sim (Mario — forte)</td><td>Waitlist no app (entrar cedo na fila virtual)</td></tr>
+            <tr><td>Almoço alt.</td><td><b>Yoshi’s Snack Island</b> / Bubbly Barrel</td><td>Snacks, drinks temáticos</td><td>Sim (Nintendo)</td><td>Não</td></tr>
+            <tr><td>Almoço / jantar</td><td><b>Mead Hall</b> (Berk)</td><td>Platters viking / frango / sides</td><td>Sim (How to Train Your Dragon)</td><td>Não / walk-up (confirmar app)</td></tr>
+            <tr><td>Almoço / jantar</td><td><b>Das Stakehaus</b> (Dark Universe)</td><td>Steakhouse temática vampiro</td><td>Sim (Monsters)</td><td>Pode pedir mesa no app — confirmar</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · Epic</b>
+      <p class="small" style="margin:6px 0 0">Mead Hall: proteína + vegetais do platter · evitar só doce do Nintendo · água entre snacks coloridos · Toadstool: prato com salada/kids grilled se existir no cardápio do dia.</p>
+    </div>
     </div>
 
     <div class="roterio-panel" id="roterio-magic">
@@ -1033,6 +1127,23 @@
       <li><span class="map-land map-land--main-street">Main Street</span><span class="time">20h30</span> Happily Ever After (fogos — app) <span class="small muted">(sem altura)</span></li>
       <li><span class="map-num map-num--fantasyland">48</span><span class="map-land map-land--fantasyland">Fantasyland</span><span class="time">após fogos</span> Seven Dwarfs Mine Train <b>97 cm</b> + Peter Pan’s Flight — <b>última hora</b> (filas caem perto do fechamento)</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · Magic Kingdom</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Columbia Harbour House</b></td><td>Peixe, frango, saladas, clam chowder (rápido)</td><td>Leve (New England)</td><td>Não · pedir no app ~1h antes</td></tr>
+            <tr><td>Lanche</td><td><b>Casey’s Corner</b> / Main Street Bakery</td><td>Hot dog · café / doce</td><td>Leve (Main Street)</td><td>Não</td></tr>
+            <tr><td>Jantar sentado (opcional)</td><td><b>Be Our Guest</b></td><td>Francesa / americana no castelo da Bela</td><td>Sim (forte)</td><td>Sim · 60 dias — só se for prioridade do grupo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · Magic Kingdom</b>
+      <p class="small" style="margin:6px 0 0"><b>Columbia Harbour House</b>: peixe grelhado / salada / frango sem fritura · fruit cup · água. Casey’s e bakery são indulgência — 1 item para compartilhar basta.</p>
+    </div>
     </div>
 
     <div class="roterio-panel" id="roterio-epcot">
@@ -1072,6 +1183,24 @@
       <li><span class="map-num map-num--showcase">31</span><span class="map-land map-land--showcase">México</span><span class="time">17h30</span> Gran Fiesta Tour <span class="small muted">(sem altura)</span></li>
       <li><span class="map-land map-land--showcase">World Showcase</span><span class="time">21h00</span> Luminous — fogos no lago <span class="small muted">(sem altura)</span></li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · EPCOT</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Sunshine Seasons</b></td><td>Food court: saladas, grelhados, sopa, sanduíches</td><td>Não</td><td>Não · app</td></tr>
+            <tr><td>Jantar sentado</td><td><b>Via Napoli</b> (Itália)</td><td>Pizza napolitana, massa</td><td>Leve (pavilhão Itália)</td><td>Sim · 60 dias</td></tr>
+            <tr><td>Jantar / petiscos</td><td><b>Food &amp; Wine</b> (barracas)</td><td>Petiscos internacionais (ainda no ar no 19/11)</td><td>Não (festival)</td><td>Não · fila</td></tr>
+            <tr><td>Experiência (opcional)</td><td><b>Space 220</b></td><td>Americana “no espaço”</td><td>Sim (forte)</td><td>Sim · 60 dias · caro</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · EPCOT</b>
+      <p class="small" style="margin:6px 0 0"><b>Sunshine Seasons</b> é o melhor ponto saudável do parque (salada montada, peixe/frango grelhado) · no Food &amp; Wine escolher barracas de salada/frutos do mar · Via Napoli: pizza margherita + salada · água entre taças do festival.</p>
+    </div>
     </div>
 
     <div class="roterio-panel" id="roterio-ioa">
@@ -1108,6 +1237,23 @@
       <li><span class="map-num map-num--marvel">3</span><span class="map-land map-land--marvel">Marvel Super Hero Island</span><span class="time">16h30</span> Doctor Doom’s Fear Fall <b>132 cm</b> (se der tempo)</li>
       <li><span class="map-num map-num--marvel">1</span><span class="map-land map-land--marvel">Marvel Super Hero Island</span><span class="time">17h15</span> Incredible Hulk <b>137 cm</b> (adultos; armário na frente)</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · Islands of Adventure</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Thunder Falls Terrace</b></td><td>Frango / costela grelhada, arroz, sides (Jurassic)</td><td>Sim (Jurassic Park)</td><td>Sim · app Universal (esgota)</td></tr>
+            <tr><td>Almoço / lanche</td><td><b>Three Broomsticks</b> (Hogsmeade)</td><td>Costela, frango assado, fish &amp; chips + <b>Butterbeer</b></td><td>Sim (Harry Potter — forte)</td><td>Não · fila (vá fora do pico)</td></tr>
+            <tr><td>Jantar (após parque)</td><td><b>Toothsome</b> ou <b>Antojitos</b> (CityWalk)</td><td>Americana + milkshake · ou mexicana</td><td>Sim / parcial</td><td>Recomendada</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · IOA</b>
+      <p class="small" style="margin:6px 0 0">Thunder Falls: frango grelhado + vegetais · Three Broomsticks: roasted chicken (não fish &amp; chips) · Butterbeer como sobremesa compartilhada · CityWalk: Antojitos com proteína grelhada + guacamole (sem burrito gigante se quiserem leve).</p>
+    </div>
     </div>
 
     <div class="roterio-panel" id="roterio-busch">
@@ -1142,6 +1288,22 @@
       <li><span class="map-land map-land--pantopia">Pantopia</span><span class="time">17h15</span> Phoenix Rising <b>122 cm</b> (status no app)</li>
       <li><span class="map-land map-land--stanleyville">Stanleyville</span><span class="time">18h00</span> Stanley Falls Flume <b>117 cm</b> · saída 19h00</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · Busch Gardens</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Zambia Smokehouse</b></td><td>BBQ / grelhados (All-Day Dining se tiverem)</td><td>Leve (África)</td><td>Não</td></tr>
+            <tr><td>Almoço alt.</td><td><b>Crown Colony</b></td><td>Pratos sentados / vista Serengeti</td><td>Leve</td><td>Walk-up / app (confirmar)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · Busch</b>
+      <p class="small" style="margin:6px 0 0">No All-Day Dining: proteína grelhada + sides de vegetais · água · fruta se disponível · evitar 3 rodadas só de fritura.</p>
+    </div>
     </div>
     </section>
 
@@ -1696,8 +1858,26 @@
       <li><span class="time">15h30</span> Opcional: <b>Target</b> Rolling Oaks (~5 min do Walmart) se faltar item de casa/remédio</li>
       <li><span class="time">16h30</span> Descanso / clube do resort</li>
       <li><span class="time">18h00</span> <b>Disney Ticket Center</b> (Disney Springs) — cartão físico Disney · pin <b>First Visit</b></li>
-      <li><span class="time">19h00</span> <b>Disney Springs</b> (jantar + caminhada)</li>
+      <li><span class="time">19h00</span> <b>Disney Springs</b> — jantar (ver tabela abaixo)</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · 10/11 (Disney Springs)</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Jantar (imperdível criança)</td><td><b>T-Rex Café</b></td><td>Americana (burger, pasta, kids)</td><td>Sim (dinos / meteoros — forte)</td><td>Recomendada · Disney Dining / OpenTable</td></tr>
+            <tr><td>Jantar alt. temática</td><td><b>Rainforest Café</b></td><td>Americana</td><td>Sim (selva)</td><td>Recomendada</td></tr>
+            <tr><td>Jantar (comida boa)</td><td><b>Homecomin’</b></td><td>Sulista americana (frango frito, biscuits)</td><td>Não</td><td>Recomendada · OpenTable / Disney</td></tr>
+            <tr><td>Jantar rápido</td><td><b>Blaze Pizza</b> / food hall</td><td>Pizza customizável</td><td>Não</td><td>Não</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · 10/11</b>
+      <p class="small" style="margin:6px 0 0">Blaze: pizza fina com muita verdura · Homecomin’: prato com vegetais / salad · T-Rex/Rainforest: salada ou peixe grelhado no cardápio · água e fruta do Walmart no carro.</p>
+    </div>
 
     <h4>14/11 · Acessórios de parque (sábado)</h4>
     <div class="day-log">
@@ -1705,12 +1885,29 @@
     </div>
     <ol class="timed">
       <li><span class="time">10h00</span> Sair do Regal Oaks → <b>Vineland Premium</b> — tênis, roupa de parque, impermeável, boné</li>
-      <li><span class="time">13h00</span> Almoço no outlet</li>
+      <li><span class="time">13h00</span> Almoço no outlet (ver tabela)</li>
       <li><span class="time">Opcional</span> <b>Art of Animation</b> (Radiator Springs) — só se quiserem fotos/Carros</li>
       <li><span class="time">15h30</span> Volta pelo corredor: <b>Target</b> e/ou <b>T.J. Maxx</b> Vineland (se não foram no 10/11)</li>
       <li><span class="time">Opcional</span> <b>Best Buy</b> Osceola + The Loop — só se precisarem de eletrônicos antes dos parques</li>
-      <li><span class="time">18h00</span> Regal Oaks · Animal Kingdom amanhã</li>
+      <li><span class="time">18h00</span> Regal Oaks · jantar leve em casa ou na 192 · Animal Kingdom amanhã</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · 14/11</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Food court Vineland Premium</b></td><td>Variado (Asian, sandwiches, bowls)</td><td>Não</td><td>Não</td></tr>
+            <tr><td>Almoço alt. (se AoA)</td><td><b>Landscape of Flavors</b></td><td>Food court hotel Disney</td><td>Leve (hotel)</td><td>Não</td></tr>
+            <tr><td>Jantar</td><td><b>Cozinha Regal Oaks</b> ou casual na 192</td><td>Mercado / pizza delivery</td><td>Não</td><td>Não</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · 14/11</b>
+      <p class="small" style="margin:6px 0 0">No outlet: bowl / poke / salada se houver · Landscape of Flavors: estação de saladas e grelhados · jantar em casa com proteína + vegetais do Walmart/Publix.</p>
+    </div>
 
     <h4>17/11 · Descanso (terça)</h4>
     <div class="day-log">
@@ -1720,8 +1917,26 @@
       <li><span class="time">Manhã</span> Piscina / slides do resort · dormir até tarde</li>
       <li><span class="time">14h00</span> Opcional: <b>Old Town</b> ou <b>Ross</b> na 192 (liquidação rápida)</li>
       <li><span class="time">16h00</span> <b>Celebration</b> (passeio + gelato) — ~10 min</li>
-      <li><span class="time">18h30</span> Jantar em Celebration ou cozinha · dormir cedo</li>
+      <li><span class="time">18h30</span> Jantar em Celebration (ver tabela) · dormir cedo</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · 17/11 (Celebration / CityWalk opcional)</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Jantar</td><td><b>Columbia Restaurant</b> (Celebration)</td><td>Cubana / espanhola (clássico FL)</td><td>Não (ambiente histórico)</td><td>Recomendada · telefone / OpenTable</td></tr>
+            <tr><td>Jantar leve</td><td>Restaurantes do lago Celebration + gelato</td><td>Americana / italiana casual</td><td>Não</td><td>Walk-in em geral</td></tr>
+            <tr><td>Jantar (se forem à Universal)</td><td><b>Toothsome Chocolate Emporium</b> (CityWalk)</td><td>Americana + milkshakes</td><td>Sim (steampunk — forte)</td><td>Recomendada · ~25–30 min do Regal Oaks</td></tr>
+            <tr><td>Jantar casa</td><td><b>Cozinha do townhome</b></td><td>O que compraram no mercado</td><td>Não</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · 17/11</b>
+      <p class="small" style="margin:6px 0 0">Columbia: peixe / pratos com feijão e arroz sem fritura excessiva · Celebration: salada + proteína · dia de descanso = boa noite para <b>cozinhar leve em casa</b> (frango grelhado, salada, fruta).</p>
+    </div>
 
     <h4>21/11 · Compras grandes + iPhone (sábado)</h4>
     <div class="day-log">
@@ -1731,11 +1946,28 @@
       <li><span class="time">8h30</span> Sair do Regal Oaks</li>
       <li><span class="time">9h15</span> <b>Apple Store · Florida Mall</b> — iPhone (reserva no app se possível; documento/passaporte; cartão internacional). Alternativa: Apple Millenia se preferirem mall mais perto da I-Drive</li>
       <li><span class="time">11h00</span> <b>Outlet Marketplace</b> (liquidação)</li>
-      <li><span class="time">12h30</span> <b>International Premium Outlets</b> + almoço</li>
+      <li><span class="time">12h30</span> <b>International Premium Outlets</b> + almoço (ver tabela)</li>
       <li><span class="time">15h30</span> Opcional no retorno: <b>Best Buy</b> Osceola (acessórios) · senão <b>Walmart Turkey Lake</b> (lembrancinhas)</li>
-      <li><span class="time">18h00</span> Regal Oaks / piscina · Busch Gardens domingo cedo</li>
+      <li><span class="time">18h00</span> Regal Oaks / piscina · jantar leve · Busch Gardens domingo cedo</li>
     </ol>
     <p class="small"><b>iPhone:</b> comprar na Apple Store (unlocked). Conferir imposto na nota, AppleCare se quiserem, e espaço na mala — caixa ocupa volume. Best Buy também vende iPhone, mas a Apple Store facilita setup e garantia.</p>
+    <div class="note dine">
+      <b>Onde comer · 21/11</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço</td><td><b>Food court International Premium</b></td><td>Variado (Asian, Mediterranean, sandwiches)</td><td>Não</td><td>Não</td></tr>
+            <tr><td>Almoço alt.</td><td><b>Florida Mall food court</b> (se almoçarem após a Apple)</td><td>Variado</td><td>Não</td><td>Não</td></tr>
+            <tr><td>Jantar</td><td><b>Casa</b> (descansar para Busch)</td><td>Mercado / delivery leve</td><td>Não</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · 21/11</b>
+      <p class="small" style="margin:6px 0 0">Food court: bowl / grilled chicken / Mediterranean plate · evitar só Cinnabon + soda · jantar em casa leve — dia seguinte é Busch cedo.</p>
+    </div>
 
     <h4>23/11 · Malas (segunda)</h4>
     <div class="day-log">
@@ -1747,8 +1979,33 @@
       <li><span class="time">Tarde</span> Pesar malas · descanso no resort</li>
       <li><span class="time">Noite</span> Conferir voo · rota Regal Oaks → MCO (aba Voos volta · ~25–35 min sem pedágio pela 417 sul / locais)</li>
     </ol>
+    <div class="note dine">
+      <b>Onde comer · 23/11</b>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Refeição</th><th>Local</th><th>Tipo de comida</th><th>Temático</th><th>Reserva</th></tr></thead>
+          <tbody>
+            <tr><td>Almoço / jantar</td><td><b>Cozinha Regal Oaks</b></td><td>Usar sobras do mercado · pizza se cansados</td><td>Não</td><td>—</td></tr>
+            <tr><td>Opcional</td><td>Casual Old Town / 192</td><td>Americana rápida</td><td>Não</td><td>Não</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note dine-healthy">
+      <b>Mais saudáveis · 23/11</b>
+      <p class="small" style="margin:6px 0 0">Dia ideal para <b>refeição caseira leve</b> (ovos, salada, frango, iogurte, fruta) — estômago calmo para o voo do dia 24.</p>
+    </div>
 
-    <p class="small">Referência: <a href="https://www.regaloaksorlando.com/location/" target="_blank" rel="noopener">Regal Oaks — localização</a> · <a href="https://orlandodiferente.com.br/outlets-e-shoppings-em-orlando/" target="_blank" rel="noopener">Orlando Diferente — outlets</a> · <a href="https://orlandodiferente.com.br/qual-o-melhor-walmart-de-orlando/" target="_blank" rel="noopener">melhores Walmart</a>.</p>
+    <div class="note dine-healthy">
+      <b>Guia rápido · opções saudáveis (todos os dias)</b>
+      <ul style="margin:6px 0 0;padding-left:18px">
+        <li><b>Dentro dos parques:</b> Satu’li Canteen · Sunshine Seasons · Columbia Harbour House · Docking Bay 7 · Thunder Falls (frango grelhado) · Waterway Grill (bowl/grelhado).</li>
+        <li><b>Fora:</b> cozinha do Regal Oaks · Blaze com verduras · bowls nos food courts · Columbia Celebration (pratos sem fritura).</li>
+        <li><b>Regra prática:</b> 1 refeição “festa” por dia (temática / milkshake / Food &amp; Wine) + as outras mais leves · água sempre · Mobile Order evita fila e escolha por impulso.</li>
+      </ul>
+    </div>
+
+    <p class="small">Referência: <a href="https://www.regaloaksorlando.com/location/" target="_blank" rel="noopener">Regal Oaks — localização</a> · <a href="https://orlandodiferente.com.br/outlets-e-shoppings-em-orlando/" target="_blank" rel="noopener">Orlando Diferente — outlets</a> · <a href="https://orlandodiferente.com.br/qual-o-melhor-walmart-de-orlando/" target="_blank" rel="noopener">melhores Walmart</a> · reservas Disney ~60 dias no app · Universal app / OpenTable.</p>
     </section>
 
 
