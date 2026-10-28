@@ -2358,7 +2358,7 @@
       if (!sideMenu || !menuToggle) return;
 
       var tabs = ["orcamento", "cronograma", "roteiros", "compras", "hospedagem", "carro", "voos", "reservas"];
-      var currentTab = "orcamento";
+      var currentTab = "cronograma";
       var currentRoteiro = "geral";
 
       function openMenu() {
@@ -2401,7 +2401,7 @@
 
       function showTab(id, updateHash) {
         if (id === "dias-livres") id = "compras";
-        if (tabs.indexOf(id) < 0) id = "orcamento";
+        if (tabs.indexOf(id) < 0) id = "cronograma";
         currentTab = id;
         if (id !== "roteiros") currentRoteiro = "geral";
         tabs.forEach(function (t) {
@@ -2483,7 +2483,7 @@
       var hash = (location.hash || "").replace(/^#/, "");
       if (hash.indexOf("roteiros-") === 0) showRoteiroPanel(hash.slice(9), false);
       else if (hash === "roteiros") showRoteiroPanel("geral", false);
-      else showTab(tabs.indexOf(hash) >= 0 ? hash : "orcamento", false);
+      else showTab(tabs.indexOf(hash) >= 0 ? hash : "cronograma", false);
     })();
 
     var TRIP_REGIONS = [
