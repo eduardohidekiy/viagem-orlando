@@ -572,7 +572,7 @@
       <button type="button" class="side-menu-close" id="menuClose" aria-label="Fechar menu">×</button>
     </div>
     <ul class="side-menu-list">
-      <li><button type="button" data-tab="orcamento">Orçamento</button></li>
+      <li hidden><button type="button" data-tab="orcamento">Orçamento</button></li>
       <li><button type="button" data-tab="cronograma">Cronograma</button></li>
       <li class="has-sub" id="roteirosMenuGroup">
         <button type="button" class="side-menu-parent" id="roteirosMenuToggle" aria-expanded="false">
@@ -592,10 +592,10 @@
         </ul>
       </li>
       <li><button type="button" data-tab="compras">Roteiro Dias Livres</button></li>
-      <li><button type="button" data-tab="hospedagem">Hospedagem</button></li>
-      <li><button type="button" data-tab="carro">Aluguel de Carro</button></li>
-      <li><button type="button" data-tab="voos">Voos volta</button></li>
-      <li><button type="button" data-tab="reservas">Reservas</button></li>
+      <li hidden><button type="button" data-tab="hospedagem">Hospedagem</button></li>
+      <li hidden><button type="button" data-tab="carro">Aluguel de Carro</button></li>
+      <li hidden><button type="button" data-tab="voos">Voos volta</button></li>
+      <li hidden><button type="button" data-tab="reservas">Reservas</button></li>
     </ul>
   </nav>
   <div class="wrap">
@@ -606,7 +606,7 @@
       <a id="btnPlanilha" class="btn accent disabled" href="#" target="_blank" rel="noopener">Gastos da viagem</a>
     </div>
 
-    <section class="tab-panel active" id="tab-orcamento">
+    <section class="tab-panel" id="tab-orcamento">
     <h2>Orçamento</h2>
     <div class="stats">
       <div class="stat"><b id="sFam">—</b><span>Família = 2 partes adultas + criança</span></div>
@@ -639,7 +639,7 @@
     <p class="small"><b>Internet no celular:</b> chip virtual Nomad ou Airalo nos EUA, cerca de 20 GB por 30 dias (cerca de US$ 34) — mapa, aplicativo dos parques, WhatsApp. A criança usa a internet do celular do adulto. <b>Seguro de viagem:</b> cobertura médica nos EUA por cerca de 15 dias (faixa típica Allianz/Porto). <b>Seguro do carro:</b> proteção contra danos no balcão da locadora ou em empresa à parte (cerca de US$ 25 por dia × 14 dias); cartão brasileiro muitas vezes <i>não</i> cobre aluguel nos EUA — confirmar antes de abrir mão.</p>
     </section>
 
-    <section class="tab-panel" id="tab-cronograma">
+    <section class="tab-panel active" id="tab-cronograma">
     <h2>Cronograma conjunto</h2>
     <p class="muted">Disney: 4 dias entre <b>13 e 19/11</b>. Magic Kingdom no <b>18</b> (sem festa de Natal → fogos regulares; festa Very Merry é 17/11). Universal válido 14 dias desde <b>12/11</b>. Festas Disney nov/2026: Very Merry (Magic Kingdom) e Jollywood (Studios) em noites selecionadas — nossos dias de parque evitam fechamento às 18h, exceto conferir app. Horários de parque na aba <b>Roteiro Parques</b>; dias livres, outlets e Walmart na aba <b>Roteiro Dias Livres</b>.</p>
     <div class="schedule-wrap">
